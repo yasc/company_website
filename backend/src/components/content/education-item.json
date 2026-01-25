@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_content_education_items",
+  "info": {
+    "displayName": "Education Item",
+    "icon": "graduation-cap",
+    "description": "Academic degree and institution"
+  },
+  "options": {},
+  "attributes": {
+    "degree": {
+      "type": "string",
+      "required": true
+    },
+    "institution": {
+      "type": "string",
+      "required": true
+    },
+    "year": {
+      "type": "integer"
+    }
+  }
+}

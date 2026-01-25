@@ -1,0 +1,59 @@
+{
+  "kind": "singleType",
+  "collectionName": "careers_pages",
+  "info": {
+    "singularName": "careers-page",
+    "pluralName": "careers-pages",
+    "displayName": "Careers Page",
+    "description": "Careers section content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.hero"
+    },
+    "whyJoinTitle": {
+      "type": "string"
+    },
+    "whyJoinContent": {
+      "type": "richtext"
+    },
+    "cultureTitle": {
+      "type": "string"
+    },
+    "cultureContent": {
+      "type": "richtext"
+    },
+    "valueProps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.capability"
+    },
+    "fellowshipHighlight": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.callout"
+    },
+    "fellowshipCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.button"
+    },
+    "openRolesSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.section-header"
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "text"
+    }
+  }
+}

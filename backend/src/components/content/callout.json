@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_content_callouts",
+  "info": {
+    "displayName": "Callout",
+    "icon": "quote",
+    "description": "Highlighted content block for quotes, info, or key points"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": ["info", "highlight", "quote"],
+      "default": "info",
+      "required": true
+    },
+    "body": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

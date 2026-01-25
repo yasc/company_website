@@ -1,0 +1,65 @@
+{
+  "kind": "singleType",
+  "collectionName": "navigations",
+  "info": {
+    "singularName": "navigation",
+    "pluralName": "navigations",
+    "displayName": "Navigation",
+    "description": "Site navigation and footer configuration"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "primaryNav": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.nav-item"
+    },
+    "utilityNav": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.nav-item"
+    },
+    "footerColumn1Title": {
+      "type": "string"
+    },
+    "footerColumn1Links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.nav-item"
+    },
+    "footerColumn2Title": {
+      "type": "string"
+    },
+    "footerColumn2Links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.nav-item"
+    },
+    "footerColumn3Title": {
+      "type": "string"
+    },
+    "newsletterEnabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "newsletterPlaceholder": {
+      "type": "string"
+    },
+    "socialLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.external-link"
+    },
+    "legalLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.nav-item"
+    },
+    "copyrightText": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "client_types",
+  "info": {
+    "singularName": "client-type",
+    "pluralName": "client-types",
+    "displayName": "Client Type",
+    "description": "Who we work with categories"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

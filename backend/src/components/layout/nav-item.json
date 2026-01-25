@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_layout_nav_items",
+  "info": {
+    "displayName": "Nav Item",
+    "icon": "link",
+    "description": "Navigation menu item"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "openInNewTab": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

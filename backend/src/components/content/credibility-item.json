@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_content_credibility_items",
+  "info": {
+    "displayName": "Credibility Item",
+    "icon": "star",
+    "description": "Featured in logo or credibility badge"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

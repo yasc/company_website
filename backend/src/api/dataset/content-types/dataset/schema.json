@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "datasets",
+  "info": {
+    "singularName": "dataset",
+    "pluralName": "datasets",
+    "displayName": "Dataset",
+    "description": "Data products and open data"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "coverageTimePeriod": {
+      "type": "string"
+    },
+    "coverageGeography": {
+      "type": "string"
+    },
+    "granularity": {
+      "type": "string"
+    },
+    "methodology": {
+      "type": "richtext"
+    },
+    "accessType": {
+      "type": "enumeration",
+      "enum": ["open", "commercial"],
+      "default": "open",
+      "required": true
+    },
+    "downloadLink": {
+      "type": "string"
+    },
+    "downloadFile": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["files"]
+    },
+    "license": {
+      "type": "text"
+    },
+    "updateFrequency": {
+      "type": "string"
+    },
+    "relatedPapers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::paper.paper"
+    },
+    "topics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

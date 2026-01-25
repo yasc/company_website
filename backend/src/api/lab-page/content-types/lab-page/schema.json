@@ -1,0 +1,49 @@
+{
+  "kind": "singleType",
+  "collectionName": "lab_pages",
+  "info": {
+    "singularName": "lab-page",
+    "pluralName": "lab-pages",
+    "displayName": "Lab Page",
+    "description": "Lab section content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.hero"
+    },
+    "aboutTitle": {
+      "type": "string"
+    },
+    "aboutContent": {
+      "type": "richtext"
+    },
+    "fellowshipTitle": {
+      "type": "string"
+    },
+    "fellowshipContent": {
+      "type": "richtext"
+    },
+    "fellowshipCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.button"
+    },
+    "guidesSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.section-header"
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "text"
+    }
+  }
+}

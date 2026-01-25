@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+/* ========================================
+   Applied Economics Design System
+   Based on Phase 4 Visual Design Document
+   ======================================== */
+
+:root {
+  /* Navy Palette (Primary Dark) */
+  --navy-900: #0F1419;
+  --navy-800: #1A2332;
+  --navy-700: #2D3748;
+  --navy-600: #4A5568;
+
+  /* Gray Palette (Neutrals) */
+  --gray-500: #718096;
+  --gray-400: #A0AEC0;
+  --gray-300: #CBD5E0;
+  --gray-200: #E2E8F0;
+  --gray-100: #EDF2F7;
+  --gray-50: #F7FAFC;
+
+  /* Teal Palette (Accent) */
+  --teal-600: #2C7A7B;
+  --teal-500: #319795;
+  --teal-400: #4FD1C5;
+
+  /* Semantic Colors */
+  --amber-500: #D69E2E;
+  --red-500: #E53E3E;
+  --green-500: #38A169;
+
+  /* Data Visualization Series */
+  --series-1: #319795;
+  --series-2: #2B6CB0;
+  --series-3: #6B46C1;
+  --series-4: #D69E2E;
+  --series-5: #C53030;
+  --series-6: #2F855A;
+
+  /* Page Defaults */
+  --background: #FFFFFF;
+  --foreground: var(--navy-800);
+}
+
+@theme inline {
+  /* Color System */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Navy Palette */
+  --color-navy-900: #0F1419;
+  --color-navy-800: #1A2332;
+  --color-navy-700: #2D3748;
+  --color-navy-600: #4A5568;
+  
+  /* Gray Palette */
+  --color-gray-500: #718096;
+  --color-gray-400: #A0AEC0;
+  --color-gray-300: #CBD5E0;
+  --color-gray-200: #E2E8F0;
+  --color-gray-100: #EDF2F7;
+  --color-gray-50: #F7FAFC;
+  
+  /* Teal Palette */
+  --color-teal-600: #2C7A7B;
+  --color-teal-500: #319795;
+  --color-teal-400: #4FD1C5;
+  
+  /* Semantic Colors */
+  --color-amber-500: #D69E2E;
+  --color-red-500: #E53E3E;
+  --color-green-500: #38A169;
+  
+  /* Typography */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   Typography Scale
+   Based on 1.25 ratio (Major Third)
+   ======================================== */
+
+.text-display {
+  font-size: 3rem;      /* 48px */
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-h1 {
+  font-size: 2.25rem;   /* 36px */
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.text-h2 {
+  font-size: 1.75rem;   /* 28px */
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.text-h3 {
+  font-size: 1.375rem;  /* 22px */
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.text-h4 {
+  font-size: 1.125rem;  /* 18px */
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.text-body-large {
+  font-size: 1.125rem;  /* 18px */
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.text-body {
+  font-size: 1rem;      /* 16px */
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-small {
+  font-size: 0.875rem;  /* 14px */
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-caption {
+  font-size: 0.75rem;   /* 12px */
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+.text-stat {
+  font-family: var(--font-mono);
+  font-size: 2.5rem;    /* 40px */
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Responsive Typography */
+@media (max-width: 1023px) {
+  .text-display { font-size: 2.5rem; }   /* 40px */
+  .text-h1 { font-size: 2rem; }          /* 32px */
+  .text-h2 { font-size: 1.5rem; }        /* 24px */
+}
+
+@media (max-width: 767px) {
+  .text-display { font-size: 2rem; }     /* 32px */
+  .text-h1 { font-size: 1.75rem; }       /* 28px */
+  .text-h2 { font-size: 1.375rem; }      /* 22px */
+}
+
+/* ========================================
+   Focus Styles (Accessibility)
+   ======================================== */
+
+*:focus-visible {
+  outline: 2px solid var(--teal-400);
+  outline-offset: 2px;
+}
+
+/* Dark background focus */
+.dark-bg *:focus-visible {
+  outline-color: white;
+}
+
+/* ========================================
+   Link Styles
+   ======================================== */
+
+a {
+  color: var(--teal-500);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+a:hover {
+  color: var(--teal-600);
+}
+
+/* Dark background links */
+.dark-bg a {
+  color: var(--teal-400);
+}
+
+.dark-bg a:hover {
+  color: white;
+}
+
+/* ========================================
+   Selection Styles
+   ======================================== */
+
+::selection {
+  background-color: var(--teal-500);
+  color: white;
+}
+
+/* ========================================
+   Scrollbar Styles
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
+}

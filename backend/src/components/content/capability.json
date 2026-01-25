@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_content_capabilities",
+  "info": {
+    "displayName": "Capability",
+    "icon": "check",
+    "description": "Service capability with title and description"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

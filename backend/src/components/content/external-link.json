@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_content_external_links",
+  "info": {
+    "displayName": "External Link",
+    "icon": "link",
+    "description": "Link to external resource"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

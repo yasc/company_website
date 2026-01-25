@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "papers",
+  "info": {
+    "singularName": "paper",
+    "pluralName": "papers",
+    "displayName": "Paper",
+    "description": "Research publications and papers"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "abstract": {
+      "type": "richtext"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["working_paper", "published", "policy_brief"],
+      "default": "working_paper",
+      "required": true
+    },
+    "publicationVenue": {
+      "type": "string"
+    },
+    "publicationDate": {
+      "type": "date"
+    },
+    "topics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::person.person"
+    },
+    "pdfFile": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["files"]
+    },
+    "pdfLink": {
+      "type": "string"
+    },
+    "externalLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.external-link"
+    },
+    "keyFindings": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.key-finding"
+    },
+    "citationBibtex": {
+      "type": "text"
+    },
+    "citationApa": {
+      "type": "text"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

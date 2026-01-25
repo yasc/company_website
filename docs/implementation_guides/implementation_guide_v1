@@ -1,0 +1,1029 @@
+# Applied Economics Website Build Plan (Developer Runbook)
+
+This document is the step-by-step implementation plan for junior developers to build the Applied Economics website using:
+
+- **Headless CMS:** Strapi
+- **Frontend:** React + Next.js (App Router, TypeScript)
+- **Data Viz:** React + D3
+- **Deployment:** GitHub → Render (Strapi backend + Next.js frontend)
+
+The plan assumes the UX, IA, and visual design have already been approved as per Phase 1–4 project documents. 
+
+---
+
+## 0. High-Level Architecture
+
+**Architecture pattern:**
+
+- **Strapi** as headless CMS:
+  - Models content types that mirror the sitemap and templates from Strategy & UX phases. 
+  - Exposes REST (or GraphQL) APIs.
+- **Next.js** (React, TypeScript) as frontend:
+  - Consumes Strapi APIs.
+  - Implements routing matching the sitemap (home, services, research, data, lab, insights, careers, contact, etc.). :contentReference[oaicite:2]{index=2}
+  - Uses a shared design system (colors, typography, spacing, components) per Visual Design. :contentReference[oaicite:3]{index=3}
+- **D3 + React** for data visualizations:
+  - Reusable chart components conforming to Data Visualization Standards. :contentReference[oaicite:4]{index=4}
+- **Render**:
+  - One **web service** for Strapi.
+  - One **web service** for Next.js.
+  - One **managed Postgres** instance for Strapi.
+
+---
+
+## 1. Repository & Project Structure
+
+Set this up as a single GitHub repo with two top-level apps:
+
+```bash
+applied-economics-site/
+  backend/        # Strapi CMS
+  frontend/       # Next.js + React
+  infra/          # Render config, environment docs
+  docs/           # Project docs, this runbook
+  package.json    # (optional) workspace root
+  README.md
+````
+
+If desired, configure this as a **pnpm / npm workspace** so shared tooling can be managed at the root.
+
+---
+
+## 2. Tooling & Prerequisites
+
+**Developers must have:**
+
+* Node.js LTS (>= 20)
+* pnpm or npm
+* Git
+* PostgreSQL (local or Docker) for Strapi dev
+* A code editor with:
+
+  * TypeScript support
+  * ESLint / Prettier integration
+
+**Global approach:**
+
+* Use **TypeScript** across frontend.
+* Use **ESLint + Prettier** for consistent formatting.
+* Use **Tailwind CSS** in frontend to encode the design tokens from Phase 4 as utility classes. 
+
+---
+
+## 3. Strapi Backend Implementation
+
+### 3.1 Bootstrap Strapi
+
+In `backend/`:
+
+```bash
+cd backend
+npx create-strapi-app@latest . --quickstart
+```
+
+Then switch the database to Postgres (for parity with Render):
+
+1. Install dependency:
+
+```bash
+cd backend
+npm install pg
+```
+
+2. Configure `config/database.ts` to use Postgres with environment variables (no hard-coded credentials).
+
+### 3.2 Environments & Config
+
+Create the following environment config files in `backend/config/`:
+
+* `database.ts` – PostgreSQL connection using env vars.
+* `server.ts` – host, port, URL, proxy settings.
+* `middlewares.ts` – security, CORS.
+* `plugins.ts` – any necessary plugins (e.g., GraphQL, upload provider).
+
+**Environment variables (example names):**
+
+* `DATABASE_HOST`, `DATABASE_PORT`, `DATABASE_NAME`, `DATABASE_USERNAME`, `DATABASE_PASSWORD`
+* `STRAPI_ADMIN_JWT_SECRET`
+* `APP_KEYS`
+* `API_TOKEN_SALT`
+* `ADMIN_JWT_SECRET`
+* `JWT_SECRET`
+
+Follow Strapi docs for generating secure secrets.
+
+### 3.3 Content Model Design (Strapi Collection & Single Types)
+
+Use the sitemap and template inventory from Phase 2 & 3 as the source of truth.
+
+You will create these **Collection Types** (non-exhaustive, but required):
+
+1. **Service**
+
+   * Fields:
+
+     * `title` (string)
+     * `slug` (UID)
+     * `summary` (rich text or text)
+     * `overview` (rich text)
+     * `capabilities` (repeatable component with `title`, `description`)
+     * `process_steps` (repeatable component with `step_title`, `step_description`, `order`)
+     * `client_types` (relation to Client Type)
+     * `case_studies` (relation to Case Study)
+     * `related_research` (relation to Paper)
+   * Used for `/services/*` pages.
+
+2. **Client Type**
+
+   * Fields:
+
+     * `name` (string)
+     * `description` (text)
+   * Used on Services landing page for "Who we work with".
+
+3. **Case Study**
+
+   * Fields:
+
+     * `title`
+     * `slug`
+     * `client_type` (relation)
+     * `outcome_stat_label`
+     * `outcome_stat_value`
+     * `summary`
+     * `full_content` (rich text)
+     * `services` (relation to Service)
+   * Used on Services pages and potentially Home "Selected projects".
+
+4. **Paper** (Research)
+
+   * Fields:
+
+     * `title`
+     * `slug`
+     * `abstract` (rich text)
+     * `status` (enumeration: working_paper, published, policy_brief)
+     * `publication_venue` (string)
+     * `publication_date` (date)
+     * `topics` (relation to Tag)
+     * `authors` (relation to Person)
+     * `pdf_link` (URL or media)
+     * `external_links` (repeatable component with `label`, `url`)
+     * `key_findings` (repeatable component with `item_text`)
+     * `citation_bibtex` (text)
+     * `citation_apa` (text)
+   * Used for `/research` archive and `/research/[slug]`.
+
+5. **Dataset**
+
+   * Fields:
+
+     * `title`
+     * `slug`
+     * `description`
+     * `coverage_time_period`
+     * `coverage_geography`
+     * `granularity`
+     * `methodology` (rich text)
+     * `access_type` (enumeration: open, commercial)
+     * `download_link` (optional media/URL)
+     * `license` (text)
+     * `update_frequency`
+     * `related_papers` (relation to Paper)
+   * Used for `/data` archive and `/data/[slug]`. 
+
+6. **Insight (Post)**
+
+   * Fields:
+
+     * `title`
+     * `slug`
+     * `excerpt`
+     * `body` (rich text)
+     * `published_at`
+     * `topics` (relation to Tag)
+     * `featured` (boolean)
+   * Used for `/insights` and `/insights/[slug]`.
+
+7. **Person (Team Member)**
+
+   * Fields:
+
+     * `full_name`
+     * `slug`
+     * `job_title`
+     * `bio` (rich text)
+     * `education` (repeatable component)
+     * `publications` (relation to Paper)
+     * `profile_photo` (media)
+     * `linkedin_url` (optional)
+     * `scholar_url` (optional)
+   * Used on `/about/team` and author sections.
+
+8. **Job (Role)**
+
+   * Fields:
+
+     * `title`
+     * `slug`
+     * `location`
+     * `type` (enumeration: full_time, internship, fellowship, etc.)
+     * `department`
+     * `description` (rich text)
+     * `apply_url` (if using external ATS)
+   * Used for `/careers` and `/careers/[slug]`.
+
+9. **Guide (Lab Guide)**
+
+   * Fields:
+
+     * `title`
+     * `slug`
+     * `summary`
+     * `body` (rich text)
+     * `topics` (relation to Tag)
+   * Used for `/lab/guides` and `/lab/guides/[slug]`. 
+
+10. **Tag**
+
+    * Fields:
+
+      * `name`
+      * `slug`
+    * Shared across Papers, Insights, Datasets, Guides.
+
+In addition, create **Single Types** for high-level static content:
+
+1. **Home Page**
+
+   * Fields to reference:
+
+     * hero content (headline, subheadline, primary CTA)
+     * featured services (relations to Service)
+     * featured work (relations to Case Study/Paper)
+     * latest insights (if curated; otherwise derive from Insight)
+   * Mirrors homepage sections described in UX spec.
+
+2. **About Page**
+
+   * Core story, mission, etc.
+
+3. **Lab Page**
+
+   * Lab overview and key content references.
+
+4. **Careers Page Content**
+
+   * "Why join" copy, culture sections, fellowship highlights.
+
+5. **Contact Page Content**
+
+   * Intro text, default response expectations, office contact data.
+
+6. **Navigation**
+
+   * Either:
+
+     * Use Strapi’s built-in menu plugin (if approved), or
+     * Model custom `Navigation` single type with repeatable list of nav items including labels, URLs, and order. Mirrors primary nav and footer as defined in Strategy. 
+
+### 3.4 Components & Dynamic Zones
+
+Define Strapi **components** for reusable structured content:
+
+* `cta.button` – label, url, variant
+* `layout.section_header` – heading, subheading, optional link
+* `content.callout` – type (info/highlight/quote), body
+* `content.stat_block` – label, value
+* `content.key_finding` – single bullet of text
+* `content.external_link` – label, url
+* `content.education_item` – degree, institution
+* `content.office_location` – city, address, email
+
+Use **Dynamic Zones** in Single Types where marketing may reorder blocks on the page (e.g., homepage main sections).
+
+### 3.5 Permissions & Public API
+
+In Strapi admin:
+
+* Go to **Settings → Users & Permissions → Roles → Public**.
+* Allow **find / findOne** on all public content types (Service, Paper, Insight, Dataset, etc.).
+* Expose only necessary fields; do not expose internal notes or drafts.
+
+Prefer **API tokens** for the frontend (Settings → API Tokens).
+
+### 3.6 Validation & Slugs
+
+For each slug field:
+
+* Ensure `UID` type configured.
+* Enforce uniqueness.
+* Generate from `title`.
+
+For other fields:
+
+* Mark required fields to avoid incomplete content appearing on the site (e.g., titles, slugs, key metadata).
+* Limit field types per requirements in Strategy & UX docs (length, enumerations).
+
+---
+
+## 4. Frontend App (Next.js + React + TypeScript)
+
+### 4.1 Bootstrap Next.js App
+
+In `frontend/`:
+
+```bash
+cd frontend
+npx create-next-app@latest . --ts --eslint
+```
+
+Use the **App Router** (default in current Next versions).
+
+### 4.2 Install Dependencies
+
+Install:
+
+* Tailwind CSS + PostCSS + Autoprefixer
+* Axios or fetch wrapper (or use `fetch` directly)
+* React-hook-form (for contact form) or preferred form lib
+* D3
+* Testing: Jest + React Testing Library; Playwright for E2E
+* Accessibility: `@axe-core/react` for dev only if desired
+
+Example:
+
+```bash
+npm install d3
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+### 4.3 Configure Tailwind with Design Tokens
+
+Use the color, typography, spacing, and breakpoints from Phase 4 Visual Design. 
+
+* Map `navy`, `gray`, `teal`, etc. into Tailwind `theme.colors`.
+* Configure font families: `Inter` as primary, `JetBrains Mono` as mono. 
+* Configure spacing scale based on the 4px scale.
+* Configure screen breakpoints (`sm`, `md`, `lg`, `xl`, `2xl`) matching design.
+
+Ensure:
+
+* Global `body` uses background and text colors defined in Visual Design (white background, navy text on light pages; dark backgrounds where specified). 
+
+### 4.4 Global Layout
+
+Set up shared layout in `app/layout.tsx`:
+
+* `<html lang="en">`
+* Global `<body>` with base typography class.
+* Top-level `<Header />` and `<Footer />` components.
+* `<main>` element with semantic structure, skip-link anchoring for accessibility.
+
+Add **Skip to main content** link as first focusable element to meet accessibility requirements.
+
+### 4.5 Routing Structure
+
+Implement routes per sitemap from Phase 2. 
+
+In `app/` directory:
+
+* `page.tsx` → `/` (Home)
+
+* `about/page.tsx` → `/about`
+
+* `about/story/page.tsx` → `/about/story`
+
+* `about/leadership/page.tsx` → `/about/leadership`
+
+* `about/approach/page.tsx` → `/about/approach`
+
+* `about/team/page.tsx` → `/about/team`
+
+* `services/page.tsx` → `/services`
+
+* `services/[slug]/page.tsx` → `/services/[slug]`
+
+* `research/page.tsx` → `/research`
+
+* `research/[slug]/page.tsx` → `/research/[slug]`
+
+* `data/page.tsx` → `/data`
+
+* `data/open/page.tsx` → `/data/open`
+
+* `data/products/page.tsx` → `/data/products`
+
+* `data/methodology/page.tsx` → `/data/methodology`
+
+* `data/[slug]/page.tsx` → `/data/[slug]`
+
+* `lab/page.tsx` → `/lab`
+
+* `lab/about/page.tsx` → `/lab/about`
+
+* `lab/fellowship/page.tsx` → `/lab/fellowship`
+
+* `lab/guides/page.tsx` → `/lab/guides`
+
+* `lab/guides/[slug]/page.tsx` → `/lab/guides/[slug]`
+
+* `insights/page.tsx` → `/insights`
+
+* `insights/[slug]/page.tsx` → `/insights/[slug]`
+
+* `careers/page.tsx` → `/careers`
+
+* `careers/[slug]/page.tsx` → `/careers/[slug]`
+
+* `contact/page.tsx` → `/contact`
+
+* `[...not-found]/page.tsx` or `not-found.tsx` for 404 handling.
+
+---
+
+## 5. Shared UI Components (Design System Implementation)
+
+Follow the Design System & Component specs.
+
+### 5.1 Base Components
+
+Implement these first under `frontend/components/ui/`:
+
+* Typography primitives (`Heading`, `Text`) mapping design type scale. 
+* `Button` with variants: primary, secondary, ghost; states: default, hover, disabled, loading, focus. 
+* `Card` with proper padding, radius, shadow, hover transform. 
+* `Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `FormField`, `ErrorMessage`.
+
+Ensure:
+
+* Focus states use 2px ring in accent color, offset as specified. 
+* Sizes and spacing follow spacing system.
+
+### 5.2 Layout & Navigation Components
+
+Implement in `frontend/components/layout/`:
+
+1. **Header**
+
+   * Logo area.
+   * Primary nav items as per navigation model (About, Services, Research, Data, Lab, Insights, Careers). 
+   * Utility nav: Contact, Search.
+   * Mobile: Hamburger menu that opens full-screen or side drawer menu with accordions. 
+   * Sticky on scroll, transform to compact variant.
+
+2. **Footer**
+
+   * Three columns:
+
+     * Column 1: About, Services, Research, Data.
+     * Column 2: Lab, Insights, Careers, Contact.
+     * Column 3: Newsletter (if used) + social links. 
+   * Bottom bar with copyright and legal links.
+
+3. **Breadcrumb**
+
+   * Show hierarchical path per page (e.g., Research > [Paper title]). 
+   * Use accessible `nav` with `aria-label="Breadcrumb"`.
+
+### 5.3 Content Components (Per UX & Visual Design)
+
+Implement:
+
+* `Hero` (variants: dark, light, with/without graphic).
+* `SectionHeader` (title + optional subheading and CTA).
+* `ServiceCard`, `PaperCard`, `InsightCard`, `PersonCard`, `JobCard`, `DatasetCard`, `CaseStudyCard`.
+* `CalloutBox` (for key findings, quotes).
+* `StatBlock` for metrics.
+* `TagChip` for topics and filters.
+* `FilterBar` for archives (Research, Insights, Data).
+
+Ensure each component:
+
+* Is purely presentational.
+* Receives data via props from page containers that fetch from Strapi.
+* Meets accessibility guidelines (semantic HTML, ARIA where needed).
+
+---
+
+## 6. Data Fetching Layer (Frontend ↔ Strapi)
+
+Create a small API client in `frontend/lib/` to centralize Strapi interaction:
+
+* `lib/strapiClient.ts`
+* Environment variables:
+
+  * `NEXT_PUBLIC_STRAPI_URL` – base URL (e.g., `https://backend.onrender.com`).
+  * API token for server-side fetches (not exposed client-side).
+
+Patterns:
+
+* Use **server components** (Next app router) for data-driven pages when possible.
+* For each content type, create helper functions:
+
+  * `getHomePage()`
+  * `getServices()`, `getServiceBySlug(slug)`
+  * `getPapers(filters)`, `getPaperBySlug(slug)`
+  * `getDatasets(filters)`, `getDatasetBySlug(slug)`
+  * `getInsights(filters)`, `getInsightBySlug(slug)`
+  * `getPeople()`, `getPersonBySlug(slug)`
+  * `getJobs()`, `getJobBySlug(slug)`
+
+Implement filtering support for Research/Data/Insights archives (e.g., by topic, type, year) based on UX spec. 
+
+---
+
+## 7. Page Implementations (Per Template)
+
+For each route, implement the page using the shared components and the data from Strapi.
+
+### 7.1 Homepage (`/`)
+
+Use sections from UX spec and Visual Design.
+
+Sections (top to bottom):
+
+1. **Hero (Dark)**
+
+   * Display heading/subheading using Home single type.
+   * Primary CTA pointing to Contact.
+   * Include placeholder area for abstract network visualization (SVG) – see data viz section. 
+
+2. **Credibility Bar**
+
+   * Render logos/text from Home single type or configuration.
+
+3. **Services Grid**
+
+   * Query Services and show 3 key ones with `ServiceCard`.
+
+4. **Featured Work**
+
+   * Show curated Papers or Case Studies from Home single type. 
+
+5. **Latest Insights**
+
+   * Query Insights ordered by `published_at`.
+
+6. **CTA Band**
+
+   * Dark band with two CTAs: Work with us → Contact; Join the team → Careers.
+
+### 7.2 Services (`/services` and `/services/[slug]`)
+
+**Services Landing:**
+
+* Page header with intro copy from CMS.
+* Large `ServiceCard`s listing each main service.
+* `ClientType` cards from Strapi.
+* Case study list referencing `CaseStudy` entries.
+
+**Service Detail:**
+
+* Hero with service name + lead paragraph.
+* Sections:
+
+  * Overview (rich text).
+  * Capabilities (structured list).
+  * Process steps (visual timeline).
+  * Case Studies (for service).
+  * Related research and insights.
+* Sticky sidebar CTA to Contact (desktop); bottom CTA for mobile.
+
+### 7.3 Research (`/research` and `/research/[slug]`)
+
+**Research Archive:**
+
+* Header with search input and description.
+* Filter bar (Type, Topic, Year, Author).
+* List of `PaperCard` components.
+* Pagination via "Load more".
+
+**Paper Detail:**
+
+* Breadcrumb. 
+* Header with title, authors (Person links), status badge, date.
+* Actions bar:
+
+  * Download PDF.
+  * External links.
+  * Copy citation (modal or dropdown) with text from Strapi.
+* Key findings callout box using `CalloutBox` with a list of key findings from Strapi.
+* Abstract and topic tags.
+* Related research and related insights.
+* Author cards for each Person.
+
+### 7.4 Data (`/data`, `/data/open`, `/data/products`, `/data/methodology`, `/data/[slug]`)
+
+* Landing: overview of data offering per Strategy. 
+* Open data / products pages: archive lists of datasets filtered by `access_type`.
+* Dataset detail:
+
+  * Coverage, methodology, access, license, related research, update frequency. 
+
+### 7.5 Lab & Guides (`/lab`, `/lab/about`, `/lab/fellowship`, `/lab/guides`, `/lab/guides/[slug]`)
+
+Implement pages as content pages with a mix of:
+
+* Overview content from Single Types.
+* Fellowship program details referencing CMS fields.
+* Guides listing and detail using `Guide` collection type.
+
+### 7.6 Insights (`/insights`, `/insights/[slug]`)
+
+* Archive with filters by topic and content type.
+* Post detail page renders rich text and metadata.
+
+### 7.7 About & Team
+
+* `/about`: uses Single Type content.
+* `/about/team`: grid of `PersonCard`.
+* `/about/leadership`: subset of Person entries flagged as leadership.
+
+### 7.8 Careers (`/careers`, `/careers/[slug]`)
+
+* Careers page:
+
+  * Hero with "Why join" and value props.
+  * Fellowship highlight band linking to `/lab/fellowship`.
+  * Job list using `JobCard`.
+* Role detail:
+
+  * Page with full job description; apply CTA.
+
+### 7.9 Contact (`/contact`)
+
+* Form with required fields (Name, Email, Organisation, Enquiry type, Message).
+* On submit:
+
+  * Send to Strapi endpoint or external service (to be agreed).
+  * Show confirmation message.
+
+Validate inputs inline and adhere to accessibility patterns (labels, error descriptions).
+
+---
+
+## 8. Data Visualizations with D3 + React
+
+Use D3 for scales, axes, and layout logic; render via SVG in React components.
+
+Follow **Data Visualization Standards** from Phase 4. 
+
+### 8.1 Chart Component Design
+
+Create a chart library under `frontend/components/charts/`:
+
+Implement reusable components:
+
+* `LineChart`
+* `BarChart`
+* `AreaChart`
+* `StatGrid` (for key metrics; may not use D3 but must follow typography and layout spec). 
+
+For each chart:
+
+* Accept props for size, margins, and data.
+* Use color palette defined in design (`Series 1..6`). 
+* Use gridlines (Gray 200 dashed), axis lines (Gray 300 solid). 
+* Use typography rules:
+
+  * Titles: H4 style.
+  * Axis labels: caption style.
+  * Data labels: monospace, 12px. 
+
+Integrate charts into:
+
+* Research / Data detail pages for any data that needs visualization.
+* Home hero or other sections where abstract visualizations are needed (hero background network / nodes).
+
+### 8.2 Accessibility for Charts
+
+* Provide textual summary below or above charts (e.g., "This chart shows …").
+* Use `role="img"` and `aria-label` or `aria-describedby` for charts.
+* Ensure color alone is not the only encoding where necessary (but in many hero use-cases, charts are decorative and can be marked `aria-hidden="true"`).
+
+---
+
+## 9. Accessibility Implementation
+
+Follow WCAG 2.1 AA patterns from UX and Visual Design docs.
+
+Key tasks:
+
+* Semantic markup for all components (buttons vs. links, headings hierarchy).
+* Skip link and correct focus management in modals and navigation.
+* Keyboard navigation:
+
+  * All interactive elements reachable via Tab.
+  * No keyboard traps.
+* Focus styles:
+
+  * Use ring with correct contrast on all interactive items. 
+* Forms:
+
+  * Each input has `<label>` associated.
+  * Error messages appear adjacent and are announced by screen readers.
+* Color contrast:
+
+  * Only use palette combinations validated in Phase 4. 
+
+---
+
+## 10. SEO & Metadata
+
+Implement SEO requirements from Strategy doc. 
+
+Tasks:
+
+* Configure Next.js `metadata` (or `<Head>`) per page:
+
+  * Title from CMS fields.
+  * Meta description from summary/excerpt.
+  * Canonical URLs.
+* Structured data:
+
+  * Organization (site-wide).
+  * Person schema for team pages.
+  * Article schema for Insights.
+  * Dataset schema for Dataset detail pages. 
+* XML sitemap:
+
+  * Use Next plugin or custom logic to generate sitemap from Strapi content.
+* Robots.txt:
+
+  * Standard config allowing crawling except for admin areas.
+
+Redirect map and migration is handled separately during content migration.
+
+---
+
+## 11. Testing & Quality Assurance
+
+### 11.1 Unit & Integration Tests
+
+* Use Jest + React Testing Library.
+* Aim for tests for:
+
+  * Key components (Header, Footer, Buttons, Cards).
+  * Critical pages (Home, Services, Research archive, Research detail, Careers, Contact).
+
+### 11.2 E2E Tests (Playwright)
+
+Implement flows documented in UX testing: 
+
+* Flow A: Services → Case Study → Contact.
+* Flow B: Thought leadership browsing (Research pages).
+* Flow C: Recruiting funnel (Careers → Team → Lab/Fellowship).
+
+Ensure:
+
+* All flows complete successfully.
+* No console errors in test runs.
+
+### 11.3 Accessibility Testing
+
+* Use axe DevTools or similar to scan templates and pages.
+* Manual screen reader checks on key flows (NVDA/VoiceOver) as per Visual Design doc. 
+
+### 11.4 Performance
+
+* Run Lighthouse audits for:
+
+  * Performance.
+  * Best Practices.
+  * Accessibility.
+  * SEO.
+
+Optimize images, caching, and code splitting as needed.
+
+---
+
+## 12. Render Deployment
+
+### 12.1 Prepare Environment Files
+
+Create `.env` templates:
+
+* `backend/.env.example`
+* `frontend/.env.local.example`
+
+List all required keys and values (no secrets committed).
+
+### 12.2 Deploy Strapi to Render
+
+1. **Create a Postgres instance** in Render.
+
+2. **Create new Web Service** for backend:
+
+   * Connect to GitHub repo, path `backend/`.
+   * Runtime: Node.
+   * Build command: `npm install && npm run build`.
+   * Start command: `npm run start`.
+   * Environment variables:
+
+     * Link Postgres via `DATABASE_*` variables.
+     * All Strapi secrets.
+   * Configure `health check` path.
+
+3. Configure storage for uploads:
+
+   * Either:
+
+     * Use S3-compatible storage via Strapi upload provider, or
+     * Use Render disk (if acceptable for this project).
+
+4. Ensure `STRAPI_URL` is publicly accessible for the frontend.
+
+### 12.3 Deploy Next.js Frontend to Render
+
+1. **Create Web Service** for frontend:
+
+   * Path: `frontend/`.
+   * Build command: `npm install && npm run build`.
+   * Start command: `npm run start`.
+2. Environment variables:
+
+   * `NEXT_PUBLIC_STRAPI_URL` – base URL of Strapi backend.
+3. If using SSR:
+
+   * Ensure Node environment with enough memory and concurrency.
+
+### 12.4 CI/CD via GitHub
+
+* Configure Render to auto-deploy on pushes to `main`.
+* Ensure any migrations for Strapi are managed properly (Strapi handles schema from code; content migrations must be manual or scripted through admin/API).
+
+---
+
+## 13. Content Migration & Governance
+
+Developers’ responsibilities:
+
+* Ensure all required content types exist and work as expected.
+* Assist content team by validating rendered pages for all templates once content is created.
+
+Content team responsibilities (for context):
+
+* Populate:
+
+  * Services, Case Studies, Papers, Datasets, People, Jobs, Guides, Insights.
+  * Home, About, Lab, Careers, Contact single types.
+* Follow content governance and quality standards from Strategy.
+
+---
+
+## 14. Final Verification Before Launch
+
+Before launch, the dev team should:
+
+* Confirm all routes render correctly with real content.
+* Confirm navigation and footer links match sitemap.
+* Run full test suite (unit, integration, E2E).
+* Run accessibility and performance audits.
+* Confirm forms work (Contact, any application links).
+* Verify analytics and any tracking snippets are installed.
+
+---
+
+## 15. Developer Checklist
+
+Use this as a concrete checklist while building.
+
+### 15.1 Backend (Strapi)
+
+* [ ] Strapi app created in `backend/`.
+* [ ] Database configured to use Postgres via env vars.
+* [ ] Required collection types created:
+
+  * [ ] Service
+  * [ ] Client Type
+  * [ ] Case Study
+  * [ ] Paper
+  * [ ] Dataset
+  * [ ] Insight (Post)
+  * [ ] Person (Team Member)
+  * [ ] Job
+  * [ ] Guide
+  * [ ] Tag
+* [ ] Required single types created:
+
+  * [ ] Home Page
+  * [ ] About Page (and related)
+  * [ ] Lab Page
+  * [ ] Careers Page
+  * [ ] Contact Page
+  * [ ] Navigation
+* [ ] Components defined for CTAs, sections, callouts, stats, education, office, external links.
+* [ ] UID slugs configured and enforced.
+* [ ] Public role permissions configured for read-only content.
+* [ ] API tokens created and documented.
+* [ ] Local Strapi environment running without errors.
+
+### 15.2 Frontend (Next.js + React)
+
+* [ ] Next.js TypeScript project created in `frontend/`.
+* [ ] Tailwind configured with design tokens (colors, spacing, typography, breakpoints).
+* [ ] Global layout implemented with:
+
+  * [ ] Skip link
+  * [ ] Header
+  * [ ] Footer
+  * [ ] `<main>` and basic structure
+* [ ] UI primitives implemented:
+
+  * [ ] Typography components
+  * [ ] Buttons (all variants & states)
+  * [ ] Cards
+  * [ ] Form inputs & error messages
+* [ ] Layout components implemented:
+
+  * [ ] Header with nav + mobile menu
+  * [ ] Footer with correct columns
+  * [ ] Breadcrumb component
+* [ ] Content components implemented:
+
+  * [ ] Hero (dark/light variants)
+  * [ ] SectionHeader
+  * [ ] ServiceCard / PaperCard / InsightCard / PersonCard / JobCard / DatasetCard / CaseStudyCard
+  * [ ] CalloutBox
+  * [ ] StatBlock
+  * [ ] TagChip
+  * [ ] FilterBar
+* [ ] Routes created per sitemap:
+
+  * [ ] `/`
+  * [ ] `/about`, `/about/story`, `/about/leadership`, `/about/approach`, `/about/team`
+  * [ ] `/services`, `/services/[slug]`
+  * [ ] `/research`, `/research/[slug]`
+  * [ ] `/data`, `/data/open`, `/data/products`, `/data/methodology`, `/data/[slug]`
+  * [ ] `/lab`, `/lab/about`, `/lab/fellowship`, `/lab/guides`, `/lab/guides/[slug]`
+  * [ ] `/insights`, `/insights/[slug]`
+  * [ ] `/careers`, `/careers/[slug]`
+  * [ ] `/contact`
+* [ ] Data fetching functions implemented for all content types.
+* [ ] All pages wired to Strapi data (no hard-coded production content).
+
+### 15.3 Data Visualization
+
+* [ ] D3 installed and configured.
+* [ ] Core chart components implemented using standards:
+
+  * [ ] LineChart
+  * [ ] BarChart
+  * [ ] AreaChart
+  * [ ] StatGrid (stat blocks)
+* [ ] Visual design of charts matches palette, gridlines, typography. 
+* [ ] Charts used in relevant pages where data visualizations are needed.
+* [ ] Accessible descriptions / ARIA attributes applied.
+
+### 15.4 Accessibility & SEO
+
+* [ ] Keyboard navigation works across:
+
+  * [ ] Header (including dropdowns)
+  * [ ] Mobile menu
+  * [ ] Forms
+  * [ ] Modals
+* [ ] Focus states visible on all interactive elements.
+* [ ] Forms:
+
+  * [ ] Labels and required indicators implemented.
+  * [ ] Error messages accessible.
+* [ ] Basic screen reader tests completed.
+* [ ] Axe or similar audit run; critical issues fixed.
+* [ ] Meta titles & descriptions pulled from CMS implemented.
+* [ ] Canonical URLs, robots.txt, sitemap.xml configured.
+* [ ] Structured data implemented for Organization, Person, Article, Dataset.
+
+### 15.5 Testing
+
+* [ ] Unit tests written for key components.
+* [ ] Integration tests for critical pages.
+* [ ] Playwright E2E tests for:
+
+  * [ ] Services → Case Study → Contact flow
+  * [ ] Research browsing flow
+  * [ ] Careers / recruiting funnel flow
+* [ ] Test suite passing in CI.
+
+### 15.6 Deployment (Render)
+
+* [ ] `.env.example` files created and committed (no secrets).
+* [ ] Render Postgres instance created and linked to Strapi.
+* [ ] Strapi web service created:
+
+  * [ ] Build and start commands working.
+  * [ ] All env vars set.
+* [ ] Next.js web service created:
+
+  * [ ] Build and start commands working.
+  * [ ] `NEXT_PUBLIC_STRAPI_URL` set.
+* [ ] Auto-deploy configured from GitHub main branch.
+* [ ] Smoke tests performed on staging / production:
+
+  * [ ] All main routes load.
+  * [ ] Content visible and correct.
+  * [ ] Contact form works as expected.
+
+---

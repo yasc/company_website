@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_content_key_findings",
+  "info": {
+    "displayName": "Key Finding",
+    "icon": "bulletList",
+    "description": "Single key finding or bullet point"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

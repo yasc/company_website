@@ -1,0 +1,80 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": "Homepage content and configuration"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.hero",
+      "required": true
+    },
+    "credibilityBarTitle": {
+      "type": "string",
+      "default": "Featured in"
+    },
+    "credibilityItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.credibility-item"
+    },
+    "servicesSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.section-header"
+    },
+    "featuredServices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service"
+    },
+    "workSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.section-header"
+    },
+    "featuredWork": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::case-study.case-study"
+    },
+    "featuredPapers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::paper.paper"
+    },
+    "insightsSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.section-header"
+    },
+    "ctaBandHeadline": {
+      "type": "string"
+    },
+    "ctaBandPrimaryCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.button"
+    },
+    "ctaBandSecondaryCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.button"
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "text"
+    }
+  }
+}

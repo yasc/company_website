@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_layout_section_headers",
+  "info": {
+    "displayName": "Section Header",
+    "icon": "layout",
+    "description": "Heading and subheading for page sections"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "subheading": {
+      "type": "text"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.button"
+    }
+  }
+}

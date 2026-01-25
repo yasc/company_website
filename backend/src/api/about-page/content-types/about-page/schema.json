@@ -1,0 +1,50 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_pages",
+  "info": {
+    "singularName": "about-page",
+    "pluralName": "about-pages",
+    "displayName": "About Page",
+    "description": "About section content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.hero"
+    },
+    "storyTitle": {
+      "type": "string"
+    },
+    "storyContent": {
+      "type": "richtext"
+    },
+    "missionTitle": {
+      "type": "string"
+    },
+    "missionContent": {
+      "type": "richtext"
+    },
+    "approachTitle": {
+      "type": "string"
+    },
+    "approachContent": {
+      "type": "richtext"
+    },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.stat-block"
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "text"
+    }
+  }
+}
