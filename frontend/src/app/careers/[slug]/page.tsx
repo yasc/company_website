@@ -262,7 +262,6 @@ export default async function JobDetailPage({ params }: JobPageProps) {
         headline="Have questions?"
         subheadline="Reach out to learn more about this position or our team."
         primaryCta={{ label: 'Contact us', url: '/contact' }}
-        variant="dark"
       />
     </>
   );

@@ -120,7 +120,6 @@ export default async function LabPage() {
       <Hero
         headline={heroContent.headline}
         subheadline={heroContent.subheadline}
-        variant="dark"
       />
 
       {/* About Section */}
@@ -180,7 +179,6 @@ export default async function LabPage() {
         headline="Want to contribute?"
         subheadline="We welcome contributions to our guides and open-source projects."
         primaryCta={{ label: 'Get in touch', url: '/contact' }}
-        variant="dark"
       />
     </>
   );

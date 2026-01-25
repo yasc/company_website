@@ -242,7 +242,6 @@ export default async function PaperDetailPage({ params }: PaperPageProps) {
         headline="Questions about this research?"
         subheadline="Contact us to discuss this paper or explore collaboration opportunities."
         primaryCta={{ label: 'Contact us', url: '/contact' }}
-        variant="dark"
       />
     </>
   );

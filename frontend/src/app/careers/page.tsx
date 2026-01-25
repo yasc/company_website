@@ -129,7 +129,6 @@ export default async function CareersPage() {
       <Hero
         headline={heroContent.headline}
         subheadline={heroContent.subheadline}
-        variant="dark"
       />
 
       {/* Job Listings */}

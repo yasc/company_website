@@ -39,9 +39,20 @@ The website includes the following main sections:
 
 ## Constraints
 - Must follow WCAG 2.1 AA accessibility standards
-- Must use the approved color palette and typography from Phase 4
+- **NEW: Must implement High-End Minimalism aesthetic with light design** (Previous Phase 4 dark mode specifications are deprecated)
+- Must use editorial typography approach: Serif headlines, Sans-serif UI elements
 - Must implement SEO requirements from Strategy document
 - No hard-coded production content; all content from Strapi CMS
+
+### Design Direction Note
+**Important:** The project has pivoted from the original dark design to a **High-End Minimalism** aesthetic with:
+- Monochromatic base (black and white UI)
+- Generous whitespace
+- Editorial typography (serif headlines)
+- Mixed media imagery
+- Asymmetrical layouts
+
+Any outdated references to dark design in older documentation should be ignored in favor of this light design approach.
 
 ## Source Documents
 

@@ -113,7 +113,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         headline={service.title}
         subheadline={service.summary}
         primaryCta={{ label: 'Get in touch', url: '/contact' }}
-        variant="dark"
       />
 
       {/* Overview */}
@@ -156,7 +155,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         subheadline="Let's discuss how our services can help your organization."
         primaryCta={{ label: 'Contact us', url: '/contact' }}
         secondaryCta={{ label: 'View case studies', url: '/research' }}
-        variant="dark"
       />
     </>
   );

@@ -12,30 +12,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
 }
 
-const variantStyles: Record<ButtonVariant, string> = {
-  primary: `
-    bg-teal-500 text-white border-none
-    hover:bg-teal-600
-    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-500
-  `,
-  secondary: `
-    bg-transparent text-navy-700 border border-navy-600
-    hover:bg-gray-100
-    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent
-  `,
-  ghost: `
-    bg-transparent text-teal-500 border-none
-    hover:bg-gray-100
-    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent
-  `,
-};
-
-const sizeStyles: Record<ButtonSize, string> = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-3 text-sm',
-  lg: 'px-8 py-4 text-base',
-};
-
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -49,19 +25,48 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const baseStyles = `
-      inline-flex items-center justify-center
-      font-semibold
-      rounded-md
-      transition-all duration-150 ease-in-out
-      cursor-pointer
-      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-400
-    `;
+    // Map variant and size to CSS classes from globals.css
+    const getButtonClasses = () => {
+      let classes = [];
+      
+      // Variant classes
+      if (variant === 'primary') {
+        classes.push('btn-primary');
+      } else if (variant === 'secondary') {
+        classes.push('btn-secondary');
+      } else if (variant === 'ghost') {
+        // Ghost variant uses custom styles
+        classes.push(`
+          bg-transparent text-accent-primary border-none
+          hover:bg-gray-100 hover:text-accent-hover
+          transition-all duration-200 ease
+          padding: 16px 32px
+          border-radius: 6px
+          font-family: var(--font-sans)
+          font-size: 15px
+          font-weight: 500
+          letter-spacing: 0.01em
+          cursor: pointer
+        `);
+      }
+      
+      // Size variants
+      if (size === 'sm') {
+        classes.push('btn-sm');
+      }
+      
+      // Disabled state
+      if (disabled || isLoading) {
+        classes.push('disabled:opacity-50 disabled:cursor-not-allowed');
+      }
+      
+      return classes.join(' ');
+    };
 
     return (
       <button
         ref={ref}
-        className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+        className={`${getButtonClasses()} ${className}`}
         disabled={disabled || isLoading}
         {...props}
       >

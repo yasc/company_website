@@ -361,16 +361,20 @@ npx tailwindcss init -p
 
 ### 4.3 Configure Tailwind with Design Tokens
 
-Use the color, typography, spacing, and breakpoints from Phase 4 Visual Design. 
+Use the updated High-End Minimalism design tokens. 
 
-* Map `navy`, `gray`, `teal`, etc. into Tailwind `theme.colors`.
-* Configure font families: `Inter` as primary, `JetBrains Mono` as mono. 
-* Configure spacing scale based on the 4px scale.
+* Map monochromatic palette (black, grays, white) into Tailwind `theme.colors`.
+* Configure font families: 
+  * **Serif (Playfair Display or Georgia)** for headlines
+  * **Sans-serif (Inter)** as primary body/UI font
+  * **JetBrains Mono** as monospace
+* Configure spacing scale based on the 4px scale with generous whitespace.
 * Configure screen breakpoints (`sm`, `md`, `lg`, `xl`, `2xl`) matching design.
 
 Ensure:
 
-* Global `body` uses background and text colors defined in Visual Design (white background, navy text on light pages; dark backgrounds where specified). 
+* Global `body` uses white background with black/gray text (light design approach).
+* Generous margins and padding throughout for luxury brand feel.
 
 ### 4.4 Global Layout
 

@@ -148,21 +148,26 @@ frontend/components/
 ### Design System Components
 
 **UI Primitives:**
-- Typography (`Heading`, `Text`)
-- `Button` (primary, secondary, ghost variants)
-- `Card` (padding, radius, shadow, hover)
-- Form elements (`Input`, `Textarea`, `Select`, etc.)
+- Typography:
+  - **Serif Headlines** (`Heading`) - Editorial authority, traditional sophistication
+  - **Sans-serif Body** (`Text`) - Clean, geometric for UI and body text
+- `Button` (pill-shaped, understated variants: primary, secondary, ghost)
+- `Card` (varying heights/widths for asymmetrical balance, minimal shadows, hover transforms)
+- Form elements (`Input`, `Textarea`, `Select`, etc.) - Minimal borders, generous padding
 
 **Layout Components:**
-- `Header` (logo, nav, mobile menu, sticky behavior)
-- `Footer` (3-column layout, legal links)
-- `Breadcrumb` (accessible nav element)
+- `Header` (minimal logo, clean sans-serif nav, subtle mobile menu, transparent to white on scroll)
+- `Footer` (generous spacing, 3-column layout, minimal dividers)
+- `Breadcrumb` (accessible nav element with light separators)
 
 **Content Components:**
-- `Hero` (dark/light variants)
-- `SectionHeader`
-- Card variants (`ServiceCard`, `PaperCard`, `InsightCard`, etc.)
-- `CalloutBox`, `StatBlock`, `TagChip`, `FilterBar`
+- `Hero` (high-end minimalism with generous whitespace, optional mixed media imagery)
+- `SectionHeader` (serif heading with sans-serif subheading)
+- Card variants with staggered heights for asymmetrical layouts:
+  - `ServiceCard`, `PaperCard`, `InsightCard` (varied dimensions)
+  - **Hero Cards** - Distinctive backgrounds that break patterns (e.g., black with green AI graphics)
+- `CalloutBox`, `StatBlock`, `TagChip` (minimal, monochromatic)
+- `FilterBar` (subtle pill-shaped controls)
 
 ## Data Visualization Pattern
 

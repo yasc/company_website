@@ -74,7 +74,6 @@ export default function ContactPage() {
       <Hero
         headline="Get in Touch"
         subheadline="Whether you have a question about our services, research, or career opportunities, we'd love to hear from you."
-        variant="dark"
       />
 
       {/* Contact Form and Info */}

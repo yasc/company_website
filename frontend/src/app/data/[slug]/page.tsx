@@ -239,7 +239,6 @@ export default async function DatasetDetailPage({ params }: DatasetPageProps) {
         headline="Questions about this data?"
         subheadline="Our team can help you understand and work with this dataset."
         primaryCta={{ label: 'Contact us', url: '/contact' }}
-        variant="dark"
       />
     </>
   );

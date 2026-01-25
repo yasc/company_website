@@ -9,10 +9,24 @@ Applied Economics is repositioning from an academic research lab to a **data-dri
 > "Applied Economics combines frontier AI and novel large-scale data sources with economic expertise to deliver actionable insights for policy-makers and investors."
 
 ### Brand Character
-- **Intellectual depth** — Not surface-level data viz, but genuine analytical rigour
-- **Modern & technical** — Palantir aesthetic: clean, dark, sophisticated, slightly enigmatic
-- **Not staid** — Avoid traditional consulting/academic stuffiness
+- **High-End Minimalism** — "Less is more" approach common among luxury brands and top-tier consultancy firms
+- **Editorial Authority** — Typography and layout inspired by high-end magazines and newspapers, conveying sophistication and credibility
+- **Generous Whitespace** — Massive margins and breathing room communicate luxury, clarity, and confidence
+- **Intellectual depth** — Not surface-level data viz, but genuine analytical rigour with elegant presentation
 - **Evidence-first** — Let the research speak; restrained on marketing language
+
+### Visual Language (Updated: Light Design)
+- **Monochromatic Base** — UI framework strictly black and white, allowing photography and visualizations to pop
+- **Typography Strategy:**
+  - **Serif Headlines** — Distinct serif typeface for main headlines to convey authority, tradition, and sophistication
+  - **Sans-Serif Pairings** — Clean, geometric sans-serif for navigation, buttons, and UI elements
+- **Imagery Style:**
+  - **Mixed Media** — Blend of realistic photography with high-fidelity 3D digital renderings
+  - **The Hero Card** — Central cards with distinctive backgrounds (e.g., black with green AI graphics) break patterns to draw attention
+  - **Diverse Color Palette in Images** — While UI is monochromatic, images introduce deep greens, blues, warm tones representing various industries
+- **Layout Principles:**
+  - **Asymmetrical Balance** — Varying card heights and widths create dynamic, staggered rhythm
+  - **Subtle Navigation** — Pill-shaped buttons and understated controls that don't distract from content
 
 ## Business Goals (from Phase 1)
 

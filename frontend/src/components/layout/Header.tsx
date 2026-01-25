@@ -29,7 +29,7 @@ export function Header() {
       </a>
 
       <Container>
-        <nav className="flex items-center justify-between h-16 lg:h-20">
+        <nav className="flex items-center justify-between h-16 lg:h-20" aria-label="Main Navigation">
           {/* Logo */}
           <Link 
             href="/" 
@@ -41,17 +41,18 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-8 list-none m-0 p-0">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-small font-medium text-navy-600 hover:text-navy-800 transition-colors"
-              >
-                {item.label}
-              </Link>
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-small font-medium text-navy-600 hover:text-navy-800 transition-colors"
+                >
+                  {item.label}
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">

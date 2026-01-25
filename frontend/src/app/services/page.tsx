@@ -73,7 +73,6 @@ export default async function ServicesPage() {
       <Hero
         headline="Our Services"
         subheadline="We offer a comprehensive suite of economic consulting and research services tailored to your organization's needs."
-        variant="dark"
       />
 
       {/* Services Grid */}
@@ -98,7 +97,6 @@ export default async function ServicesPage() {
         subheadline="Our team can help you identify the right services for your organization."
         primaryCta={{ label: 'Contact us', url: '/contact' }}
         secondaryCta={{ label: 'View case studies', url: '/research' }}
-        variant="dark"
       />
     </>
   );

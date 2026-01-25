@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Inter, Source_Serif_4 } from "next/font/google";
+import { PalantirHeader } from "@/components/layout/PalantirHeader";
+import { PalantirFooter } from "@/components/layout/PalantirFooter";
 import "./globals.css";
 
-// Primary font: Inter
+// Body font: Inter (Sans-serif for UI elements, body text)
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Monospace font: JetBrains Mono (for stats, code, data labels)
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+// Headline font: Source Serif 4 (Serif for headlines, editorial authority)
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -41,13 +42,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${inter.variable} ${sourceSerif.variable} antialiased min-h-screen flex flex-col`}
       >
-        <Header />
-        <main id="main-content" className="flex-1">
+        <PalantirHeader />
+        <main id="main-content" className="flex-1 pt-16">
           {children}
         </main>
-        <Footer />
+        <PalantirFooter />
       </body>
     </html>
   );

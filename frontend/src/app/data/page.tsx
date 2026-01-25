@@ -122,7 +122,6 @@ export default async function DataPage() {
       <Hero
         headline="Data Products"
         subheadline="Access our curated economic datasets. From open-access research data to premium commercial products, we provide the data economists and analysts need."
-        variant="dark"
       />
 
       {/* Open Access Section */}
@@ -224,7 +223,6 @@ export default async function DataPage() {
         headline="Need custom data?"
         subheadline="We can create tailored datasets for your specific research or business needs."
         primaryCta={{ label: 'Contact us', url: '/contact' }}
-        variant="dark"
       />
     </>
   );

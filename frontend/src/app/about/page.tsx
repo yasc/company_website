@@ -92,7 +92,6 @@ export default async function AboutPage() {
       <Hero
         headline={hero.headline}
         subheadline={hero.subheadline}
-        variant="dark"
       />
 
       {/* Stats */}

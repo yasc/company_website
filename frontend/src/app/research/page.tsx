@@ -124,7 +124,6 @@ export default async function ResearchPage() {
       <Hero
         headline="Research"
         subheadline="Our research spans labor economics, environmental policy, industrial organization, and applied econometrics. All publications are available for download."
-        variant="dark"
       />
 
       {/* Papers List */}
@@ -200,7 +199,6 @@ export default async function ResearchPage() {
         headline="Interested in collaboration?"
         subheadline="We welcome research partnerships with academic institutions and policy organizations."
         primaryCta={{ label: 'Contact us', url: '/contact' }}
-        variant="dark"
       />
     </>
   );

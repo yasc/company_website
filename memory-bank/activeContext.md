@@ -61,6 +61,20 @@ All prerequisites satisfied. PostgreSQL database configured and Strapi v5.33.1 r
 - Using Tailwind CSS for styling
 - Deploying to Render (all services)
 - **CRM: Attio** – Lead capture will integrate with Attio via direct API calls from Next.js
+- **AESTHETIC PIVOT (Jan 25, 2026):** Moving from dark "Palantir-like" design to **High-End Minimalism** with:
+  - Monochromatic UI (black and white base)
+  - Editorial typography (serif headlines, sans-serif body)
+  - Generous whitespace
+  - Mixed media imagery
+  - Asymmetrical card layouts
+
+### Design Direction Note
+**IMPORTANT:** The project has pivoted from the original dark design specifications. Going forward, any outdated references to dark design should be ignored in favor of the new light, minimalist design approach. The new aesthetic emphasizes:
+- "Less is more" luxury brand approach
+- Editorial/magazine-inspired typography
+- Massive margins and breathing room
+- Pill-shaped, understated UI controls
+- Photography and 3D rendering mix in imagery
 
 ## Future Integration: Attio CRM
 

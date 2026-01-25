@@ -144,72 +144,69 @@ NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 ### Performance
 - Lighthouse audits
 
-## Design Tokens (from Phase 4 Visual Design)
+## Design Tokens (Updated: High-End Minimalism)
 
 ### Color Palette
 
-**Primary (Navy):**
+**Monochromatic Base (UI Framework):**
 | Token | Hex | RGB | Usage |
 |-------|-----|-----|-------|
-| `navy-900` | `#0F1419` | 15, 20, 25 | Hero backgrounds, footer |
-| `navy-800` | `#1A2332` | 26, 35, 50 | Primary dark background |
-| `navy-700` | `#2D3748` | 45, 55, 72 | Secondary dark elements |
-| `navy-600` | `#4A5568` | 74, 85, 104 | Dark text on light bg |
+| `black` | `#000000` | 0, 0, 0 | Headlines, primary text, strong emphasis |
+| `gray-900` | `#111111` | 17, 17, 17 | Near-black for softer text |
+| `gray-800` | `#1A1A1A` | 26, 26, 26 | Secondary headings |
+| `gray-700` | `#333333` | 51, 51, 51 | Body text |
+| `gray-600` | `#4A4A4A` | 74, 74, 74 | Secondary body text |
+| `gray-500` | `#6B6B6B` | 107, 107, 107 | Tertiary text, captions |
+| `gray-400` | `#9CA3AF` | 156, 163, 175 | Placeholder text, disabled |
+| `gray-300` | `#D1D5DB` | 209, 213, 219 | Subtle borders, dividers |
+| `gray-200` | `#E5E7EB` | 229, 231, 235 | Very light borders |
+| `gray-100` | `#F3F4F6` | 243, 244, 246 | Light backgrounds for variation |
+| `gray-50` | `#F9FAFB` | 249, 250, 251 | Near-white backgrounds |
+| `white` | `#FFFFFF` | 255, 255, 255 | Primary background, reverse text |
 
-**Neutral (Gray):**
+**Accent Colors (Used sparingly in content/imagery):**
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `gray-500` | `#718096` | Secondary text, captions |
-| `gray-400` | `#A0AEC0` | Placeholder text, disabled |
-| `gray-300` | `#CBD5E0` | Borders, dividers |
-| `gray-200` | `#E2E8F0` | Light borders, table lines |
-| `gray-100` | `#EDF2F7` | Light backgrounds, cards |
-| `gray-50` | `#F7FAFC` | Page background (light) |
-| `white` | `#FFFFFF` | Card backgrounds, text on dark |
+| `green-500` | `#10B981` | AI/tech imagery accent (e.g., Hero Card) |
+| `blue-500` | `#3B82F6` | Links, interactive elements |
+| `blue-600` | `#2563EB` | Link hover states |
 
-**Accent (Teal):**
+**Semantic (Minimal use):**
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `teal-600` | `#2C7A7B` | Hover state for primary |
-| `teal-500` | `#319795` | Primary accent, CTAs, links |
-| `teal-400` | `#4FD1C5` | Light accent on dark bg |
+| `red-500` | `#EF4444` | Error states only |
+| `green-600` | `#059669` | Success states only |
 
-**Semantic:**
+**Chart/Visualization Colors:**
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `amber-500` | `#D69E2E` | Warning, highlight |
-| `red-500` | `#E53E3E` | Error states |
-| `green-500` | `#38A169` | Success states |
-
-**Chart Series:**
-| Token | Hex |
-|-------|-----|
-| `series-1` | `#319795` |
-| `series-2` | `#2B6CB0` |
-| `series-3` | `#6B46C1` |
-| `series-4` | `#D69E2E` |
-| `series-5` | `#C53030` |
-| `series-6` | `#2F855A` |
+| `series-1` | `#000000` | Primary data series |
+| `series-2` | `#4A4A4A` | Secondary data series |
+| `series-3` | `#10B981` | Accent series (green) |
+| `series-4` | `#3B82F6` | Accent series (blue) |
+| `series-5` | `#9CA3AF` | Supporting series |
+| `series-6` | `#E5E7EB` | Background series |
 
 ### Typography
 
 **Typefaces:**
-- **Primary:** Inter (system-ui, sans-serif fallback)
+- **Serif (Headlines):** Playfair Display or Georgia (editorial authority)
+- **Sans-serif (Body/UI):** Inter (clean, geometric, system-ui fallback)
 - **Monospace:** JetBrains Mono (for code, data labels, stats)
 
-**Type Scale (1.25 ratio, 16px base):**
-| Name | Size | Weight | Line Height | Usage |
-|------|------|--------|-------------|-------|
-| Display | 48px / 3rem | 700 | 1.1 | Hero headlines |
-| H1 | 36px / 2.25rem | 700 | 1.2 | Page titles |
-| H2 | 28px / 1.75rem | 600 | 1.3 | Section headings |
-| H3 | 22px / 1.375rem | 600 | 1.4 | Card titles |
-| H4 | 18px / 1.125rem | 600 | 1.5 | Minor headings |
-| Body Large | 18px / 1.125rem | 400 | 1.7 | Lead paragraphs |
-| Body | 16px / 1rem | 400 | 1.6 | Default body |
-| Small | 14px / 0.875rem | 400 | 1.5 | Captions, metadata |
-| Caption | 12px / 0.75rem | 500 | 1.4 | Labels, tags, badges |
-| Stat | 40px / 2.5rem | 700 | 1.1 | Impact stats (JetBrains Mono) |
+**Type Scale (Editorial approach):**
+| Name | Font | Size | Weight | Line Height | Usage |
+|------|------|------|--------|-------------|-------|
+| Display | Serif | 64px / 4rem | 400 | 1.1 | Hero headlines (editorial) |
+| H1 | Serif | 48px / 3rem | 400 | 1.2 | Page titles |
+| H2 | Serif | 36px / 2.25rem | 400 | 1.3 | Section headings |
+| H3 | Sans-serif | 24px / 1.5rem | 600 | 1.4 | Card titles |
+| H4 | Sans-serif | 20px / 1.25rem | 600 | 1.5 | Minor headings |
+| Body Large | Sans-serif | 18px / 1.125rem | 400 | 1.7 | Lead paragraphs |
+| Body | Sans-serif | 16px / 1rem | 400 | 1.6 | Default body |
+| Small | Sans-serif | 14px / 0.875rem | 400 | 1.5 | Captions, metadata |
+| Caption | Sans-serif | 12px / 0.75rem | 500 | 1.4 | Labels, tags, badges |
+| Stat | Monospace | 40px / 2.5rem | 700 | 1.1 | Impact stats |
 
 **Responsive Typography:**
 | Style | Desktop (≥1024px) | Tablet (768-1023px) | Mobile (<768px) |
@@ -254,36 +251,51 @@ NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 
 ### Component Tokens
 
-**Buttons:**
+**Buttons (Pill-shaped, Understated):**
 | Property | Primary | Secondary | Ghost |
 |----------|---------|-----------|-------|
-| Background | teal-500 | transparent | transparent |
-| Border | none | 1px navy-600 | none |
-| Text | white | navy-700 | teal-500 |
-| Padding | 12px 24px | 12px 24px | 12px 16px |
-| Border radius | 6px | 6px | 6px |
-| Hover bg | teal-600 | gray-100 | gray-100 |
+| Background | black | white | transparent |
+| Border | none | 1px black | none |
+| Text | white | black | black |
+| Padding | 14px 28px | 14px 28px | 14px 20px |
+| Border radius | 24px | 24px | 24px |
+| Hover bg | gray-900 | gray-50 | gray-50 |
+| Transition | all 0.2s ease | all 0.2s ease | all 0.2s ease |
 
-**Cards:**
+**Cards (Asymmetrical Heights):**
 | Property | Value |
 |----------|-------|
 | Background | white |
-| Border | 1px gray-200 |
-| Border radius | 8px |
-| Padding | 24px |
-| Shadow (default) | 0 1px 3px rgba(0,0,0,0.1) |
-| Shadow (hover) | 0 4px 12px rgba(0,0,0,0.1) |
-| Hover transform | translateY(-2px) |
+| Border | none or 1px gray-200 (subtle) |
+| Border radius | 0px (sharp) or 4px (minimal) |
+| Padding | 32px (generous) |
+| Shadow (default) | none or 0 1px 2px rgba(0,0,0,0.05) |
+| Shadow (hover) | 0 4px 8px rgba(0,0,0,0.08) |
+| Hover transform | translateY(-4px) |
+| Min height | Varies for asymmetry |
 
-**Form Inputs:**
+**Form Inputs (Minimal):**
 | Property | Value |
 |----------|-------|
-| Height | 44px |
+| Height | 48px |
 | Border (default) | 1px gray-300 |
-| Border (focus) | 2px teal-500 |
-| Border (error) | 2px red-500 |
-| Border radius | 6px |
+| Border (focus) | 1px black |
+| Border (error) | 1px red-500 |
+| Border radius | 0px (sharp) or 4px (minimal) |
 | Font size | 16px (prevents iOS zoom) |
+| Padding | 16px |
+| Background | white |
+
+**Navigation Elements:**
+| Property | Value |
+|----------|-------|
+| Font | Sans-serif (Inter) |
+| Weight | 400 (regular) |
+| Size | 14px |
+| Letter spacing | 0.02em |
+| Text transform | None (sentence case) |
+| Color | black |
+| Hover | gray-600 with underline |
 
 ## Deployment Configuration
 
