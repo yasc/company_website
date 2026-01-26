@@ -144,158 +144,63 @@ NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 ### Performance
 - Lighthouse audits
 
-## Design Tokens (Updated: High-End Minimalism)
+## Design Tokens (Updated: "Clinical & Intellectual")
 
 ### Color Palette
 
-**Monochromatic Base (UI Framework):**
-| Token | Hex | RGB | Usage |
-|-------|-----|-----|-------|
-| `black` | `#000000` | 0, 0, 0 | Headlines, primary text, strong emphasis |
-| `gray-900` | `#111111` | 17, 17, 17 | Near-black for softer text |
-| `gray-800` | `#1A1A1A` | 26, 26, 26 | Secondary headings |
-| `gray-700` | `#333333` | 51, 51, 51 | Body text |
-| `gray-600` | `#4A4A4A` | 74, 74, 74 | Secondary body text |
-| `gray-500` | `#6B6B6B` | 107, 107, 107 | Tertiary text, captions |
-| `gray-400` | `#9CA3AF` | 156, 163, 175 | Placeholder text, disabled |
-| `gray-300` | `#D1D5DB` | 209, 213, 219 | Subtle borders, dividers |
-| `gray-200` | `#E5E7EB` | 229, 231, 235 | Very light borders |
-| `gray-100` | `#F3F4F6` | 243, 244, 246 | Light backgrounds for variation |
-| `gray-50` | `#F9FAFB` | 249, 250, 251 | Near-white backgrounds |
-| `white` | `#FFFFFF` | 255, 255, 255 | Primary background, reverse text |
-
-**Accent Colors (Used sparingly in content/imagery):**
+**Core Brand Colors:**
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `green-500` | `#10B981` | AI/tech imagery accent (e.g., Hero Card) |
-| `blue-500` | `#3B82F6` | Links, interactive elements |
-| `blue-600` | `#2563EB` | Link hover states |
+| `paper` | `#F9F9FB` | Base background (warm light gray) |
+| `charcoal` | `#111827` | Primary headers/text (Slate-900) |
+| `slate` | `#374151` | Body text (Slate-700) |
+| `klein` | `#0047AB` | Primary actions ("International Klein Blue") |
+| `indigo` | `#4361EE` | Tech accent (Data points, "Palantir vibes") |
+| `teal` | `#006D77` | Secondary actions/accents |
 
-**Semantic (Minimal use):**
+**Utility Scale (Slate Extended):**
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `red-500` | `#EF4444` | Error states only |
-| `green-600` | `#059669` | Success states only |
-
-**Chart/Visualization Colors:**
-| Token | Hex | Usage |
-|-------|-----|-------|
-| `series-1` | `#000000` | Primary data series |
-| `series-2` | `#4A4A4A` | Secondary data series |
-| `series-3` | `#10B981` | Accent series (green) |
-| `series-4` | `#3B82F6` | Accent series (blue) |
-| `series-5` | `#9CA3AF` | Supporting series |
-| `series-6` | `#E5E7EB` | Background series |
+| `slate-50` | `#f8fafc` | |
+| `slate-100` | `#f1f5f9` | Tertiary backgrounds |
+| `slate-200` | `#e2e8f0` | Light borders |
+| `slate-300` | `#cbd5e1` | Medium borders |
+| `slate-500` | `#64748b` | Muted text |
+| `white` | `#ffffff` | Card backgrounds |
 
 ### Typography
 
 **Typefaces:**
-- **Serif (Headlines):** Playfair Display or Georgia (editorial authority)
-- **Sans-serif (Body/UI):** Inter (clean, geometric, system-ui fallback)
-- **Monospace:** JetBrains Mono (for code, data labels, stats)
+- **Headlines:** `Inter Tight` (Google Font) - High-contrast Sans-Serif (Swiss Style)
+- **Body:** `Inter` (Google Font) - Clean, highly readable
+- **Monospace:** `JetBrains Mono` (Google Font) - Data, charts, labels
 
-**Type Scale (Editorial approach):**
-| Name | Font | Size | Weight | Line Height | Usage |
-|------|------|------|--------|-------------|-------|
-| Display | Serif | 64px / 4rem | 400 | 1.1 | Hero headlines (editorial) |
-| H1 | Serif | 48px / 3rem | 400 | 1.2 | Page titles |
-| H2 | Serif | 36px / 2.25rem | 400 | 1.3 | Section headings |
-| H3 | Sans-serif | 24px / 1.5rem | 600 | 1.4 | Card titles |
-| H4 | Sans-serif | 20px / 1.25rem | 600 | 1.5 | Minor headings |
-| Body Large | Sans-serif | 18px / 1.125rem | 400 | 1.7 | Lead paragraphs |
-| Body | Sans-serif | 16px / 1rem | 400 | 1.6 | Default body |
-| Small | Sans-serif | 14px / 0.875rem | 400 | 1.5 | Captions, metadata |
-| Caption | Sans-serif | 12px / 0.75rem | 500 | 1.4 | Labels, tags, badges |
-| Stat | Monospace | 40px / 2.5rem | 700 | 1.1 | Impact stats |
+**Type Scale:**
+| Role | Font | Size | Weight | Tracking |
+|------|------|------|--------|----------|
+| Display | Inter Tight | 48-80px | 700 | -0.03em |
+| H1 | Inter Tight | 36-56px | 600 | -0.02em |
+| H2 | Inter Tight | 28-40px | 600 | -0.01em |
+| Body | Inter | 16-18px | 400 | Normal |
+| Label | JetBrains Mono | 12px | 500 | +0.05em |
 
-**Responsive Typography:**
-| Style | Desktop (≥1024px) | Tablet (768-1023px) | Mobile (<768px) |
-|-------|-------------------|---------------------|-----------------|
-| Display | 48px | 40px | 32px |
-| H1 | 36px | 32px | 28px |
-| H2 | 28px | 24px | 22px |
-| Body | 16px | 16px | 16px |
+### Spacing & Layout
 
-### Spacing Scale (4px base)
+- **Grid:** 12-column grid system
+- **Macro-Whitespace:** 120px vertical spacing between major sections
+- **Container:** Max-width 1440px with 32px padding
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `space-1` | 4px | Tight spacing, icon gaps |
-| `space-2` | 8px | Inline elements, small gaps |
-| `space-3` | 12px | Button padding (vertical) |
-| `space-4` | 16px | Default component padding |
-| `space-6` | 24px | Card padding, element spacing |
-| `space-8` | 32px | Section internal spacing |
-| `space-12` | 48px | Between components |
-| `space-16` | 64px | Section padding (vertical) |
-| `space-24` | 96px | Large section breaks |
+### Components
 
-### Grid System
+**Buttons:**
+- **Primary:** `bg-klein` text-white, rounded-md (4px), 14px/500 font
+- **Outline:** `border-slate-300` text-charcoal, hover `bg-slate-100`
 
-| Property | Desktop | Tablet | Mobile |
-|----------|---------|--------|--------|
-| Columns | 12 | 8 | 4 |
-| Gutter | 24px | 24px | 16px |
-| Margin | 64px | 32px | 16px |
-| Max width | 1200px | 100% | 100% |
-
-### Breakpoints
-
-| Name | Value | Description |
-|------|-------|-------------|
-| `sm` | 640px | Large phones, small tablets |
-| `md` | 768px | Tablets portrait |
-| `lg` | 1024px | Tablets landscape, small laptops |
-| `xl` | 1280px | Desktops |
-| `2xl` | 1536px | Large monitors |
-
-### Component Tokens
-
-**Buttons (Pill-shaped, Understated):**
-| Property | Primary | Secondary | Ghost |
-|----------|---------|-----------|-------|
-| Background | black | white | transparent |
-| Border | none | 1px black | none |
-| Text | white | black | black |
-| Padding | 14px 28px | 14px 28px | 14px 20px |
-| Border radius | 24px | 24px | 24px |
-| Hover bg | gray-900 | gray-50 | gray-50 |
-| Transition | all 0.2s ease | all 0.2s ease | all 0.2s ease |
-
-**Cards (Asymmetrical Heights):**
-| Property | Value |
-|----------|-------|
-| Background | white |
-| Border | none or 1px gray-200 (subtle) |
-| Border radius | 0px (sharp) or 4px (minimal) |
-| Padding | 32px (generous) |
-| Shadow (default) | none or 0 1px 2px rgba(0,0,0,0.05) |
-| Shadow (hover) | 0 4px 8px rgba(0,0,0,0.08) |
-| Hover transform | translateY(-4px) |
-| Min height | Varies for asymmetry |
-
-**Form Inputs (Minimal):**
-| Property | Value |
-|----------|-------|
-| Height | 48px |
-| Border (default) | 1px gray-300 |
-| Border (focus) | 1px black |
-| Border (error) | 1px red-500 |
-| Border radius | 0px (sharp) or 4px (minimal) |
-| Font size | 16px (prevents iOS zoom) |
-| Padding | 16px |
-| Background | white |
-
-**Navigation Elements:**
-| Property | Value |
-|----------|-------|
-| Font | Sans-serif (Inter) |
-| Weight | 400 (regular) |
-| Size | 14px |
-| Letter spacing | 0.02em |
-| Text transform | None (sentence case) |
-| Color | black |
-| Hover | gray-600 with underline |
+**Cards:**
+- **Background:** White (`#ffffff`)
+- **Border:** Light Slate (`#e2e8f0`)
+- **Padding:** 32px
+- **Hover:** Border `indigo`, subtle shadow
 
 ## Deployment Configuration
 

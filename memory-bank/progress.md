@@ -16,6 +16,9 @@
 - ✅ **PostgreSQL client installed** (`pg`)
 - ✅ **Environment files created** (.env, .env.example)
 - ✅ **Strapi build verified**
+- ✅ **Phase 1: Premium Visual Foundation** implemented (Light Theme, Inter Tight, Klein Blue)
+- ✅ **Phase 2: UI Elements & Tech Accents** (Glassmorphism, D3 Hero Graphic, Micro-interactions)
+- ✅ **Phase 3: Structural Layout** (Sticky Header, Split Hero, Trust Bar, Insights Grid)
 
 ## What's Left to Build
 Content types need to be created in Strapi, then frontend bootstrap. See checklist below.
@@ -60,7 +63,7 @@ None yet – project hasn't started implementation.
 ### Frontend (Next.js + React)
 
 - [x] Next.js TypeScript project created in `frontend/`
-- [x] Tailwind configured with design tokens (colors, spacing, typography, breakpoints)
+- [x] Tailwind configured with "Premium" design tokens (Paper White, Klein Blue, Inter Tight)
 - [x] Global layout implemented with:
   - [x] Skip link
   - [x] Header
@@ -75,8 +78,10 @@ None yet – project hasn't started implementation.
   - [ ] Header with nav + mobile menu
   - [ ] Footer with correct columns
   - [ ] Breadcrumb component
-- [ ] Content components implemented:
-  - [ ] Hero (dark/light variants)
+- [x] Content components implemented:
+  - [x] Hero (Split Screen + D3 Graphic)
+  - [x] TrustBar (Client logos)
+  - [x] InsightsGrid (Bento box value prop)
   - [ ] SectionHeader
   - [ ] ServiceCard / PaperCard / InsightCard / PersonCard / JobCard / DatasetCard / CaseStudyCard
   - [ ] CalloutBox

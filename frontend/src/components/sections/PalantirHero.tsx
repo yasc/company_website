@@ -3,50 +3,40 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const PalantirHero: React.FC = () => {
+export const PalantirHero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black">
-      {/* Video Background Placeholder - can be replaced with actual video */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black opacity-90"></div>
-      </div>
-      
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight">
-          Proud to serve
-          <br />
-          the NHS
+    <section className="hero-split-layout">
+      {/* Left Column: Content */}
+      <div className="hero-content px-8 md:px-12 lg:pl-32 flex flex-col justify-center animate-slide-up-fade">
+        <h1 className="text-display mb-6 leading-[1.1] text-charcoal">
+          Precision Economics for a <br /> Complex World
         </h1>
-        
-        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12">
-          Working with NHS England to safely, securely, and responsibly 
-          leverage data to improve patient outcomes
+        <p className="text-body-lg text-slate-600 max-w-xl mb-10 font-light leading-relaxed">
+          Algorithmic strategy for the Fortune 500.
         </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link 
-            href="/contact" 
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded transition-all duration-200 transform hover:-translate-y-0.5"
-          >
-            Learn More
-          </Link>
-          <Link 
-            href="/services" 
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white border border-white/30 hover:bg-white/10 rounded transition-all duration-200"
-          >
-            Our Solutions
+        <div className="cta-group flex gap-4">
+          <Link href="/services" className="btn-primary">
+            Our Services
           </Link>
         </div>
       </div>
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="animate-bounce">
-          <svg className="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
+
+      {/* Right Column: Video Visual */}
+      <div className="hero-visual-container opacity-0 animate-slide-up-fade delay-200">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          preload="auto"
+          poster="/assets/hero-poster.jpg" 
+          className="hero-video"
+          aria-hidden="true"
+        >
+          <source src="/assets/hero-visual.webm" type="video/webm" />
+          <source src="/assets/hero-visual.mp4" type="video/mp4" />
+        </video>
+        <div className="video-gradient-mask"></div>
       </div>
     </section>
   );

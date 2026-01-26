@@ -1,4 +1,5 @@
 import { PalantirHero } from '@/components/sections/PalantirHero';
+import { InsightsGrid } from '@/components/sections/InsightsGrid';
 import { PlatformsSection } from '@/components/sections/PlatformsSection';
 import { NewsSection } from '@/components/sections/NewsSection';
 import { ImpactSection } from '@/components/sections/ImpactSection';
@@ -7,23 +8,26 @@ import { SocietalImpactSection } from '@/components/sections/SocietalImpactSecti
 
 export default function Home() {
   return (
-    <main className="bg-black">
-      {/* Hero Section - "Proud to serve the NHS" */}
+    <main className="bg-white">
+      {/* Hero Section - Split Screen with D3 Graphic */}
       <PalantirHero />
+
+      {/* Key Insights - Alt background for visual rhythm */}
+      <InsightsGrid />
       
-      {/* Platforms Section - AIP, Foundry, Gotham, Apollo */}
+      {/* Core Platforms - White background */}
       <PlatformsSection />
       
-      {/* News Section - "In the News" */}
+      {/* News - Alt background */}
       <NewsSection />
       
-      {/* Impact Section - Healthcare, Government, Defence */}
+      {/* Impact Stats - White background */}
       <ImpactSection />
       
-      {/* Careers Section - "Build the Future with Us" */}
+      {/* Careers - Alt background */}
       <CareersSection />
       
-      {/* Societal Impact Section - Climate, Privacy, Open Source, Education */}
+      {/* Societal Impact - White background */}
       <SocietalImpactSection />
     </main>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
+import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import { PalantirHeader } from "@/components/layout/PalantirHeader";
 import { PalantirFooter } from "@/components/layout/PalantirFooter";
 import "./globals.css";
@@ -11,12 +11,19 @@ const inter = Inter({
   display: "swap",
 });
 
-// Headline font: Source Serif 4 (Serif for headlines, editorial authority)
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
+// Headline font: Inter Tight (High-contrast sans for headlines)
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+// Mono font: JetBrains Mono (For data, charts, and technical elements)
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -42,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${sourceSerif.variable} antialiased min-h-screen flex flex-col`}
+        className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <PalantirHeader />
         <main id="main-content" className="flex-1 pt-16">

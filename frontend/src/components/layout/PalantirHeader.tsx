@@ -1,138 +1,81 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-interface NavItem {
-  label: string;
-  href: string;
-  children?: {
-    label: string;
-    href: string;
-    description?: string;
-  }[];
-}
+export const PalantirHeader = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
-const navigationItems: NavItem[] = [
-  {
-    label: 'Platforms',
-    href: '/platforms',
-    children: [
-      { label: 'AIP', href: '/platforms/aip', description: 'Artificial Intelligence Platform' },
-      { label: 'Foundry', href: '/platforms/foundry', description: 'The Operating System for the Modern Enterprise' },
-      { label: 'Gotham', href: '/platforms/gotham', description: 'Intelligence and Defense Platform' },
-      { label: 'Apollo', href: '/platforms/apollo', description: 'Continuous Deployment Platform' },
-    ],
-  },
-  {
-    label: 'Solutions',
-    href: '/solutions',
-    children: [
-      { label: 'Healthcare', href: '/solutions/healthcare' },
-      { label: 'Government', href: '/solutions/government' },
-      { label: 'Defence', href: '/solutions/defence' },
-      { label: 'Commercial', href: '/solutions/commercial' },
-    ],
-  },
-  {
-    label: 'Company',
-    href: '/company',
-    children: [
-      { label: 'About', href: '/about' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'News', href: '/news' },
-      { label: 'Impact', href: '/impact' },
-    ],
-  },
-  {
-    label: 'Resources',
-    href: '/resources',
-  },
-];
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-export const PalantirHeader: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const navLinks = [
+    { name: 'Services', href: '/services' },
+    { name: 'Research', href: '/research' },
+    { name: 'Data', href: '/data' },
+    { name: 'Lab', href: '/lab' },
+    { name: 'About', href: '/about' },
+    { name: 'Careers', href: '/careers' },
+  ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <span className="text-2xl font-bold text-white tracking-wider">PALANTIR</span>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'glass-panel py-3' 
+          : 'bg-transparent border-b border-transparent py-5'
+      }`}
+    >
+      <nav className="max-w-[1440px] mx-auto px-8">
+        <div className="flex items-center justify-between">
+          {/* 1. Logo (Left) */}
+          <Link href="/" className="text-lg font-bold text-charcoal tracking-tight uppercase group">
+            Applied<span className="text-slate-500 group-hover:text-klein transition-colors">Economics</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navigationItems.map((item) => (
-              <div
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => item.children && setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+          {/* 2. Clean Links (Center) */}
+          <div className="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name}
+                href={link.href} 
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  pathname.startsWith(link.href)
+                    ? 'text-klein font-semibold'
+                    : 'text-slate-600 hover:text-charcoal'
+                }`}
               >
-                <Link
-                  href={item.href}
-                  className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
-                >
-                  {item.label}
-                  {item.children && (
-                    <svg
-                      className="inline-block ml-1 w-3 h-3"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  )}
-                </Link>
-
-                {/* Dropdown Menu */}
-                {item.children && activeDropdown === item.label && (
-                  <div className="absolute left-0 top-full mt-2 w-64 bg-gray-900 rounded-lg shadow-xl border border-gray-800">
-                    <div className="py-2">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block px-4 py-3 hover:bg-gray-800 transition-colors"
-                        >
-                          <div className="text-white font-medium">{child.label}</div>
-                          {child.description && (
-                            <div className="text-gray-400 text-xs mt-1">{child.description}</div>
-                          )}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
+                {link.name}
+              </Link>
             ))}
+          </div>
 
-            {/* CTA Button */}
-            <Link
-              href="/contact"
-              className="ml-8 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded text-sm font-semibold transition-colors"
+          {/* 3. "Get in Touch" Button (Right) */}
+          <div className="hidden md:block">
+            <Link 
+              href="/contact" 
+              className="btn-outline px-6 py-2.5 text-xs font-semibold uppercase tracking-wider border-slate-300 hover:border-klein hover:text-klein"
             >
-              Get Started
+              Get in Touch
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-gray-400 hover:text-white p-2"
+            className="md:hidden p-2 text-slate-700"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {mobileMenuOpen ? (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isMobileMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -142,40 +85,25 @@ export const PalantirHeader: React.FC = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-800">
-            {navigationItems.map((item) => (
-              <div key={item.label} className="py-2">
-                <Link
-                  href={item.href}
-                  className="block text-gray-300 hover:text-white px-3 py-2 text-base font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-4 pt-4 border-t border-slate-200 animate-slide-up-fade">
+            <div className="flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.name}
+                  href={link.href} 
+                  className="text-sm font-medium text-slate-600 hover:text-charcoal uppercase tracking-wide"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {item.label}
+                  {link.name}
                 </Link>
-                {item.children && (
-                  <div className="pl-6 mt-2 space-y-2">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="block text-gray-400 hover:text-white px-3 py-2 text-sm"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <div className="pt-4 mt-4 border-t border-gray-800">
-              <Link
-                href="/contact"
-                className="block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded text-center font-semibold transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+              ))}
+              <Link 
+                href="/contact" 
+                className="btn-primary w-full text-center mt-2"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get Started
+                Get in Touch
               </Link>
             </div>
           </div>

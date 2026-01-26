@@ -43,8 +43,8 @@ All prerequisites satisfied. PostgreSQL database configured and Strapi v5.33.1 r
 - [ ] Create initial content types
 
 ### 3. Frontend (Next.js) Bootstrap
-- [ ] Initialize Next.js with TypeScript in `frontend/`
-- [ ] Configure Tailwind CSS with design tokens
+- [x] Initialize Next.js with TypeScript in `frontend/`
+- [x] Configure Tailwind CSS with design tokens (Updated for "Premium" Foundation)
 - [ ] Set up ESLint and Prettier
 - [ ] Create basic layout structure
 
@@ -62,9 +62,9 @@ All prerequisites satisfied. PostgreSQL database configured and Strapi v5.33.1 r
 - Deploying to Render (all services)
 - **CRM: Attio** – Lead capture will integrate with Attio via direct API calls from Next.js
 - **AESTHETIC PIVOT (Jan 25, 2026):** Moving from dark "Palantir-like" design to **High-End Minimalism** with:
-  - Monochromatic UI (black and white base)
-  - Editorial typography (serif headlines, sans-serif body)
-  - Generous whitespace
+  - **Color Palette:** "Clinical & Intellectual" (Paper White #F9F9FB, Klein Blue #0047AB, Charcoal #111827)
+  - **Typography:** Editorial/Swiss (Inter Tight for headlines, Inter for body, JetBrains Mono for data)
+  - **Layout:** Generous whitespace (120px vertical spacing), 12-column grid
   - Mixed media imagery
   - Asymmetrical card layouts
 
