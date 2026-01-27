@@ -16,7 +16,7 @@
 - ✅ **PostgreSQL client installed** (`pg`)
 - ✅ **Environment files created** (.env, .env.example)
 - ✅ **Strapi build verified**
-- ✅ **Phase 1: Premium Visual Foundation** implemented (Light Theme, Inter Tight, Klein Blue)
+- ✅ **Phase 1: Premium Visual Foundation** implemented (Light Theme, Inter Tight, Charcoal)
 - ✅ **Phase 2: UI Elements & Tech Accents** (Glassmorphism, D3 Hero Graphic, Micro-interactions)
 - ✅ **Phase 3: Structural Layout** (Sticky Header, Split Hero, Trust Bar, Insights Grid)
 
@@ -63,7 +63,7 @@ None yet – project hasn't started implementation.
 ### Frontend (Next.js + React)
 
 - [x] Next.js TypeScript project created in `frontend/`
-- [x] Tailwind configured with "Premium" design tokens (Paper White, Klein Blue, Inter Tight)
+- [x] Tailwind configured with "Premium" design tokens (Paper White, Charcoal, Inter Tight)
 - [x] Global layout implemented with:
   - [x] Skip link
   - [x] Header

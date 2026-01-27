@@ -12,21 +12,21 @@ export default function Home() {
       {/* Hero Section - Split Screen with D3 Graphic */}
       <PalantirHero />
 
+      {/* Data Products - White background */}
+      <PlatformsSection />
+
       {/* Key Insights - Alt background for visual rhythm */}
       <InsightsGrid />
-      
-      {/* Core Platforms - White background */}
-      <PlatformsSection />
-      
+
       {/* News - Alt background */}
       <NewsSection />
-      
+
       {/* Impact Stats - White background */}
       <ImpactSection />
-      
+
       {/* Careers - Alt background */}
       <CareersSection />
-      
+
       {/* Societal Impact - White background */}
       <SocietalImpactSection />
     </main>

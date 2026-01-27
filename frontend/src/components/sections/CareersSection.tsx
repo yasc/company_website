@@ -32,7 +32,6 @@ interface JobListing {
   location: string;
   department: string;
   tag: string;
-  version: string;
 }
 
 const jobListings: JobListing[] = [
@@ -40,28 +39,25 @@ const jobListings: JobListing[] = [
     title: 'Software Engineer, Frontend',
     location: 'London, UK',
     department: 'Engineering',
-    tag: 'NEW',
-    version: 'v.25.01'
+    tag: 'NEW'
   },
   {
     title: 'Data Scientist',
     location: 'Multiple Locations',
     department: 'Data',
-    tag: 'REMOTE',
-    version: 'v.25.02'
+    tag: 'REMOTE'
   },
   {
     title: 'Product Designer',
     location: 'London, UK',
     department: 'Design',
-    tag: 'HYBRID',
-    version: 'v.25.03'
+    tag: 'HYBRID'
   }
 ];
 
 export const CareersSection: React.FC = () => {
   return (
-    <section className="py-24 bg-section-alt">
+    <section className="section-standard bg-white">
       <div className="container-wide">
         {/* Section Header */}
         <div className="flex justify-between items-baseline mb-12">
@@ -76,11 +72,11 @@ export const CareersSection: React.FC = () => {
           
           {/* Left Column - Why Join Us */}
           <div className="enterprise-card p-8 lg:p-12">
-            <h3 className="text-2xl font-bold text-[#111827] mb-6">
+            <h3 className="text-h2 mb-6">
               Build the Future with Us
             </h3>
-            <p className="text-[#475569] text-base leading-relaxed mb-10">
-              We're looking for exceptional engineers, designers, and problem-solvers 
+            <p className="text-body-lg leading-relaxed mb-10">
+              We're looking for exceptional engineers, designers, and problem-solvers
               who want to use their skills to make a real difference in the world.
             </p>
             
@@ -88,10 +84,10 @@ export const CareersSection: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {highlights.map((highlight, index) => (
                 <div key={index} className="border-l-2 border-[#CBD5E1] pl-4">
-                  <h4 className="font-bold text-[#111827] mb-1 text-sm">
+                  <h4 className="font-semibold text-[#111827] mb-1 text-sm">
                     {highlight.title}
                   </h4>
-                  <p className="text-sm text-[#475569] leading-relaxed">
+                  <p className="text-sm text-[#64748B] leading-relaxed">
                     {highlight.description}
                   </p>
                 </div>
@@ -102,13 +98,13 @@ export const CareersSection: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
               <Link
                 href="/careers"
-                className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-[#111827] hover:bg-[#0F172A] transition-colors"
+                className="btn-primary"
               >
                 View Open Positions
               </Link>
               <Link
                 href="/careers/students"
-                className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-[#111827] border border-[#CBD5E1] hover:border-[#111827] transition-colors"
+                className="btn-outline"
               >
                 Student Programs
               </Link>
@@ -129,20 +125,19 @@ export const CareersSection: React.FC = () => {
                   className={`p-6 ${index !== 0 ? 'border-t border-[#CBD5E1]' : ''} hover:bg-[#F8FAFC] transition-colors group`}
                 >
                   <div className="flex justify-between items-start mb-2">
-                    <h4 className="font-bold text-[#111827] group-hover:underline">
+                    <h4 className="font-semibold text-[#111827] group-hover:underline">
                       {job.title}
                     </h4>
-                    <span className="text-metadata text-xs">{job.tag}</span>
+                    <span className="text-label">{job.tag}</span>
                   </div>
-                  <p className="text-sm text-[#475569] mb-3">
+                  <p className="text-sm text-[#64748B] mb-3">
                     {job.location} · {job.department}
                   </p>
-                  <div className="flex justify-between items-center">
+                  <div>
                     <Link href="/careers" className="link-explore text-sm">
                       Explore
                       <span className="transition-transform group-hover:translate-x-1">→</span>
                     </Link>
-                    <span className="text-metadata">{job.version}</span>
                   </div>
                 </div>
               ))}

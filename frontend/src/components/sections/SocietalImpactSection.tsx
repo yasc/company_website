@@ -7,39 +7,34 @@ interface Initiative {
   title: string;
   description: string;
   link: string;
-  version: string;
 }
 
 const initiatives: Initiative[] = [
   {
     title: 'Climate Action',
     description: 'Committed to net-zero emissions and helping organizations achieve their sustainability goals through data-driven insights.',
-    link: '/impact/climate',
-    version: 'v.24.01'
+    link: '/impact/climate'
   },
   {
     title: 'Privacy & Civil Liberties',
     description: 'Building technology that protects individual privacy while enabling institutions to leverage data responsibly.',
-    link: '/impact/privacy',
-    version: 'v.24.02'
+    link: '/impact/privacy'
   },
   {
     title: 'Open Source Contributions',
     description: 'Contributing to the global developer community with open source tools and frameworks.',
-    link: '/impact/opensource',
-    version: 'v.24.03'
+    link: '/impact/opensource'
   },
   {
     title: 'Education & Training',
     description: 'Partnering with universities to train the next generation of data scientists and engineers.',
-    link: '/impact/education',
-    version: 'v.24.04'
+    link: '/impact/education'
   }
 ];
 
 export const SocietalImpactSection: React.FC = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="section-standard bg-section-alt">
       <div className="container-wide">
         {/* Section Header */}
         <div className="flex justify-between items-baseline mb-12">
@@ -49,8 +44,8 @@ export const SocietalImpactSection: React.FC = () => {
           </Link>
         </div>
         
-        <p className="text-[#475569] text-lg leading-relaxed max-w-3xl mb-16">
-          Technology should be a force for good. We're committed to using our capabilities 
+        <p className="text-body-lg leading-relaxed max-w-3xl mb-16">
+          Technology should be a force for good. We're committed to using our capabilities
           to address humanity's greatest challenges.
         </p>
         
@@ -63,14 +58,13 @@ export const SocietalImpactSection: React.FC = () => {
               className="enterprise-card flex flex-col justify-between min-h-[280px] group"
             >
               <div>
-                <div className="flex justify-between items-start mb-6">
-                  <span className="text-metadata">{initiative.version}</span>
+                <div className="flex justify-end items-start mb-6">
                   <span className="status-dot"></span>
                 </div>
-                <h3 className="text-xl font-bold text-[#111827] mb-4">
+                <h3 className="text-h3 mb-4">
                   {initiative.title}
                 </h3>
-                <p className="text-[#475569] text-base leading-relaxed">
+                <p className="text-body leading-relaxed">
                   {initiative.description}
                 </p>
               </div>
@@ -90,17 +84,17 @@ export const SocietalImpactSection: React.FC = () => {
                 <span className="text-metadata">Climate Pledge Signatory</span>
                 <span className="status-dot status-dot--active"></span>
               </div>
-              <h3 className="text-2xl font-bold text-[#111827] mb-3">
+              <h3 className="text-h2 mb-3">
                 Net-Zero by 2040
               </h3>
-              <p className="text-[#475569] text-base leading-relaxed max-w-xl">
-                We've committed to reaching net-zero carbon emissions by 2040, 
+              <p className="text-body leading-relaxed max-w-xl">
+                We've committed to reaching net-zero carbon emissions by 2040,
                 10 years ahead of the Paris Agreement goals.
               </p>
             </div>
             <Link
               href="/sustainability"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-[#111827] hover:bg-[#0F172A] transition-colors whitespace-nowrap"
+              className="btn-primary whitespace-nowrap"
             >
               Read Sustainability Report
             </Link>

@@ -16,7 +16,7 @@ export const PalantirFooter = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider mb-4 text-slate-400">Services</h4>
+            <h4 className="text-label mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/services" className="text-slate-600 hover:text-slate-900 text-sm font-medium transition">
@@ -43,7 +43,7 @@ export const PalantirFooter = () => {
 
           {/* Resources */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider mb-4 text-slate-400">Resources</h4>
+            <h4 className="text-label mb-4">Resources</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/research" className="text-slate-600 hover:text-slate-900 text-sm font-medium transition">
@@ -70,7 +70,7 @@ export const PalantirFooter = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider mb-4 text-slate-400">Contact</h4>
+            <h4 className="text-label mb-4">Contact</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/contact" className="text-slate-600 hover:text-slate-900 text-sm font-medium transition">

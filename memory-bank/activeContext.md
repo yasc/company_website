@@ -62,7 +62,7 @@ All prerequisites satisfied. PostgreSQL database configured and Strapi v5.33.1 r
 - Deploying to Render (all services)
 - **CRM: Attio** – Lead capture will integrate with Attio via direct API calls from Next.js
 - **AESTHETIC PIVOT (Jan 25, 2026):** Moving from dark "Palantir-like" design to **High-End Minimalism** with:
-  - **Color Palette:** "Clinical & Intellectual" (Paper White #F9F9FB, Klein Blue #0047AB, Charcoal #111827)
+  - **Color Palette:** "Clinical & Intellectual" (Paper White #F9F9FB, Charcoal #111827, Teal #006D77)
   - **Typography:** Editorial/Swiss (Inter Tight for headlines, Inter for body, JetBrains Mono for data)
   - **Layout:** Generous whitespace (120px vertical spacing), 12-column grid
   - Mixed media imagery

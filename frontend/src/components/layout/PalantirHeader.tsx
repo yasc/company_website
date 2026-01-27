@@ -38,7 +38,7 @@ export const PalantirHeader = () => {
         <div className="flex items-center justify-between">
           {/* 1. Logo (Left) */}
           <Link href="/" className="text-lg font-bold text-charcoal tracking-tight uppercase group">
-            Applied<span className="text-slate-500 group-hover:text-klein transition-colors">Economics</span>
+            Applied<span className="text-slate-500 group-hover:text-charcoal transition-colors">Economics</span>
           </Link>
 
           {/* 2. Clean Links (Center) */}
@@ -49,7 +49,7 @@ export const PalantirHeader = () => {
                 href={link.href} 
                 className={`text-sm font-medium transition-colors duration-200 ${
                   pathname.startsWith(link.href)
-                    ? 'text-klein font-semibold'
+                    ? 'text-charcoal font-semibold'
                     : 'text-slate-600 hover:text-charcoal'
                 }`}
               >
@@ -62,7 +62,7 @@ export const PalantirHeader = () => {
           <div className="hidden md:block">
             <Link 
               href="/contact" 
-              className="btn-outline px-6 py-2.5 text-xs font-semibold uppercase tracking-wider border-slate-300 hover:border-klein hover:text-klein"
+              className="btn-outline px-6 py-3 text-xs font-semibold uppercase tracking-wider border-slate-300 hover:border-charcoal hover:text-charcoal"
             >
               Get in Touch
             </Link>

@@ -4,74 +4,50 @@ import React from 'react';
 import Link from 'next/link';
 
 export const InsightsGrid = () => {
+  const industries = [
+    // Row 1
+    { name: 'Governments', link: '/industries/governments' },
+    { name: 'Central Banks', link: '/industries/central-banks' },
+    { name: 'Statistical Agencies', link: '/industries/statistical-agencies' },
+    { name: 'Policy Institutions', link: '/industries/policy-institutions' },
+    // Row 2
+    { name: 'Institutional Investors', link: '/industries/institutional-investors' },
+    { name: 'Global Trade', link: '/industries/global-trade' },
+    { name: 'Healthcare', link: '/industries/healthcare' },
+    { name: 'Logistics', link: '/industries/logistics' },
+  ];
+
   return (
-    <section className="w-full py-24 bg-section-alt">
+    <section className="w-full section-standard bg-section-alt">
       <div className="container-wide">
-        {/* Section Header with View All Specs link */}
+        {/* Section Header */}
         <div className="flex justify-between items-baseline mb-12">
-          <h2 className="section-header-enterprise">Key Insights</h2>
-          <Link href="/research" className="link-specs">
-            View All Specs
+          <h2 className="section-header-enterprise">Industries</h2>
+          <Link href="/industries" className="link-specs">
+            View All
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          {/* Box 1: Key Metric */}
-          <div className="enterprise-card flex flex-col justify-between min-h-[280px]">
-            <div>
-              <div className="flex justify-between items-start mb-4">
-                <p className="text-metadata">Impact Delivered</p>
-                <span className="status-dot"></span>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {industries.map((industry) => (
+            <Link
+              key={industry.name}
+              href={industry.link}
+              className="enterprise-card group hover:border-slate-900 transition-colors duration-300 flex flex-col justify-between min-h-[160px]"
+            >
+              <div className="flex justify-end">
+                <div className="h-2 w-2 bg-[#CBD5E1] group-hover:bg-slate-900 rounded-full transition-colors"></div>
               </div>
-              <h3 className="font-mono text-5xl font-bold text-[#111827] tracking-tighter">
-                £1.2B+
-              </h3>
-            </div>
-            <p className="text-[#475569] text-base leading-relaxed">
-              Public sector value unlocked through data-driven efficiency improvements.
-            </p>
-          </div>
-
-          {/* Box 2: Case Study */}
-          <Link href="/services/infrastructure" className="enterprise-card flex flex-col justify-between min-h-[280px] group">
-            <div>
-              <div className="flex justify-between items-start mb-4">
-                <p className="text-metadata">Case Study</p>
-                <span className="status-dot"></span>
+              <div>
+                <h3 className="text-h3 mb-4 group-hover:underline decoration-1 underline-offset-4">
+                  {industry.name}
+                </h3>
+                <div className="link-explore">
+                  Explore <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-[#111827]">
-                Optimizing National Infrastructure
-              </h3>
-            </div>
-            <div className="link-explore">
-              Explore
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </div>
-          </Link>
-
-          {/* Box 3: Platform */}
-          <div className="enterprise-card flex flex-col justify-between min-h-[280px]">
-            <div>
-              <div className="flex justify-between items-start mb-4">
-                <p className="text-metadata">Methodology</p>
-                <span className="status-dot"></span>
-              </div>
-              <h3 className="text-xl font-bold text-[#111827]">
-                Scalable Growth
-              </h3>
-            </div>
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-[#475569]">Adoption Rate</span>
-                <span className="text-metadata">v.24.01</span>
-              </div>
-              <div className="w-full bg-[#CBD5E1] h-1">
-                <div className="bg-[#111827] h-full" style={{ width: '60%' }}></div>
-              </div>
-            </div>
-          </div>
-
+            </Link>
+          ))}
         </div>
       </div>
     </section>

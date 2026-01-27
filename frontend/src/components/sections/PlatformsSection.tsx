@@ -1,46 +1,70 @@
 import React from 'react';
+import Link from 'next/link';
 
 export const PlatformsSection = () => {
-  const platforms = [
-    { name: 'AIP', desc: 'Artificial Intelligence Platform for operational decision making.' },
-    { name: 'Foundry', desc: 'The operating system for the modern enterprise.' },
-    { name: 'Gotham', desc: 'Global decision making and operating system.' },
-    { name: 'Apollo', desc: 'Continuous delivery and autonomous management.' },
+  const dataProducts = [
+    {
+      name: 'AIPNET',
+      nameLine2: '\u00A0', // Empty line for alignment
+      desc: 'A generative AI map of global production, revealing input-output connections across 5,000+ products.',
+      link: '/data/aipnet'
+    },
+    {
+      name: 'Work from',
+      nameLine2: 'Home Map',
+      desc: 'The definitive picture of remote work, built from 250M+ job postings across five countries.',
+      link: '/data/wfh-map'
+    },
+    {
+      name: 'Machinery',
+      nameLine2: 'of Progress',
+      desc: 'A real-time pulse on economic expansion, tracking capital investment through administrative data and AI.',
+      link: '/data/machinery-of-progress'
+    },
+    {
+      name: 'Bad Bank,',
+      nameLine2: 'Bad Luck',
+      desc: 'The hidden history of American credit, reconstructed from 40M+ archival loan documents.',
+      link: '/data/bad-bank'
+    },
   ];
 
   return (
-    <section className="bg-white py-24 px-6">
+    <section className="bg-white section-standard px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-12">
-          <h2 className="text-3xl font-bold text-slate-900 tracking-tight">
-            Core Platforms
+          <h2 className="section-header-enterprise">
+            Data Products
           </h2>
-          <a href="#" className="text-sm font-bold text-slate-900 border-b border-slate-900 pb-1 hover:text-slate-600 hover:border-slate-600 transition">
-            VIEW ALL SPECS
-          </a>
+          <Link href="/data" className="link-specs">
+            View All Data
+          </Link>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {platforms.map((p) => (
-            <div key={p.name} className="group border border-[#CBD5E1] p-6 hover:border-slate-900 transition-colors duration-300 cursor-pointer bg-white">
+          {dataProducts.map((product) => (
+            <Link
+              key={product.name}
+              href={product.link}
+              className="enterprise-card group hover:border-slate-900 transition-colors duration-300 flex flex-col"
+            >
               {/* Technical Header */}
-              <div className="flex justify-between items-center mb-8">
-                <span className="text-xs text-slate-400 font-mono">v.24.01</span>
+              <div className="flex justify-end items-center mb-6">
                 <div className="h-2 w-2 bg-[#CBD5E1] group-hover:bg-slate-900 rounded-full transition-colors"></div>
               </div>
-              
-              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:underline decoration-2 underline-offset-4">
-                {p.name}
+
+              <h3 className="text-h3 mb-3 group-hover:underline decoration-1 underline-offset-4">
+                {product.name}<br />{product.nameLine2}
               </h3>
-              
-              <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                {p.desc}
+
+              <p className="text-body text-sm leading-relaxed mb-6 flex-grow">
+                {product.desc}
               </p>
 
-              <div className="flex items-center text-slate-900 text-sm font-bold mt-auto">
+              <div className="link-explore mt-auto">
                 Explore <span className="ml-2">→</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

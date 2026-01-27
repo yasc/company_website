@@ -39,8 +39,7 @@ The site uses a **light, clinical, editorial aesthetic**:
 
 ### Color Palette
 - **Paper** (#F9F9FB) - Primary background
-- **Charcoal** (#111827) - Headers/text
-- **Klein Blue** (#0047AB) - Primary actions
+- **Charcoal** (#111827) - Headers/text and primary actions
 - **Teal** (#006D77) - Secondary actions
 
 ### Typography

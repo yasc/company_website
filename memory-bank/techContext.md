@@ -152,9 +152,8 @@ NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 | Token | Hex | Usage |
 |-------|-----|-------|
 | `paper` | `#F9F9FB` | Base background (warm light gray) |
-| `charcoal` | `#111827` | Primary headers/text (Slate-900) |
+| `charcoal` | `#111827` | Primary headers/text and actions (Slate-900) |
 | `slate` | `#374151` | Body text (Slate-700) |
-| `klein` | `#0047AB` | Primary actions ("International Klein Blue") |
 | `indigo` | `#4361EE` | Tech accent (Data points, "Palantir vibes") |
 | `teal` | `#006D77` | Secondary actions/accents |
 
@@ -193,7 +192,7 @@ NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 ### Components
 
 **Buttons:**
-- **Primary:** `bg-klein` text-white, rounded-md (4px), 14px/500 font
+- **Primary:** `bg-charcoal` text-white, rounded-md (4px), 14px/500 font
 - **Outline:** `border-slate-300` text-charcoal, hover `bg-slate-100`
 
 **Cards:**

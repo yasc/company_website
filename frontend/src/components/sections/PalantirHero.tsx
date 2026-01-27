@@ -11,7 +11,7 @@ export const PalantirHero = () => {
         <h1 className="text-display mb-6 leading-[1.1] text-charcoal">
           Precision Economics for a <br /> Complex World
         </h1>
-        <p className="text-body-lg text-slate-600 max-w-xl mb-10 font-light leading-relaxed">
+        <p className="text-body-lg max-w-xl mb-10 leading-relaxed">
           Algorithmic strategy for the Fortune 500.
         </p>
         <div className="cta-group flex gap-4">

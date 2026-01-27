@@ -11,7 +11,6 @@ const config: Config = {
       colors: {
         // "Clinical & Intellectual" Palette
         paper: '#F9F9FB',      // Base Background
-        klein: '#0047AB',      // Primary Action
         teal: '#006D77',       // Secondary Action
         indigo: '#4361EE',     // Tech Accent
         charcoal: '#111827',   // Headers (Gray-900)

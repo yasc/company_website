@@ -6,15 +6,15 @@
    ======================================== */
 
 :root {
-  /* Core Colors - Pure White Foundation */
-  --bg-primary: #FFFFFF;      /* Pure White - Page Background */
+  /* Core Colors - Paper White Foundation */
+  --bg-primary: #F9F9FB;      /* Paper - Page Background */
   --bg-secondary: #FFFFFF;    /* Pure White - Card Background */
-  --bg-tertiary: #FFFFFF;     /* Pure White - Section Background */
-  
+  --bg-tertiary: #F8FAFC;     /* Slate-50 - Alt Section Background */
+
   /* Text Colors - Monochromatic with cool undertones */
   --text-primary: #111827;    /* Deep Navy/Charcoal - Primary Headings */
   --text-secondary: #475569;  /* Mid-tone Slate Grey - Body Text */
-  --text-muted: #94A3B8;      /* Light Cool Grey - Metadata */
+  --text-muted: #64748B;      /* Slate-500 - Metadata (WCAG AA: 4.55:1) */
   --text-inverse: #ffffff;    /* White */
   
   /* Brand Colors - Minimal use */
@@ -66,38 +66,39 @@ h1, h2, h3, h4, h5, h6 {
 /* ========================================
    Typography Scale
    "The Authority" - Editorial & Sharp
+   Refined hierarchy for visual balance
    ======================================== */
 
 .text-display {
   font-family: var(--font-display);
-  font-size: clamp(48px, 6vw, 80px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   color: var(--text-primary);
 }
 
 .text-h1 {
   font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 56px);
+  font-size: clamp(32px, 4vw, 44px);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--text-primary);
 }
 
 .text-h2 {
   font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(24px, 3vw, 32px);
   font-weight: 600;
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
 }
 
 .text-h3 {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: clamp(18px, 2vw, 22px);
   font-weight: 600;
   line-height: 1.3;
   color: var(--text-primary);
@@ -105,18 +106,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-body-lg {
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.text-body {
+  font-family: var(--font-sans);
+  font-size: 16px;
   line-height: 1.6;
   color: var(--text-secondary);
 }
 
 .text-label {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-accent); /* Tech accent for labels */
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
 }
 
 .text-mono {
@@ -133,22 +141,21 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
   background-color: var(--color-action);
   color: var(--text-inverse);
-  padding: 14px 28px;
+  padding: 16px 32px;
   border-radius: 4px; /* Slightly rounded */
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 14px;
-  transition: all 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: background-color 200ms ease;
   border: 1px solid transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 48px; /* Touch target compliance */
 }
 
 .btn-primary:hover {
   background-color: var(--color-action-hover);
-  transform: translateY(-2px) scale(1.02); /* Micro-interaction: Lift & Scale */
-  box-shadow: 0 4px 12px rgba(0, 71, 171, 0.2);
 }
 
 .btn-outline {
@@ -169,7 +176,6 @@ h1, h2, h3, h4, h5, h6 {
 .btn-outline:hover {
   border-color: var(--text-primary);
   background-color: var(--bg-tertiary);
-  transform: translateY(-2px);
 }
 
 /* ========================================
@@ -228,22 +234,25 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Section Header - Enterprise Style */
 .section-header-enterprise {
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
   color: #111827;
 }
 
 /* View All Specs Link Style */
 .link-specs {
-  font-size: 12px;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: #111827;
   text-decoration: underline;
   text-underline-offset: 4px;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 1px;
 }
 
 .link-specs:hover {
@@ -252,7 +261,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Explore Arrow Link Style */
 .link-explore {
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
   color: #111827;
   display: inline-flex;
   align-items: center;
@@ -266,9 +277,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Metadata / Version Style */
 .text-metadata {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.05em;
-  color: #94A3B8;
+  color: #64748B; /* Slate-500 - WCAG AA compliant */
 }
 
 /* Status Dot */
@@ -319,6 +330,19 @@ h1, h2, h3, h4, h5, h6 {
 .section-spacing {
   padding-top: 120px;
   padding-bottom: 120px;
+}
+
+/* Responsive section spacing */
+.section-standard {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+@media (min-width: 1024px) {
+  .section-standard {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
 }
 
 /* ========================================
