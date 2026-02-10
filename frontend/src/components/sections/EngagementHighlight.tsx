@@ -23,12 +23,12 @@ export function EngagementHighlight({
         <div className="lg:col-span-5">
           <span className="text-label">{label}</span>
           <h3 className="text-h2 mt-4">{title}</h3>
-          <p className="text-body-lg mt-4">{description}</p>
+          <p className="text-body mt-4">{description}</p>
         </div>
 
         {/* Right: metrics */}
-        <div className="lg:col-span-6 lg:col-start-7">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="lg:col-span-6 lg:col-start-7 flex items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 w-full">
             {metrics.map((metric, index) => (
               <div key={index}>
                 <dd className="font-mono text-3xl md:text-4xl font-semibold tracking-tight text-[#111827] leading-none">

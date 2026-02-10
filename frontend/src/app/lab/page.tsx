@@ -162,19 +162,19 @@ export default async function LabPage() {
                 Practical tutorials and reference materials for applied economists.
               </p>
             </div>
-            <Link href="/lab/guides">
+            <a href="https://github.com/Applied-Economics-With-AI/guides" target="_blank" rel="noopener noreferrer">
               <Button variant="secondary">View all guides</Button>
-            </Link>
+            </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {guides.slice(0, 4).map((guide) => (
-              <Link key={guide.id} href={`/lab/guides/${guide.slug}`}>
+              <a key={guide.id} href="https://github.com/Applied-Economics-With-AI/guides" target="_blank" rel="noopener noreferrer">
                 <Card className="h-full hover:border-teal-500 transition-colors">
                   <CardTitle>{guide.title}</CardTitle>
                   <CardDescription className="mt-2">{guide.summary}</CardDescription>
                 </Card>
-              </Link>
+              </a>
             ))}
           </div>
         </Container>

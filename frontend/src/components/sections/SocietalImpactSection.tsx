@@ -34,7 +34,7 @@ const initiatives: Initiative[] = [
 
 export const SocietalImpactSection: React.FC = () => {
   return (
-    <section className="section-standard bg-white">
+    <section className="section-standard bg-section-alt">
       <div className="container-wide">
         {/* Section Header */}
         <div className="flex justify-between items-baseline mb-12">

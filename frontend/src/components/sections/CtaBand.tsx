@@ -39,18 +39,34 @@ export function CtaBand({
           {(primaryCta || secondaryCta) && (
             <div className="flex flex-col sm:flex-row gap-4">
               {primaryCta && (
-                <Link href={primaryCta.url}>
-                  <Button variant="primary" size="lg">
-                    {primaryCta.label}
-                  </Button>
-                </Link>
+                primaryCta.url.startsWith('http') ? (
+                  <a href={primaryCta.url} target="_blank" rel="noopener noreferrer">
+                    <Button variant="primary" size="lg">
+                      {primaryCta.label}
+                    </Button>
+                  </a>
+                ) : (
+                  <Link href={primaryCta.url}>
+                    <Button variant="primary" size="lg">
+                      {primaryCta.label}
+                    </Button>
+                  </Link>
+                )
               )}
               {secondaryCta && (
-                <Link href={secondaryCta.url}>
-                  <Button variant="ghost" size="lg">
-                    {secondaryCta.label}
-                  </Button>
-                </Link>
+                secondaryCta.url.startsWith('http') ? (
+                  <a href={secondaryCta.url} target="_blank" rel="noopener noreferrer">
+                    <Button variant="ghost" size="lg">
+                      {secondaryCta.label}
+                    </Button>
+                  </a>
+                ) : (
+                  <Link href={secondaryCta.url}>
+                    <Button variant="ghost" size="lg">
+                      {secondaryCta.label}
+                    </Button>
+                  </Link>
+                )
               )}
             </div>
           )}

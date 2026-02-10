@@ -339,7 +339,7 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
       <CtaBand
         headline="Found this helpful?"
         subheadline="Check out our other guides and resources in the Economics Lab."
-        primaryCta={{ label: 'View all guides', url: '/lab' }}
+        primaryCta={{ label: 'View all guides', url: 'https://github.com/Applied-Economics-With-AI/guides' }}
       />
     </>
   );

@@ -101,6 +101,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <section className="bg-white section-standard">
         <div className="container-wide">
           <EngagementHighlight
+            label={service.slug === 'data-ai-solutions' ? 'DATA HIGHLIGHT' : 'ENGAGEMENT HIGHLIGHT'}
             title={service.engagementHighlight.title}
             description={service.engagementHighlight.description}
             metrics={service.engagementHighlight.metrics}

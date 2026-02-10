@@ -3,6 +3,7 @@ import { WhatWeDoSection } from '@/components/sections/WhatWeDoSection';
 import { InsightsGrid } from '@/components/sections/InsightsGrid';
 import { PlatformsSection } from '@/components/sections/PlatformsSection';
 import { NewsSection } from '@/components/sections/NewsSection';
+import { HighlightsCarousel } from '@/components/sections/HighlightsCarousel';
 import { SocietalImpactSection } from '@/components/sections/SocietalImpactSection';
 
 export default function Home() {
@@ -22,6 +23,9 @@ export default function Home() {
 
       {/* In the News - White background */}
       <NewsSection />
+
+      {/* Highlights Carousel */}
+      <HighlightsCarousel />
 
       {/* Societal Commitment - Alt background */}
       <SocietalImpactSection />
