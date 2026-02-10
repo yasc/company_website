@@ -120,7 +120,7 @@ export default async function DataPage() {
             </div>
 
             {/* Key Stats — Right */}
-            <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:pt-4">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:pt-12">
               <div>
                 <span className="block font-mono text-3xl md:text-4xl font-semibold text-teal tracking-tight">250M+</span>
                 <span className="text-label mt-2 block">Records processed</span>

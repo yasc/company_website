@@ -13,7 +13,6 @@ interface CtaBandProps {
     label: string;
     url: string;
   };
-  variant?: 'dark' | 'light';
 }
 
 export function CtaBand({
@@ -21,30 +20,17 @@ export function CtaBand({
   subheadline,
   primaryCta,
   secondaryCta,
-  variant = 'dark',
 }: CtaBandProps) {
-  const isDark = variant === 'dark';
-
   return (
-    <section
-      className={`
-        py-16
-        ${isDark ? 'bg-navy-800 dark-bg' : 'bg-gray-50'}
-      `}
-    >
+    <section className="py-16 bg-gray-50">
       <Container>
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <h2
-              className={`
-                text-h2 mb-2
-                ${isDark ? 'text-white' : 'text-navy-800'}
-              `}
-            >
+            <h2 className="text-h2 mb-2 text-[#111827]">
               {headline}
             </h2>
             {subheadline && (
-              <p className={isDark ? 'text-gray-300' : 'text-gray-500'}>
+              <p className="text-body text-[#111827]">
                 {subheadline}
               </p>
             )}
@@ -61,11 +47,7 @@ export function CtaBand({
               )}
               {secondaryCta && (
                 <Link href={secondaryCta.url}>
-                  <Button
-                    variant="ghost"
-                    size="lg"
-                    className={isDark ? 'text-white hover:bg-navy-700' : ''}
-                  >
+                  <Button variant="ghost" size="lg">
                     {secondaryCta.label}
                   </Button>
                 </Link>

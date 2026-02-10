@@ -70,10 +70,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Key specs strip */}
-          <div className="mt-12">
-            <KeySpecsStrip specs={service.keySpecs} />
-          </div>
         </div>
       </section>
 

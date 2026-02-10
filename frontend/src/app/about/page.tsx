@@ -256,7 +256,6 @@ export default async function AboutPage() {
         headline="Get in touch"
         subheadline="Tell us about your challenge. We'll outline how our team, methods, and data can help."
         primaryCta={{ label: 'Discuss a project', url: '/contact' }}
-        variant="dark"
       />
     </>
   );

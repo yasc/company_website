@@ -167,7 +167,6 @@ export default async function CareersPage() {
         headline="Don't see the right role?"
         subheadline="We're always interested in hearing from talented people. Send us your resume."
         primaryCta={{ label: 'Contact us', url: '/contact' }}
-        variant="dark"
       />
     </>
   );
