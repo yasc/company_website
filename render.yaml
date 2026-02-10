@@ -1,7 +1,7 @@
 services:
   # --- Next.js Frontend ---
   - type: web
-    name: ae-frontend
+    name: aeai-frontend
     runtime: node
     region: oregon
     rootDir: frontend
