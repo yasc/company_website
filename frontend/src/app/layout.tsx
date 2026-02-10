@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
-import { PalantirHeader } from "@/components/layout/PalantirHeader";
-import { PalantirFooter } from "@/components/layout/PalantirFooter";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 // Body font: Inter (Sans-serif for UI elements, body text)
@@ -16,7 +16,7 @@ const interTight = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700"],
 });
 
 // Mono font: JetBrains Mono (For data, charts, and technical elements)
@@ -57,11 +57,11 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <PalantirHeader />
+        <Header />
         <main id="main-content" className="flex-1 pt-16">
           {children}
         </main>
-        <PalantirFooter />
+        <Footer />
       </body>
     </html>
   );

@@ -24,47 +24,29 @@ interface Job {
 const fallbackJobs: Job[] = [
   {
     id: 1,
-    title: 'Senior Economist',
-    slug: 'senior-economist',
-    location: 'Washington, DC',
+    title: 'Data Analyst',
+    slug: 'data-analyst',
+    location: 'London',
     type: 'full_time',
-    department: 'Research',
+    department: 'Data Products',
     featured: true,
   },
   {
     id: 2,
-    title: 'Research Analyst',
-    slug: 'research-analyst',
-    location: 'New York, NY',
+    title: 'Data Engineer',
+    slug: 'data-engineer',
+    location: 'London',
     type: 'full_time',
-    department: 'Research',
+    department: 'Data Products',
     featured: true,
   },
   {
     id: 3,
-    title: 'Data Scientist',
-    slug: 'data-scientist',
-    location: 'Remote',
-    type: 'full_time',
-    department: 'Data Products',
-    featured: false,
-  },
-  {
-    id: 4,
-    title: 'Summer Research Intern',
-    slug: 'summer-research-intern',
-    location: 'Washington, DC',
-    type: 'internship',
-    department: 'Research',
-    featured: false,
-  },
-  {
-    id: 5,
-    title: 'Policy Fellow',
-    slug: 'policy-fellow',
-    location: 'Washington, DC',
+    title: 'Summer Research Fellow',
+    slug: 'summer-research-fellow',
+    location: 'London',
     type: 'fellowship',
-    department: 'Policy',
+    department: 'AEAI Lab',
     featured: false,
   },
 ];
@@ -89,7 +71,7 @@ export default async function CareersPage() {
   let jobs = fallbackJobs;
   let heroContent = {
     headline: 'Join Our Team',
-    subheadline: 'Build your career at the intersection of rigorous research and real-world impact. We\'re always looking for talented economists, analysts, and researchers.',
+    subheadline: 'Work at the intersection of academic economics and frontier AI. We are looking for talented data analysts and engineers to help build novel economic datasets.',
   };
 
   try {
@@ -144,7 +126,7 @@ export default async function CareersPage() {
                     <div>
                       <div className="flex flex-wrap items-center gap-3 mb-2">
                         <span
-                          className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${
+                          className={`inline-block px-3 py-1 text-sm font-medium rounded-full ${
                             typeColors[job.type]
                           }`}
                         >

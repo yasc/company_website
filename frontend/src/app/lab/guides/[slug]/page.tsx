@@ -303,7 +303,7 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
                 const lines = block.split('\n');
                 const code = lines.slice(1, -1).join('\n');
                 return (
-                  <pre key={i} className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                  <pre key={i} className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-base">
                     <code>{code}</code>
                   </pre>
                 );

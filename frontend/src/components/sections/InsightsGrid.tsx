@@ -18,7 +18,7 @@ export const InsightsGrid = () => {
   ];
 
   return (
-    <section className="w-full section-standard bg-section-alt">
+    <section className="w-full section-standard bg-white">
       <div className="container-wide">
         {/* Section Header */}
         <div className="flex justify-between items-baseline mb-12">
@@ -33,6 +33,7 @@ export const InsightsGrid = () => {
             <Link
               key={industry.name}
               href={industry.link}
+              aria-label={`Explore ${industry.name}`}
               className="enterprise-card group hover:border-slate-900 transition-colors duration-300 flex flex-col justify-between min-h-[160px]"
             >
               <div className="flex justify-end">

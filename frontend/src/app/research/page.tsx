@@ -1,6 +1,6 @@
 import { getPapers } from '@/lib/strapiClient';
 import { Container } from '@/components/ui/Container';
-import { Hero, CtaBand } from '@/components/sections';
+import { CtaBand } from '@/components/sections';
 import Link from 'next/link';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -25,55 +25,64 @@ interface Paper {
 const fallbackPapers: Paper[] = [
   {
     id: 1,
-    title: 'The Economic Impact of Climate Policy on Agricultural Markets',
-    slug: 'climate-policy-agriculture',
-    abstract: 'This paper examines the effects of climate regulation on agricultural commodity prices and farm incomes across different regions.',
-    status: 'published',
-    publicationVenue: 'Journal of Environmental Economics',
-    publicationDate: '2024-03-15',
-    authors: ['Dr. Sarah Chen', 'Prof. Michael Torres'],
+    title: 'AI-Generated Production Networks: Measurement and Applications to Global Trade',
+    slug: 'aipnet',
+    abstract: 'This paper leverages generative AI to build a network structure over 5,000 product nodes, where directed edges represent input-output relationships in production. We lay out a two-step build-prune approach using an ensemble of prompt-tuned generative AI classifications, document shifts in the network position of products and countries during the 21st century, and study production network spillovers using the 2017 blockade of Qatar.',
+    status: 'working_paper',
+    publicationDate: '2024-01-01',
+    authors: ['Peter Lambert', 'Thiemo Fetzer', 'Bennet Feld', 'Prashant Garg'],
     featured: true,
   },
   {
     id: 2,
-    title: 'Labor Market Dynamics in the Post-Pandemic Economy',
-    slug: 'labor-market-post-pandemic',
-    abstract: 'An analysis of structural changes in employment patterns and wage dynamics following the COVID-19 pandemic.',
-    status: 'published',
-    publicationVenue: 'American Economic Review',
-    publicationDate: '2024-01-20',
-    authors: ['Dr. James Wilson'],
+    title: 'Remote Work across Jobs, Companies, and Space',
+    slug: 'remote-work',
+    abstract: 'We examine more than 250 million job vacancy postings across five English-speaking countries to measure the pandemic-driven shift to remote work. Our state-of-the-art NLP framework achieves 99% accuracy in flagging postings that advertise remote work, greatly outperforming dictionary and other ML methods. From 2019 to early 2023, remote work postings rose more than three-fold in the US and by a factor of five or more in Australia, Canada, New Zealand and the UK.',
+    status: 'working_paper',
+    publicationVenue: 'NBER Working Paper',
+    publicationDate: '2023-01-01',
+    authors: ['Peter Lambert', 'Stephen Hansen', 'Nick Bloom', 'Steven Davis', 'Raffaella Sadun', 'Bledi Taska'],
     featured: true,
   },
   {
     id: 3,
-    title: 'Machine Learning Methods for Causal Inference in Economics',
-    slug: 'ml-causal-inference',
-    abstract: 'A methodological survey of machine learning approaches to causal inference, with applications to policy evaluation.',
+    title: 'Bad Bank, Bad Luck? Evidence from 1 Million Firm-Lender Relationships',
+    slug: 'bad-bank',
+    abstract: 'We deploy Big Data and LLM tools to digitise 36 million loan records, building a novel dataset on the credit relationships of 1.8 million US firms. Using 179 bank failures from 1990 to 2023, we find that firms banking with a subsequently failed institution are 6.7 percentage points more likely to fail themselves within five years, with surviving firms exhibiting 25% lower employment growth.',
     status: 'working_paper',
-    publicationDate: '2024-06-01',
-    authors: ['Dr. Emily Zhang', 'Dr. Robert Kim'],
-    featured: false,
+    publicationDate: '2024-01-01',
+    authors: ['Peter Lambert', 'Yannick Schindler'],
+    featured: true,
   },
   {
     id: 4,
-    title: 'The Distributional Effects of Monetary Policy',
-    slug: 'distributional-effects-monetary-policy',
-    abstract: 'How do interest rate changes affect different income groups? This paper provides new evidence using household-level data.',
-    status: 'policy_brief',
-    publicationDate: '2024-05-10',
-    authors: ['Dr. Sarah Chen'],
-    featured: false,
+    title: 'Machinery of Progress: Charting the Capabilities of Capital Equipment, 1998–2023',
+    slug: 'machinery-of-progress',
+    abstract: 'This paper charts technological progress embodied in capital equipment. We digitise archival administrative filings from 1998 to 2024 and extract 50 million capital equipment transactions from five large US states. We deploy an agentic AI measurement approach where multiple AI agents collaborate to build and validate the data, producing equipment-level characteristics including time-varying prices.',
+    status: 'working_paper',
+    publicationDate: '2025-01-01',
+    authors: ['Yannick Schindler', 'Peter Lambert'],
+    featured: true,
   },
   {
     id: 5,
-    title: 'Infrastructure Investment and Regional Economic Development',
-    slug: 'infrastructure-regional-development',
-    abstract: 'Examining the long-term economic effects of public infrastructure spending on regional growth and employment.',
+    title: 'The Macroeconomic Impact of Chronic Illness in the United Kingdom',
+    slug: 'chronic-illness-uk',
+    abstract: 'We quantify the macroeconomic consequences of chronic illness in the UK, combining health data with macroeconomic indicators to estimate the effects of disease burden on employment, output, and government finances.',
     status: 'published',
-    publicationVenue: 'Journal of Urban Economics',
-    publicationDate: '2023-11-05',
-    authors: ['Prof. Michael Torres', 'Dr. Amanda Lee'],
+    publicationVenue: 'Journal of the Economics of Ageing',
+    publicationDate: '2025-01-01',
+    authors: ['Yannick Schindler', 'Andrew Scott'],
+    featured: false,
+  },
+  {
+    id: 6,
+    title: 'Anatomy of Automation: CNC Machines and Industrial Robots in UK Manufacturing, 2005–2023',
+    slug: 'anatomy-of-automation',
+    abstract: 'We study the adoption and impact of CNC machines and industrial robots in UK manufacturing using novel granular data on automation equipment.',
+    status: 'working_paper',
+    publicationDate: '2025-01-01',
+    authors: ['Peter Lambert', 'Aniket Baksy', 'Daniel Chandler'],
     featured: false,
   },
 ];
@@ -118,13 +127,23 @@ export default async function ResearchPage() {
     console.log('Strapi not available, using fallback papers');
   }
 
+  const workingPaperCount = papers.filter(p => p.status === 'working_paper').length;
+  const publishedCount = papers.filter(p => p.status === 'published').length;
+
   return (
     <>
-      {/* Hero */}
-      <Hero
-        headline="Research"
-        subheadline="Our research spans labor economics, environmental policy, industrial organization, and applied econometrics. All publications are available for download."
-      />
+      {/* Editorial Hero */}
+      <section className="bg-white pt-20 lg:pt-32 pb-12 lg:pb-16">
+        <Container>
+          <p className="text-label mb-6">Research</p>
+          <h1 className="text-display max-w-4xl mb-8">
+            Novel AI-driven methods to measure economic activity
+          </h1>
+          <p className="text-body-lg max-w-2xl text-slate-600 mb-12">
+            From global trade networks to labour markets, capital investment, and credit relationships — we build the measurement tools that economics has been missing.
+          </p>
+        </Container>
+      </section>
 
       {/* Papers List */}
       <section className="py-16 lg:py-24">
@@ -138,7 +157,7 @@ export default async function ResearchPage() {
                 <div className="flex flex-wrap items-center gap-3 mb-3">
                   {/* Status Badge */}
                   <span
-                    className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${
+                    className={`inline-block px-3 py-1 text-sm font-medium rounded-full ${
                       statusColors[paper.status]
                     }`}
                   >

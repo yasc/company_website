@@ -30,8 +30,8 @@ export const PlatformsSection = () => {
   ];
 
   return (
-    <section className="bg-white section-standard px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-section-alt section-standard">
+      <div className="container-wide">
         <div className="flex justify-between items-end mb-12">
           <h2 className="section-header-enterprise">
             Data Products
@@ -46,6 +46,7 @@ export const PlatformsSection = () => {
             <Link
               key={product.name}
               href={product.link}
+              aria-label={`Explore ${product.name}${product.nameLine2 !== '\u00A0' ? ' ' + product.nameLine2 : ''} data product`}
               className="enterprise-card group hover:border-slate-900 transition-colors duration-300 flex flex-col"
             >
               {/* Technical Header */}
@@ -57,7 +58,7 @@ export const PlatformsSection = () => {
                 {product.name}<br />{product.nameLine2}
               </h3>
 
-              <p className="text-body text-sm leading-relaxed mb-6 flex-grow">
+              <p className="text-body mb-6 flex-grow">
                 {product.desc}
               </p>
 

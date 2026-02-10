@@ -146,7 +146,7 @@ export default async function PaperDetailPage({ params }: PaperPageProps) {
           <div className="max-w-4xl">
             {/* Status Badge */}
             <span
-              className={`inline-block px-3 py-1 text-xs font-medium rounded-full mb-4 ${
+              className={`inline-block px-3 py-1 text-sm font-medium rounded-full mb-4 ${
                 statusColors[paper.status]
               }`}
             >
@@ -201,7 +201,7 @@ export default async function PaperDetailPage({ params }: PaperPageProps) {
             <div className="space-y-4">
               {paper.keyFindings.map((finding: any, index: number) => (
                 <div key={index} className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  <div className="flex-shrink-0 w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-base">
                     {index + 1}
                   </div>
                   <p className="text-body text-gray-700 pt-1">
@@ -220,7 +220,7 @@ export default async function PaperDetailPage({ params }: PaperPageProps) {
           <Container size="narrow">
             <h2 className="text-h2 text-navy-800 mb-6">Citation</h2>
             <div className="bg-gray-100 rounded-lg p-6">
-              <p className="text-body text-gray-700 font-mono text-sm">
+              <p className="text-body text-gray-700 font-mono">
                 {paper.citationApa}
               </p>
             </div>

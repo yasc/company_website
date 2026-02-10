@@ -13,75 +13,86 @@ interface StrapiResponse {
 
 // Fallback job data
 const fallbackJobs: Record<string, any> = {
-  'senior-economist': {
-    title: 'Senior Economist',
-    location: 'Washington, DC',
-    type: 'full_time',
-    department: 'Research',
-    description: `We are seeking a Senior Economist to join our research team. In this role, you will lead complex economic analyses, mentor junior researchers, and contribute to our growing body of published work.
-
-The ideal candidate has a strong background in applied microeconomics, experience with causal inference methods, and excellent communication skills. You will work on a variety of projects spanning labor economics, industrial organization, and public policy.`,
-    requirements: `**Required Qualifications:**
-- PhD in Economics or related field
-- 5+ years of experience in applied economic research
-- Strong publication record in peer-reviewed journals
-- Proficiency in Stata, R, or Python
-- Excellent written and oral communication skills
-
-**Preferred Qualifications:**
-- Experience with large administrative datasets
-- Background in machine learning methods
-- Prior consulting or policy experience`,
-    applyUrl: 'mailto:careers@appliedeconomics.com?subject=Senior%20Economist%20Application',
-  },
-  'research-analyst': {
-    title: 'Research Analyst',
-    location: 'New York, NY',
-    type: 'full_time',
-    department: 'Research',
-    description: `We are looking for a Research Analyst to support our team's economic research projects. This is an excellent opportunity for someone with strong quantitative skills who wants to develop expertise in applied economics.
-
-You will work closely with senior economists on data collection, cleaning, and analysis. This role offers significant exposure to cutting-edge research methods and the opportunity to contribute to published work.`,
-    requirements: `**Required Qualifications:**
-- Master's degree in Economics, Statistics, or related quantitative field
-- Strong programming skills in Stata, R, or Python
-- Experience with econometric analysis
-- Excellent attention to detail
-
-**Preferred Qualifications:**
-- Experience with web scraping and data collection
-- Familiarity with SQL and database management
-- Interest in labor economics or industrial organization`,
-    applyUrl: 'mailto:careers@appliedeconomics.com?subject=Research%20Analyst%20Application',
-  },
-  'data-scientist': {
-    title: 'Data Scientist',
-    location: 'Remote',
+  'data-analyst': {
+    title: 'Data Analyst',
+    location: 'London',
     type: 'full_time',
     department: 'Data Products',
-    description: `Join our Data Products team as a Data Scientist. You will help build and maintain our suite of economic data products, develop new analytical tools, and support internal research with advanced data science techniques.
+    description: `We are looking for a Data Analyst to join our team building novel economic datasets from unconventional sources. You will work directly with our founders on data construction, validation, and analysis for both commercial data products and consulting engagements.
 
-This role combines traditional econometric methods with modern machine learning approaches. You will work at the intersection of economics and technology, helping to translate complex data into actionable insights.`,
+This role involves processing and analysing large-scale datasets — from millions of archival documents to hundreds of millions of job postings. You will develop and run data pipelines, perform quality assurance on AI-extracted data, conduct exploratory analysis, and produce visualisations and summary statistics for clients and research papers.
+
+This is an opportunity to work at the intersection of academic economics and frontier AI, producing datasets that are used by governments, central banks, and investors worldwide.`,
     requirements: `**Required Qualifications:**
-- Master's degree in Data Science, Statistics, Computer Science, or Economics
-- 3+ years of professional data science experience
-- Proficiency in Python and SQL
-- Experience with machine learning frameworks (scikit-learn, TensorFlow, or PyTorch)
+- Bachelor's or Master's degree in Economics, Statistics, Data Science, or a related quantitative field
+- Strong programming skills in Python or R
+- Experience with data manipulation and analysis (pandas, tidyverse, or similar)
+- Familiarity with SQL and working with large datasets
+- Strong attention to detail and commitment to data quality
 
 **Preferred Qualifications:**
-- Experience with cloud platforms (AWS, GCP)
-- Background in causal inference
-- Prior experience with economic data`,
-    applyUrl: 'mailto:careers@appliedeconomics.com?subject=Data%20Scientist%20Application',
+- Experience with NLP or text data
+- Familiarity with cloud computing (AWS, GCP, or Azure)
+- Knowledge of econometric methods
+- Interest in applied economics or policy research`,
+    applyUrl: 'mailto:team@appliedeconomics.ai?subject=Data%20Analyst%20Application',
+  },
+  'data-engineer': {
+    title: 'Data Engineer',
+    location: 'London',
+    type: 'full_time',
+    department: 'Data Products',
+    description: `We are hiring a Data Engineer to build and maintain the infrastructure behind our flagship data products. Our datasets are constructed from hundreds of millions of records using AI pipelines — and we need someone to make these pipelines robust, scalable, and reproducible.
+
+You will design data architectures, build ETL pipelines for processing large-scale unstructured data, deploy and monitor AI extraction workflows, and ensure our data products meet the quality and reliability standards expected by institutional clients. You will work closely with our economists and researchers to translate analytical requirements into production-grade data systems.
+
+Our current stack involves Python, cloud infrastructure, LLM APIs, and both structured and unstructured data stores. We value pragmatic engineering over theoretical perfection — systems that work reliably at scale.`,
+    requirements: `**Required Qualifications:**
+- Bachelor's or Master's degree in Computer Science, Data Engineering, or a related technical field
+- 2+ years of professional experience in data engineering or backend development
+- Strong Python skills and experience building data pipelines
+- Experience with cloud platforms (AWS, GCP, or Azure)
+- Familiarity with SQL and NoSQL databases
+
+**Preferred Qualifications:**
+- Experience with LLM APIs and AI/ML pipelines
+- Knowledge of containerisation (Docker) and orchestration tools
+- Experience processing unstructured data (text, PDFs, scanned documents)
+- Familiarity with data quality frameworks and monitoring
+- Interest in economics, social science, or policy`,
+    applyUrl: 'mailto:team@appliedeconomics.ai?subject=Data%20Engineer%20Application',
+  },
+  'summer-research-fellow': {
+    title: 'Summer Research Fellow',
+    location: 'London',
+    type: 'fellowship',
+    department: 'AEAI Lab',
+    description: `The AEAI Lab summer fellowship is an intensive research programme for early-career economists and data scientists who want to gain hands-on experience with frontier AI methods applied to economics research.
+
+Fellows work alongside our senior researchers on real data construction and analysis projects. Past projects have involved deploying large language models to extract structured data from archival documents, building classification pipelines for large-scale text data, and conducting causal inference analysis on novel datasets.
+
+The programme provides training in practical skills that are increasingly essential for applied economics research: LLM deployment, cloud computing, reproducible workflows, and working with unconventional data sources at scale.`,
+    requirements: `**Required Qualifications:**
+- Currently enrolled in or recently completed a Master's or PhD programme in Economics, Data Science, or a related quantitative field
+- Programming experience in Python or R
+- Strong interest in applied economics research
+- Intellectual curiosity and willingness to learn new tools
+
+**Preferred Qualifications:**
+- Experience with machine learning or NLP
+- Familiarity with cloud computing
+- Prior research experience
+- Interest in labour economics, trade, macro, or financial economics`,
+    applyUrl: 'mailto:team@appliedeconomics.ai?subject=Summer%20Fellowship%20Application',
   },
 };
 
 const genericFallback = {
   title: 'Open Position',
-  location: 'TBD',
+  location: 'London',
   type: 'full_time',
-  department: 'Various',
-  description: 'We are looking for talented individuals to join our team. Please contact us for more information about this position.',
+  department: 'Applied Economics AI',
+  description: 'We are looking for talented individuals to join our team. Please contact us at team@appliedeconomics.ai for more information about this position.',
   requirements: 'Requirements will be discussed during the application process.',
 };
 
@@ -150,14 +161,14 @@ export default async function JobDetailPage({ params }: JobPageProps) {
             {/* Badges */}
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <span
-                className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${
+                className={`inline-block px-3 py-1 text-sm font-medium rounded-full ${
                   typeColors[job.type]
                 }`}
               >
                 {typeLabels[job.type]}
               </span>
               {job.department && (
-                <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-navy-700 text-gray-300">
+                <span className="inline-block px-3 py-1 text-sm font-medium rounded-full bg-navy-700 text-gray-300">
                   {job.department}
                 </span>
               )}

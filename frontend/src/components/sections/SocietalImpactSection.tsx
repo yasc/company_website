@@ -11,50 +11,50 @@ interface Initiative {
 
 const initiatives: Initiative[] = [
   {
-    title: 'Climate Action',
-    description: 'Committed to net-zero emissions and helping organizations achieve their sustainability goals through data-driven insights.',
-    link: '/impact/climate'
+    title: 'Open-Access Data',
+    description: 'We release preview datasets for academic researchers and the public, enabling replication and extending the frontier of economic measurement.',
+    link: '/data'
   },
   {
-    title: 'Privacy & Civil Liberties',
-    description: 'Building technology that protects individual privacy while enabling institutions to leverage data responsibly.',
-    link: '/impact/privacy'
+    title: 'The AEAI Lab',
+    description: 'Our research lab at the LSE advances economic measurement through published research, open-source tools, and a summer fellowship for early-career researchers.',
+    link: '/lab'
   },
   {
-    title: 'Open Source Contributions',
-    description: 'Contributing to the global developer community with open source tools and frameworks.',
-    link: '/impact/opensource'
+    title: 'Guides & Training',
+    description: 'Publicly available resources for using advanced computational tools, cloud infrastructure, and generative AI in economics research.',
+    link: '/lab'
   },
   {
-    title: 'Education & Training',
-    description: 'Partnering with universities to train the next generation of data scientists and engineers.',
-    link: '/impact/education'
+    title: 'Summer Fellowship',
+    description: 'An annual programme training research fellows in cutting-edge AI and data methodologies for applied economics research.',
+    link: '/lab'
   }
 ];
 
 export const SocietalImpactSection: React.FC = () => {
   return (
-    <section className="section-standard bg-section-alt">
+    <section className="section-standard bg-white">
       <div className="container-wide">
         {/* Section Header */}
         <div className="flex justify-between items-baseline mb-12">
-          <h2 className="section-header-enterprise">Our Commitment to Society</h2>
-          <Link href="/sustainability" className="link-specs">
-            View Full Report
+          <h2 className="section-header-enterprise">Economic Research for the Public Good</h2>
+          <Link href="/lab" className="link-specs">
+            Explore the Lab
           </Link>
         </div>
-        
+
         <p className="text-body-lg leading-relaxed max-w-3xl mb-16">
-          Technology should be a force for good. We're committed to using our capabilities
-          to address humanity's greatest challenges.
+          Our research creates public value beyond our client work. We build open datasets, publish methodological guides, and train the next generation of applied economists.
         </p>
-        
-        {/* Initiatives Grid - 4 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+
+        {/* Initiatives Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {initiatives.map((initiative) => (
             <Link
               key={initiative.title}
               href={initiative.link}
+              aria-label={`Explore ${initiative.title} initiative`}
               className="enterprise-card flex flex-col justify-between min-h-[280px] group"
             >
               <div>
@@ -75,28 +75,27 @@ export const SocietalImpactSection: React.FC = () => {
             </Link>
           ))}
         </div>
-        
-        {/* Climate Pledge Banner - Minimal Enterprise Style */}
+
+        {/* Research Commitment Banner */}
         <div className="enterprise-card p-8 md:p-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             <div>
               <div className="flex items-center gap-4 mb-4">
-                <span className="text-metadata">Climate Pledge Signatory</span>
+                <span className="text-metadata">Research Commitment</span>
                 <span className="status-dot status-dot--active"></span>
               </div>
               <h3 className="text-h2 mb-3">
-                Net-Zero by 2040
+                Academic Roots, Real-World Impact
               </h3>
               <p className="text-body leading-relaxed max-w-xl">
-                We've committed to reaching net-zero carbon emissions by 2040,
-                10 years ahead of the Paris Agreement goals.
+                Founded by PhD economists from the London School of Economics, our research is published in academic journals and presented at central banks, government agencies, and leading universities worldwide.
               </p>
             </div>
             <Link
-              href="/sustainability"
+              href="/lab"
               className="btn-primary whitespace-nowrap"
             >
-              Read Sustainability Report
+              Visit the Lab
             </Link>
           </div>
         </div>

@@ -7,22 +7,9 @@ import { Hero } from '@/components/sections';
 
 const offices = [
   {
-    city: 'Washington, DC',
-    address: '1200 K Street NW, Suite 800',
-    phone: '+1 (202) 555-0100',
-    email: 'dc@appliedeconomics.com',
-  },
-  {
-    city: 'New York, NY',
-    address: '350 Fifth Avenue, Suite 4500',
-    phone: '+1 (212) 555-0100',
-    email: 'ny@appliedeconomics.com',
-  },
-  {
-    city: 'San Francisco, CA',
-    address: '101 California Street, Suite 2800',
-    phone: '+1 (415) 555-0100',
-    email: 'sf@appliedeconomics.com',
+    city: 'London',
+    address: '7 Bell Yard, London, WC2A 2JR',
+    email: 'team@appliedeconomics.ai',
   },
 ];
 
@@ -31,7 +18,6 @@ const inquiryTypes = [
   { value: 'consulting', label: 'Consulting Services' },
   { value: 'research', label: 'Research Partnership' },
   { value: 'media', label: 'Media Inquiry' },
-  { value: 'careers', label: 'Career Opportunities' },
 ];
 
 export default function ContactPage() {
@@ -239,14 +225,6 @@ export default function ContactPage() {
                       <p>{office.address}</p>
                       <p>
                         <a
-                          href={`tel:${office.phone}`}
-                          className="hover:text-teal-600 transition-colors"
-                        >
-                          {office.phone}
-                        </a>
-                      </p>
-                      <p>
-                        <a
                           href={`mailto:${office.email}`}
                           className="hover:text-teal-600 transition-colors"
                         >
@@ -261,20 +239,12 @@ export default function ContactPage() {
               {/* General Contact */}
               <div className="mt-12 p-6 bg-gray-50 rounded-lg">
                 <h3 className="text-h4 text-navy-800 mb-4">General Inquiries</h3>
-                <p className="text-body text-gray-600 mb-2">
-                  <a
-                    href="mailto:info@appliedeconomics.com"
-                    className="hover:text-teal-600 transition-colors"
-                  >
-                    info@appliedeconomics.com
-                  </a>
-                </p>
                 <p className="text-body text-gray-600">
                   <a
-                    href="tel:+12025550100"
+                    href="mailto:team@appliedeconomics.ai"
                     className="hover:text-teal-600 transition-colors"
                   >
-                    +1 (202) 555-0100
+                    team@appliedeconomics.ai
                   </a>
                 </p>
               </div>

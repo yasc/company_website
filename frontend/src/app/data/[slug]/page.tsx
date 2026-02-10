@@ -13,61 +13,74 @@ interface StrapiResponse {
 
 // Fallback dataset data
 const fallbackDatasets: Record<string, any> = {
-  'us-labor-market-indicators': {
-    title: 'US Labor Market Indicators',
-    description: 'Comprehensive monthly indicators of US labor market conditions including employment, wages, and job openings across industries and regions.',
-    accessType: 'open',
-    coverageTimePeriod: '2000-present',
-    coverageGeography: 'United States (state-level)',
-    granularity: 'Monthly, State × Industry',
-    updateFrequency: 'Monthly',
-    methodology: `This dataset combines data from multiple official sources including the Bureau of Labor Statistics (BLS), Current Employment Statistics (CES), and Job Openings and Labor Turnover Survey (JOLTS).
-
-We apply seasonal adjustment using X-13ARIMA-SEATS and harmonize industry classifications across time to ensure consistent time series.
-
-The dataset includes employment levels, employment changes, average hourly earnings, average weekly hours, job openings, hires, and separations.`,
-    license: 'Creative Commons Attribution 4.0 International (CC BY 4.0)',
-    downloadLink: '#',
-  },
-  'global-trade-flow-database': {
-    title: 'Global Trade Flow Database',
-    description: 'Bilateral trade flows between countries covering goods and services, with harmonized product classifications and value/volume measures.',
+  'aipnet': {
+    title: 'AIPNET — AI-Generated Production Network',
+    description: 'A generative AI map of global production, connecting 5,000+ products through their input-output relationships in a directed network.',
     accessType: 'commercial',
-    coverageTimePeriod: '1990-present',
-    coverageGeography: 'Global (190+ countries)',
-    granularity: 'Annual, Country-pair × HS6 Product',
+    coverageTimePeriod: 'Updated annually',
+    coverageGeography: 'Global (5,000+ product classifications)',
+    granularity: 'Product-pair level, directed edges',
     updateFrequency: 'Annual',
-    methodology: `The Global Trade Flow Database combines data from UN Comtrade, Eurostat, and national statistical agencies. We apply mirror trade imputation to fill gaps and reconcile discrepancies between reported imports and exports.
+    methodology: `AIPNET uses a two-step "build-prune" approach with an ensemble of prompt-tuned generative AI classifications to construct a production network over 5,000+ product nodes.
 
-Product classifications are harmonized to HS 2017 across all years. Value data is reported in current USD and constant 2015 USD.
+In the "build" step, generative AI provides an initial distribution of edge predictions representing input-output relationships between products. The "prune" step then re-evaluates all edges to improve precision. The resulting network captures directed relationships — which products serve as inputs to which other products in the global production process.
 
-The database includes bilateral trade values, trade quantities (where available), estimated tariff rates, and distance and common-language indicators.`,
-    license: 'Commercial license required. Contact us for pricing.',
+The dataset enables research on production network spillovers, global trade structure, on-shoring dynamics, industrial policy, and other shifts in the global economy. We document shifts in the network position of products and countries during the 21st century, and validate the network using the natural experiment presented by the 2017 blockade of Qatar.`,
+    license: 'Commercial license. Public preview dataset available for academic research. Contact us for full licensing.',
   },
-  'housing-market-index': {
-    title: 'Housing Market Index',
-    description: 'Metropolitan-level housing price indices, inventory, and market activity indicators for major US markets.',
-    accessType: 'open',
-    coverageTimePeriod: '2010-present',
-    coverageGeography: 'United States (metro areas)',
-    granularity: 'Quarterly, Metropolitan Statistical Area',
-    updateFrequency: 'Quarterly',
-    methodology: `Our Housing Market Index combines data from the Federal Housing Finance Agency (FHFA), Zillow, and Census Bureau sources.
+  'wfh-map': {
+    title: 'Work from Home Map',
+    description: 'The definitive measurement of remote and hybrid work, built from 250M+ job vacancy postings across five English-speaking countries using state-of-the-art NLP.',
+    accessType: 'commercial',
+    coverageTimePeriod: '2019–present',
+    coverageGeography: 'US, UK, Canada, Australia, New Zealand',
+    granularity: 'City × Industry × Occupation × Company level',
+    updateFrequency: 'Ongoing',
+    methodology: `The Work from Home Map analyses more than 250 million job vacancy postings across five English-speaking countries. Our state-of-the-art language-processing framework was fit, tested, and refined using 30,000 human classifications.
 
-The price index uses a repeat-sales methodology to control for housing quality changes. We also calculate inventory metrics including months of supply, days on market, and listing-to-sale price ratios.
+The classifier achieves 99% accuracy in flagging job postings that advertise hybrid or fully remote work, greatly outperforming dictionary methods and other machine learning approaches.
 
-All metropolitan areas with populations over 500,000 are included.`,
-    license: 'Creative Commons Attribution 4.0 International (CC BY 4.0)',
-    downloadLink: '#',
+The data reveals that from 2019 to early 2023, the share of postings offering remote work rose more than three-fold in the US and by a factor of five or more in Australia, Canada, New Zealand, and the UK. These developments are highly non-uniform across and within cities, industries, occupations, and companies.`,
+    license: 'Commercial license. Contact us for pricing and academic access.',
+  },
+  'machinery-of-progress': {
+    title: 'Machinery of Progress',
+    description: 'A highly granular measurement of capital equipment transactions across the US economy — 50 million transactions extracted from administrative filings using agentic AI.',
+    accessType: 'commercial',
+    coverageTimePeriod: '1998–2024',
+    coverageGeography: 'United States (5 large states)',
+    granularity: 'Equipment-level (make, model, characteristics, prices)',
+    updateFrequency: 'Annual',
+    methodology: `The Machinery of Progress dataset is constructed by digitising archival administrative filings from 1998 to 2024 and extracting 50 million capital equipment transactions from five large US states.
+
+We deploy an "agentic AI" measurement approach, where multiple AI agents collaborate to build and validate the data. Specialised agents handle document parsing, entity extraction, classification, and quality checking in a coordinated pipeline.
+
+The final dataset contains the make and model of millions of pieces of equipment — IT equipment, heavy machinery, agricultural tools, vehicles, robotics, CNC machines, and more — along with equipment-level characteristics including time-varying prices. This enables research on technological progress, innovation diffusion, and capital investment patterns at unprecedented granularity.`,
+    license: 'Commercial license. Public preview dataset available soon. Contact us for licensing.',
+  },
+  'bad-bank': {
+    title: 'Bad Bank, Bad Luck',
+    description: 'A novel dataset on the credit relationships of 1.8 million US firms, built by digitising and standardising 40M+ archival loan documents using LLM tools.',
+    accessType: 'commercial',
+    coverageTimePeriod: '2000–present',
+    coverageGeography: 'United States',
+    granularity: 'Firm × Lender relationship level',
+    updateFrequency: 'Annual',
+    methodology: `We deploy Big Data and Large Language Model tools to digitise and standardise over 40 million archival loan documents containing detailed information on lending relationships between firms and their creditors in the United States.
+
+The resulting dataset covers 1.8 million US firms, predominantly composed of small and medium-sized enterprises (SMEs) — a firm size segment that has been historically difficult to study due to data limitations.
+
+The data includes detailed information on credit relationships, enabling research on the real effects of financial shocks on firm performance. Our analysis of 179 bank failures from 1990 to 2023 reveals that firms with a credit relationship to a failed bank are 6.7 percentage points (44.3%) more likely to fail themselves within five years, with surviving firms exhibiting 25% lower employment growth.`,
+    license: 'Commercial license. Contact us for pricing and academic access.',
   },
 };
 
 const genericFallback = {
   title: 'Dataset',
-  description: 'Economic dataset providing valuable insights for research and analysis.',
-  accessType: 'open',
+  description: 'Novel economic dataset built using frontier AI methods.',
+  accessType: 'commercial',
   methodology: 'Methodology documentation coming soon.',
-  license: 'Please contact us for licensing information.',
+  license: 'Contact us at team@appliedeconomics.ai for licensing information.',
 };
 
 const accessTypeLabels: Record<string, string> = {
@@ -132,7 +145,7 @@ export default async function DatasetDetailPage({ params }: DatasetPageProps) {
           <div className="max-w-4xl">
             {/* Access Badge */}
             <span
-              className={`inline-block px-3 py-1 text-xs font-medium rounded-full mb-4 ${
+              className={`inline-block px-3 py-1 text-sm font-medium rounded-full mb-4 ${
                 accessTypeColors[dataset.accessType]
               }`}
             >

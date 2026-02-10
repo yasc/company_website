@@ -3,33 +3,36 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const PalantirHero = () => {
+export const HomeHero = () => {
   return (
     <section className="hero-split-layout">
       {/* Left Column: Content */}
       <div className="hero-content px-8 md:px-12 lg:pl-32 flex flex-col justify-center animate-slide-up-fade">
         <h1 className="text-display mb-6 leading-[1.1] text-charcoal">
-          Precision Economics for a <br /> Complex World
+          Economic Intelligence <br /> Built on Evidence
         </h1>
         <p className="text-body-lg max-w-xl mb-10 leading-relaxed">
-          Algorithmic strategy for the Fortune 500.
+          We combine rigorous economics with frontier AI to deliver consulting, datasets, and policy analysis for governments, investors, and enterprises.
         </p>
-        <div className="cta-group flex gap-4">
-          <Link href="/services" className="btn-primary">
+        <div className="flex items-center gap-6">
+          <Link href="/services" className="btn-primary inline-flex items-center leading-none">
             Our Services
+          </Link>
+          <Link href="/data" className="btn-primary inline-flex items-center leading-none">
+            Explore Our Data
           </Link>
         </div>
       </div>
 
       {/* Right Column: Video Visual */}
       <div className="hero-visual-container opacity-0 animate-slide-up-fade delay-200">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           preload="auto"
-          poster="/assets/hero-poster.jpg" 
+          poster="/assets/hero-poster.jpg"
           className="hero-video"
           aria-hidden="true"
         >
