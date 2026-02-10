@@ -59,7 +59,7 @@ The final dataset contains the make and model of millions of pieces of equipment
     license: 'Commercial license. Public preview dataset available soon. Contact us for licensing.',
   },
   'bad-bank': {
-    title: 'Bad Bank, Bad Luck',
+    title: 'US Firm-Lender Credit Map',
     description: 'A novel dataset on the credit relationships of 1.8 million US firms, built by digitising and standardising 40M+ archival loan documents using LLM tools.',
     accessType: 'commercial',
     coverageTimePeriod: '2000–present',
@@ -140,12 +140,12 @@ export default async function DatasetDetailPage({ params }: DatasetPageProps) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy-900 dark-bg py-16 lg:py-24">
+      <section className="bg-charcoal pt-24 lg:pt-32 pb-16 lg:pb-24">
         <Container>
           <div className="max-w-4xl">
             {/* Access Badge */}
             <span
-              className={`inline-block px-3 py-1 text-sm font-medium rounded-full mb-4 ${
+              className={`inline-block px-3 py-1 text-sm font-medium rounded-full mb-6 ${
                 accessTypeColors[dataset.accessType]
               }`}
             >
@@ -153,10 +153,10 @@ export default async function DatasetDetailPage({ params }: DatasetPageProps) {
             </span>
 
             <h1 className="text-display text-white mb-6">{dataset.title}</h1>
-            <p className="text-body-large text-gray-300">{dataset.description}</p>
+            <p className="text-body-lg text-slate-400">{dataset.description}</p>
 
             {/* Action button */}
-            <div className="mt-8">
+            <div className="mt-10">
               {isOpen && dataset.downloadLink ? (
                 <a href={dataset.downloadLink}>
                   <Button variant="primary" size="lg">
@@ -178,39 +178,31 @@ export default async function DatasetDetailPage({ params }: DatasetPageProps) {
       {/* Data Specifications */}
       <section className="py-16 lg:py-24">
         <Container>
-          <h2 className="text-h2 text-navy-800 mb-8">Data Specifications</h2>
-          
+          <h2 className="text-h2 text-charcoal mb-8">Data Specifications</h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {dataset.coverageTimePeriod && (
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-caption uppercase tracking-wider text-gray-500 mb-2">
-                  Time Coverage
-                </h3>
-                <p className="text-h4 text-navy-800">{dataset.coverageTimePeriod}</p>
+              <div className="bg-slate-50 border border-slate-200 p-6">
+                <h3 className="text-label mb-2">Time Coverage</h3>
+                <p className="text-h3">{dataset.coverageTimePeriod}</p>
               </div>
             )}
             {dataset.coverageGeography && (
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-caption uppercase tracking-wider text-gray-500 mb-2">
-                  Geographic Coverage
-                </h3>
-                <p className="text-h4 text-navy-800">{dataset.coverageGeography}</p>
+              <div className="bg-slate-50 border border-slate-200 p-6">
+                <h3 className="text-label mb-2">Geographic Coverage</h3>
+                <p className="text-h3">{dataset.coverageGeography}</p>
               </div>
             )}
             {dataset.granularity && (
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-caption uppercase tracking-wider text-gray-500 mb-2">
-                  Granularity
-                </h3>
-                <p className="text-h4 text-navy-800">{dataset.granularity}</p>
+              <div className="bg-slate-50 border border-slate-200 p-6">
+                <h3 className="text-label mb-2">Granularity</h3>
+                <p className="text-h3">{dataset.granularity}</p>
               </div>
             )}
             {dataset.updateFrequency && (
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-caption uppercase tracking-wider text-gray-500 mb-2">
-                  Update Frequency
-                </h3>
-                <p className="text-h4 text-navy-800">{dataset.updateFrequency}</p>
+              <div className="bg-slate-50 border border-slate-200 p-6">
+                <h3 className="text-label mb-2">Update Frequency</h3>
+                <p className="text-h3">{dataset.updateFrequency}</p>
               </div>
             )}
           </div>
@@ -219,7 +211,7 @@ export default async function DatasetDetailPage({ params }: DatasetPageProps) {
 
       {/* Methodology */}
       {dataset.methodology && (
-        <ContentBlock title="Methodology" background="gray">
+        <ContentBlock title="Methodology" background="gray" size="default">
           {dataset.methodology.split('\n\n').map((paragraph: string, i: number) => (
             <p key={i}>{paragraph}</p>
           ))}
@@ -229,20 +221,20 @@ export default async function DatasetDetailPage({ params }: DatasetPageProps) {
       {/* License */}
       {dataset.license && (
         <section className="py-16 lg:py-24">
-          <Container size="narrow">
-            <h2 className="text-h2 text-navy-800 mb-6">License & Terms</h2>
-            <div className="bg-gray-100 rounded-lg p-6">
-              <p className="text-body text-gray-700">{dataset.license}</p>
+          <Container>
+            <h2 className="text-h2 text-charcoal mb-6">License & Terms</h2>
+            <div className="bg-slate-50 border border-slate-200 p-8">
+              <p className="text-body-lg">{dataset.license}</p>
             </div>
           </Container>
         </section>
       )}
 
       {/* Back link */}
-      <section className="py-8 bg-gray-50">
+      <section className="py-10 bg-slate-50">
         <Container>
-          <Link href="/data">
-            <Button variant="ghost">← Back to all datasets</Button>
+          <Link href="/data" className="link-explore text-body-lg">
+            ← Back to all datasets
           </Link>
         </Container>
       </section>

@@ -6,6 +6,7 @@ interface ContentBlockProps {
   children: ReactNode;
   background?: 'white' | 'gray';
   id?: string;
+  size?: 'narrow' | 'default' | 'wide';
 }
 
 export function ContentBlock({
@@ -13,6 +14,7 @@ export function ContentBlock({
   children,
   background = 'white',
   id,
+  size = 'narrow',
 }: ContentBlockProps) {
   return (
     <section
@@ -21,11 +23,11 @@ export function ContentBlock({
         background === 'gray' ? 'bg-gray-50' : 'bg-white'
       }`}
     >
-      <Container size="narrow">
+      <Container size={size}>
         {title && (
-          <h2 className="text-h2 text-navy-800 mb-8">{title}</h2>
+          <h2 className="text-h2 text-charcoal mb-8">{title}</h2>
         )}
-        <div className="max-w-none text-body space-y-6">
+        <div className="max-w-none text-body-lg space-y-6">
           {children}
         </div>
       </Container>

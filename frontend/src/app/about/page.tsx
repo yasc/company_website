@@ -22,7 +22,7 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Peter Lambert',
+    name: 'Dr. Peter Lambert',
     title: 'Director and Co-Founder',
     bio: 'Peter is an economist studying organisations, industries, jobs, and economic growth. His research leverages large novel datasets — text, transactions, networks, images — and frontier AI tools to study behaviour within and across organisations. He holds a PhD in Economics from the London School of Economics.',
     photoUrl: '/images/team/peter_john_lambert.jpeg.webp',
@@ -45,7 +45,7 @@ const teamMembers: TeamMember[] = [
     ],
   },
   {
-    name: 'Yannick Schindler',
+    name: 'Dr. Yannick Schindler',
     title: 'Co-Founder',
     bio: 'Yannick is a macroeconomist whose research spans technological change, health economics, and financial markets. He deploys Big Data and AI tools to build novel measurements of the economy from administrative and archival sources. He holds a PhD in Economics from the London School of Economics and previously held positions at Princeton University and the European Central Bank.',
     photoUrl: '/images/team/yannick_schindler.webp',
@@ -185,7 +185,7 @@ export default async function AboutPage() {
                     />
                   </div>
                   <h3 className="text-h3 text-charcoal">{member.name}</h3>
-                  <p className="text-metadata text-teal mt-1 mb-4">{member.title}</p>
+                  <p className="text-body text-teal mt-1 mb-4">{member.title}</p>
                   <div className="flex flex-wrap gap-2 mt-3">
                     {member.affiliations.map((aff) => (
                       <span

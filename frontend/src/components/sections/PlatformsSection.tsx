@@ -22,8 +22,8 @@ export const PlatformsSection = () => {
       link: '/data/machinery-of-progress'
     },
     {
-      name: 'Bad Bank,',
-      nameLine2: 'Bad Luck',
+      name: 'US Firm-Lender',
+      nameLine2: 'Credit Map',
       desc: 'The hidden history of American credit, reconstructed from 40M+ archival loan documents.',
       link: '/data/bad-bank'
     },

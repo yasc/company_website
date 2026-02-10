@@ -59,7 +59,7 @@ const fallbackDatasets: Dataset[] = [
   },
   {
     id: 4,
-    title: 'Bad Bank, Bad Luck',
+    title: 'US Firm-Lender Credit Map',
     slug: 'bad-bank',
     description: 'A novel dataset on the credit relationships of 1.8 million US firms, predominantly small and medium-sized enterprises. Built by digitising and standardising 40M+ archival loan documents using LLM tools.',
     accessType: 'commercial',

@@ -239,7 +239,7 @@ export const services: Service[] = [
         slug: 'aipnet',
       },
       {
-        name: 'Bad Bank, Bad Luck',
+        name: 'US Firm-Lender Credit Map',
         description: 'The hidden history of American credit, reconstructed from 40M+ archival loan documents.',
         slug: 'bad-bank',
       },
