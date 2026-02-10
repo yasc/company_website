@@ -8,8 +8,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company — logo element, not a column header */}
           <div>
-            <Link href="/" className="text-xl font-display font-semibold tracking-tight text-[#111827] block mb-4">
-              Applied Economics
+            <Link href="/" className="block mb-4">
+              <img
+                src="/assets/logo-black.svg"
+                alt="Applied Economics"
+                className="h-8"
+              />
             </Link>
             <p className="text-slate-500 text-base leading-relaxed">
               Precision economics for a complex world.

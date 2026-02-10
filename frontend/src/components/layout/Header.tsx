@@ -83,8 +83,12 @@ export const Header = () => {
       <nav className="max-w-[1440px] mx-auto px-8">
         <div className="flex items-center justify-between min-h-[80px] py-5">
           {/* 1. Logo (Left) */}
-          <Link href="/" className="flex-shrink-0 text-[32px] font-display font-bold text-charcoal tracking-tight uppercase group">
-            Applied <span className="text-slate-500 group-hover:text-charcoal transition-colors">Economics</span>
+          <Link href="/" className="flex-shrink-0">
+            <img
+              src="/assets/logo-black.svg"
+              alt="Applied Economics"
+              className="h-10"
+            />
           </Link>
 
           {/* 2. Nav Links (Center) */}
