@@ -70,7 +70,7 @@ const teamMembers: TeamMember[] = [
 
 const fallbackHero = {
   headline: 'About Applied Economics AI',
-  subheadline: 'PhD economists building novel datasets and economic intelligence from unstructured data using frontier AI.',
+  subheadline: 'We build novel datasets and economic intelligence from unstructured data using frontier AI.',
 };
 
 const fallbackStats = [

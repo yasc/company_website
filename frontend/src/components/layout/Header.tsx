@@ -83,23 +83,23 @@ export const Header = () => {
       <nav className="max-w-[1440px] mx-auto px-8">
         <div className="flex items-center justify-between min-h-[80px] py-5">
           {/* 1. Logo (Left) */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0 flex items-center">
             <img
               src="/assets/logo-black.svg"
               alt="Applied Economics"
-              className="h-10"
+              className="h-18 block translate-y-0.5"
             />
           </Link>
 
           {/* 2. Nav Links (Center) */}
-          <div className="hidden md:flex items-center justify-center gap-8 flex-1">
+          <div className="hidden md:flex items-center justify-center gap-6 flex-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-[26px] font-medium transition-colors duration-200 ${
+                className={`text-[32px] font-normal transition-colors duration-200 ${
                   pathname.startsWith(link.href)
-                    ? 'text-black font-semibold'
+                    ? 'text-black font-medium'
                     : 'text-black hover:text-black'
                 }`}
               >
@@ -109,10 +109,10 @@ export const Header = () => {
           </div>
 
           {/* 3. "Get in Touch" Button (Right) */}
-          <div className="hidden md:block flex-shrink-0">
+          <div className="hidden md:flex items-center flex-shrink-0">
             <Link
               href="/contact"
-              className="btn-outline px-6 py-3 font-semibold uppercase tracking-wider border-slate-300 hover:border-charcoal hover:text-charcoal"
+              className="btn-outline px-6 py-3 font-bold uppercase tracking-wider border-2 border-slate-400 hover:border-charcoal hover:text-charcoal"
             >
               Get in Touch
             </Link>
