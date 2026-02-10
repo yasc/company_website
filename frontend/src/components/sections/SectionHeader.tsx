@@ -20,7 +20,7 @@ export function SectionHeader({
       <h2 className="text-h2 text-navy-800 mb-4">{title}</h2>
       {subtitle && (
         <p
-          className={`text-body-large text-gray-500 ${
+          className={`text-body-lg text-gray-500 ${
             align === 'left' ? 'max-w-2xl' : 'max-w-2xl mx-auto'
           }`}
         >

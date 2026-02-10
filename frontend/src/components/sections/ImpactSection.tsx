@@ -22,7 +22,7 @@ export const ImpactSection = () => {
                 <span className="text-metadata">{stat.label}</span>
                 <span className="status-dot"></span>
               </div>
-              <span className="font-mono text-4xl md:text-5xl font-semibold text-[#111827]">
+              <span className="font-mono text-3xl md:text-4xl font-semibold text-[#111827]">
                 {stat.value}
               </span>
               <span className="text-label mt-auto pt-4 normal-case tracking-normal">

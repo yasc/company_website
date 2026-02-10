@@ -110,7 +110,7 @@ export default async function DataPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Text — Left */}
             <div>
-              <p className="text-label mb-6">Data Products</p>
+              <p className="font-mono text-[16px] uppercase tracking-widest text-teal mb-6">Data Products</p>
               <h1 className="text-h1 mb-6">
                 Datasets built at a scale traditional statistics cannot reach
               </h1>
@@ -122,19 +122,19 @@ export default async function DataPage() {
             {/* Key Stats — Right */}
             <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:pt-4">
               <div>
-                <span className="block font-mono text-4xl lg:text-5xl font-semibold text-teal tracking-tight">250M+</span>
+                <span className="block font-mono text-3xl md:text-4xl font-semibold text-teal tracking-tight">250M+</span>
                 <span className="text-label mt-2 block">Records processed</span>
               </div>
               <div>
-                <span className="block font-mono text-4xl lg:text-5xl font-semibold text-teal tracking-tight">5,000+</span>
+                <span className="block font-mono text-3xl md:text-4xl font-semibold text-teal tracking-tight">5,000+</span>
                 <span className="text-label mt-2 block">Product nodes</span>
               </div>
               <div>
-                <span className="block font-mono text-4xl lg:text-5xl font-semibold text-teal tracking-tight">1.8M</span>
+                <span className="block font-mono text-3xl md:text-4xl font-semibold text-teal tracking-tight">1.8M</span>
                 <span className="text-label mt-2 block">Firms mapped</span>
               </div>
               <div>
-                <span className="block font-mono text-4xl lg:text-5xl font-semibold text-teal tracking-tight">5</span>
+                <span className="block font-mono text-3xl md:text-4xl font-semibold text-teal tracking-tight">5</span>
                 <span className="text-label mt-2 block">Countries covered</span>
               </div>
             </div>
@@ -163,7 +163,7 @@ export default async function DataPage() {
                       {accessTypeLabels[dataset.accessType]}
                     </span>
                     {dataset.updateFrequency && (
-                      <span className="text-small text-gray-500">
+                      <span className="text-sm text-gray-500">
                         Updated {dataset.updateFrequency}
                       </span>
                     )}
@@ -173,7 +173,7 @@ export default async function DataPage() {
                     {dataset.description}
                   </CardDescription>
                   {(dataset.coverageTimePeriod || dataset.coverageGeography) && (
-                    <div className="mt-4 flex flex-wrap gap-4 text-small text-gray-500">
+                    <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-500">
                       {dataset.coverageTimePeriod && (
                         <span>{dataset.coverageTimePeriod}</span>
                       )}

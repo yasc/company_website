@@ -31,7 +31,7 @@ export function EngagementHighlight({
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {metrics.map((metric, index) => (
               <div key={index}>
-                <dd className="font-mono text-[40px] font-semibold tracking-tight text-[#111827] leading-none">
+                <dd className="font-mono text-3xl md:text-4xl font-semibold tracking-tight text-[#111827] leading-none">
                   {metric.value}
                 </dd>
                 <dt className="text-metadata mt-1">{metric.label}</dt>

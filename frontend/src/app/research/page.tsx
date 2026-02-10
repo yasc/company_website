@@ -135,8 +135,8 @@ export default async function ResearchPage() {
       {/* Editorial Hero */}
       <section className="bg-white pt-20 lg:pt-32 pb-12 lg:pb-16">
         <Container>
-          <p className="text-label mb-6">Research</p>
-          <h1 className="text-display max-w-4xl mb-8">
+          <p className="font-mono text-[16px] uppercase tracking-widest text-teal mb-6">Research</p>
+          <h1 className="text-h1 max-w-4xl mb-8">
             Novel AI-driven methods to measure economic activity
           </h1>
           <p className="text-body-lg max-w-2xl text-slate-600 mb-12">
@@ -166,14 +166,14 @@ export default async function ResearchPage() {
 
                   {/* Date */}
                   {paper.publicationDate && (
-                    <span className="text-small text-gray-500">
+                    <span className="text-sm text-gray-500">
                       {formatDate(paper.publicationDate)}
                     </span>
                   )}
 
                   {/* Venue */}
                   {paper.publicationVenue && (
-                    <span className="text-small text-gray-500">
+                    <span className="text-sm text-gray-500">
                       • {paper.publicationVenue}
                     </span>
                   )}
@@ -188,7 +188,7 @@ export default async function ResearchPage() {
 
                 {/* Authors */}
                 {paper.authors && paper.authors.length > 0 && (
-                  <p className="text-small text-gray-600 mb-3">
+                  <p className="text-sm text-gray-600 mb-3">
                     {paper.authors.join(', ')}
                   </p>
                 )}
@@ -203,7 +203,7 @@ export default async function ResearchPage() {
 
                 <Link
                   href={`/research/${paper.slug}`}
-                  className="inline-block mt-4 text-small font-medium text-teal-600 hover:text-teal-700"
+                  className="inline-block mt-4 text-sm font-medium text-teal-600 hover:text-teal-700"
                 >
                   Read more →
                 </Link>

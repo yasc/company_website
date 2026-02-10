@@ -63,7 +63,7 @@ export const services: Service[] = [
     summary: 'Bespoke economic analysis for strategic, policy, and investment decisions. From macroeconomic forecasting to national accounts methodology, our work is built on evidence and academic rigour.',
     proofPoint: 'Advised G20 national statistics offices on AI adoption strategy',
     headline: 'Bespoke Economic Analysis for High-Stakes Decisions',
-    introduction: 'We provide board-level economic advisory for governments, statistical agencies, central banks, and institutional investors. Our team combines PhD-level economic training with hands-on experience building and deploying analytical tools at scale.',
+    introduction: 'We provide board-level economic advisory for governments, statistical agencies, central banks, and institutional investors. Our team combines rigorous economic research with hands-on experience building and deploying analytical tools at scale.',
     keySpecs: [
       { label: 'MACRO FORECASTING', value: 'DSGE Models' },
       { label: 'NATIONAL ACCOUNTS', value: 'Statistical Methods' },

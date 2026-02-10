@@ -2,21 +2,12 @@
 
 import { useState } from 'react';
 import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
-import { Hero } from '@/components/sections';
-
-const offices = [
-  {
-    city: 'London',
-    address: '7 Bell Yard, London, WC2A 2JR',
-    email: 'team@appliedeconomics.ai',
-  },
-];
 
 const inquiryTypes = [
   { value: 'general', label: 'General Inquiry' },
   { value: 'consulting', label: 'Consulting Services' },
   { value: 'research', label: 'Research Partnership' },
+  { value: 'data', label: 'Data Licensing' },
   { value: 'media', label: 'Media Inquiry' },
 ];
 
@@ -34,13 +25,8 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Log form data to console (for now)
     console.log('Form submitted:', formData);
-
-    // Simulate submission delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
-
     setIsSubmitting(false);
     setSubmitted(true);
   };
@@ -57,24 +43,31 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <Hero
-        headline="Get in Touch"
-        subheadline="Whether you have a question about our services, research, or career opportunities, we'd love to hear from you."
-      />
+      <section className="bg-white pt-24 lg:pt-36 pb-16 lg:pb-24">
+        <Container>
+          <p className="font-mono text-[16px] uppercase tracking-widest text-teal mb-6">Contact</p>
+          <h1 className="text-h1 max-w-3xl mb-8">
+            Every project starts with a conversation
+          </h1>
+          <p className="text-body-lg text-slate-600 max-w-2xl">
+            Tell us about your challenge. We will outline how our team, methods, and data can help.
+          </p>
+        </Container>
+      </section>
 
       {/* Contact Form and Info */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-slate-50">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             {/* Contact Form */}
-            <div>
-              <h2 className="text-h2 text-navy-800 mb-6">Send us a message</h2>
+            <div className="lg:col-span-7">
+              <h2 className="text-h2 text-charcoal mb-8">Send us a message</h2>
 
               {submitted ? (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-white border border-slate-200 p-10 text-center">
+                  <div className="w-16 h-16 bg-teal/10 flex items-center justify-center mx-auto mb-4">
                     <svg
-                      className="w-8 h-8 text-green-600"
+                      className="w-8 h-8 text-teal"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -87,100 +80,104 @@ export default function ContactPage() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-h3 text-navy-800 mb-2">Thank you!</h3>
-                  <p className="text-body text-gray-600">
-                    We've received your message and will get back to you shortly.
+                  <h3 className="text-h3 text-charcoal mb-2">Message received</h3>
+                  <p className="text-body text-slate-600">
+                    We typically respond within 24 hours.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name */}
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-small font-medium text-gray-700 mb-2"
-                    >
-                      Name <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors"
-                      placeholder="Your name"
-                    />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {/* Name */}
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="text-label block mb-2"
+                      >
+                        Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-slate-300 bg-white focus:outline-none focus:border-charcoal transition-colors"
+                        placeholder="Your name"
+                      />
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="text-label block mb-2"
+                      >
+                        Email <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-slate-300 bg-white focus:outline-none focus:border-charcoal transition-colors"
+                        placeholder="your@email.com"
+                      />
+                    </div>
                   </div>
 
-                  {/* Email */}
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-small font-medium text-gray-700 mb-2"
-                    >
-                      Email <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors"
-                      placeholder="your@email.com"
-                    />
-                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {/* Organization */}
+                    <div>
+                      <label
+                        htmlFor="organization"
+                        className="text-label block mb-2"
+                      >
+                        Organization
+                      </label>
+                      <input
+                        type="text"
+                        id="organization"
+                        name="organization"
+                        value={formData.organization}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-slate-300 bg-white focus:outline-none focus:border-charcoal transition-colors"
+                        placeholder="Your organization"
+                      />
+                    </div>
 
-                  {/* Organization */}
-                  <div>
-                    <label
-                      htmlFor="organization"
-                      className="block text-small font-medium text-gray-700 mb-2"
-                    >
-                      Organization
-                    </label>
-                    <input
-                      type="text"
-                      id="organization"
-                      name="organization"
-                      value={formData.organization}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors"
-                      placeholder="Your organization (optional)"
-                    />
-                  </div>
-
-                  {/* Inquiry Type */}
-                  <div>
-                    <label
-                      htmlFor="inquiryType"
-                      className="block text-small font-medium text-gray-700 mb-2"
-                    >
-                      Inquiry Type
-                    </label>
-                    <select
-                      id="inquiryType"
-                      name="inquiryType"
-                      value={formData.inquiryType}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors bg-white"
-                    >
-                      {inquiryTypes.map((type) => (
-                        <option key={type.value} value={type.value}>
-                          {type.label}
-                        </option>
-                      ))}
-                    </select>
+                    {/* Inquiry Type */}
+                    <div>
+                      <label
+                        htmlFor="inquiryType"
+                        className="text-label block mb-2"
+                      >
+                        Inquiry Type
+                      </label>
+                      <select
+                        id="inquiryType"
+                        name="inquiryType"
+                        value={formData.inquiryType}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-slate-300 bg-white focus:outline-none focus:border-charcoal transition-colors"
+                      >
+                        {inquiryTypes.map((type) => (
+                          <option key={type.value} value={type.value}>
+                            {type.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
                   {/* Message */}
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-small font-medium text-gray-700 mb-2"
+                      className="text-label block mb-2"
                     >
                       Message <span className="text-red-500">*</span>
                     </label>
@@ -188,65 +185,66 @@ export default function ContactPage() {
                       id="message"
                       name="message"
                       required
-                      rows={5}
+                      rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors resize-none"
-                      placeholder="How can we help you?"
+                      className="w-full px-4 py-3 border border-slate-300 bg-white focus:outline-none focus:border-charcoal transition-colors resize-none"
+                      placeholder="Tell us about your project or question"
                     />
                   </div>
 
-                  {/* Submit Button */}
-                  <Button
+                  {/* Submit */}
+                  <button
                     type="submit"
-                    variant="primary"
-                    size="lg"
-                    className="w-full sm:w-auto"
                     disabled={isSubmitting}
+                    className="btn-primary px-10 py-4 disabled:opacity-50"
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </Button>
+                  </button>
                 </form>
               )}
             </div>
 
-            {/* Contact Info */}
-            <div>
-              <h2 className="text-h2 text-navy-800 mb-6">Our Offices</h2>
+            {/* Contact Info — Right */}
+            <div className="lg:col-span-4 lg:col-start-9">
+              <h2 className="text-h2 text-charcoal mb-8">Contact</h2>
 
-              <div className="space-y-8">
-                {offices.map((office) => (
-                  <div
-                    key={office.city}
-                    className="border-l-4 border-teal-500 pl-6"
-                  >
-                    <h3 className="text-h4 text-navy-800 mb-2">{office.city}</h3>
-                    <div className="space-y-1 text-body text-gray-600">
-                      <p>{office.address}</p>
-                      <p>
-                        <a
-                          href={`mailto:${office.email}`}
-                          className="hover:text-teal-600 transition-colors"
-                        >
-                          {office.email}
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <dl className="space-y-8 mb-10">
+                <div>
+                  <dt className="text-label mb-2">Email</dt>
+                  <dd>
+                    <a
+                      href="mailto:team@appliedeconomics.ai"
+                      className="text-body text-teal hover:underline"
+                    >
+                      team@appliedeconomics.ai
+                    </a>
+                  </dd>
+                </div>
 
-              {/* General Contact */}
-              <div className="mt-12 p-6 bg-gray-50 rounded-lg">
-                <h3 className="text-h4 text-navy-800 mb-4">General Inquiries</h3>
-                <p className="text-body text-gray-600">
-                  <a
-                    href="mailto:team@appliedeconomics.ai"
-                    className="hover:text-teal-600 transition-colors"
-                  >
-                    team@appliedeconomics.ai
-                  </a>
-                </p>
+                <div>
+                  <dt className="text-label mb-2">Location</dt>
+                  <dd className="text-body text-slate-600">
+                    London, United Kingdom
+                  </dd>
+                </div>
+
+                <div>
+                  <dt className="text-label mb-2">Response Time</dt>
+                  <dd className="text-body text-slate-600">
+                    Typically within 24 hours
+                  </dd>
+                </div>
+              </dl>
+
+              {/* London map */}
+              <div className="w-full aspect-[4/3] border border-slate-200 overflow-hidden">
+                <iframe
+                  title="London map"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-0.1800,51.4800,-0.0400,51.5500&layer=mapnik"
+                  className="w-full h-full border-0 grayscale"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>

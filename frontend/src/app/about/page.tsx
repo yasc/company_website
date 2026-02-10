@@ -91,7 +91,7 @@ const fallbackMission = {
   title: 'Our Mission',
   content: `We harness cutting-edge AI to unlock the wealth of information trapped in unstructured data sources, transforming raw information into actionable knowledge for academic research, policy analysis, and commercial decision-making.
 
-Our work sits at the intersection of academic economics and commercial AI — too rigorous for most consultancies, too practical for most academic groups, and too bespoke for standard data vendors. We bring PhD-level economic thinking to real-world problems, and frontier AI methods to serious economic questions.`,
+Our work sits at the intersection of academic economics and commercial AI — too rigorous for most consultancies, too practical for most academic groups, and too bespoke for standard data vendors. We bring deep economic expertise to real-world problems, and frontier AI methods to serious economic questions.`,
 };
 
 const fallbackApproach = {
@@ -152,8 +152,8 @@ export default async function AboutPage() {
       <section className="bg-slate-50 pt-24 lg:pt-36 pb-16 lg:pb-24 border-b border-slate-200">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-label mb-6">About</p>
-            <h1 className="text-display mb-8">
+            <p className="font-mono text-[16px] uppercase tracking-widest text-teal mb-6">About</p>
+            <h1 className="text-h1 mb-8">
               Building the datasets the world is missing
             </h1>
             <p className="text-body-lg text-slate-600 max-w-2xl mx-auto">
@@ -190,7 +190,7 @@ export default async function AboutPage() {
                     {member.affiliations.map((aff) => (
                       <span
                         key={aff}
-                        className="inline-block px-2 py-1 text-xs font-medium text-slate-600 bg-slate-100 border border-slate-200"
+                        className="inline-block px-2 py-1 text-label normal-case tracking-normal text-slate-600 bg-slate-100 border border-slate-200"
                       >
                         {aff}
                       </span>

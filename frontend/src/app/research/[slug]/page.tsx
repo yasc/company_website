@@ -157,13 +157,13 @@ export default async function PaperDetailPage({ params }: PaperPageProps) {
 
             {/* Authors */}
             {paper.authors && paper.authors.length > 0 && (
-              <p className="text-body-large text-gray-300 mb-4">
+              <p className="text-body-lg text-gray-300 mb-4">
                 {paper.authors.join(', ')}
               </p>
             )}
 
             {/* Publication info */}
-            <div className="flex flex-wrap gap-4 text-small text-gray-400">
+            <div className="flex flex-wrap gap-4 text-sm text-gray-400">
               {paper.publicationDate && (
                 <span>{formatDate(paper.publicationDate)}</span>
               )}

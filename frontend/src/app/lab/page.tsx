@@ -128,7 +128,7 @@ export default async function LabPage() {
         <div className="relative z-10 pt-28 lg:pt-40 pb-16 lg:pb-24">
           <Container>
             <div className="max-w-3xl mx-auto text-center">
-              <p className="font-mono text-2xl uppercase tracking-widest text-teal mb-6">
+              <p className="font-mono text-[16px] uppercase tracking-widest text-teal mb-6">
                 The AEAI Lab
               </p>
               <h1 className="text-h1 text-white mb-6">

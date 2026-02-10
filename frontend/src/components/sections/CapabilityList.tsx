@@ -51,7 +51,7 @@ export function CapabilityList({
               </div>
 
               <div>
-                <h3 className="text-h4 text-navy-800 mb-2">
+                <h3 className="text-h3 text-navy-800 mb-2">
                   {capability.title}
                 </h3>
                 {capability.description && (

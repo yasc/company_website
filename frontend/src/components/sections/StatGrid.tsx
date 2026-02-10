@@ -51,14 +51,14 @@ export function StatGrid({
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
               <div
-                className={`text-stat mb-2 ${
+                className={`font-mono text-3xl md:text-4xl font-semibold tracking-tight mb-2 ${
                   isDark ? 'text-teal-400' : 'text-navy-800'
                 }`}
               >
                 {stat.value}
               </div>
               <div
-                className={`text-caption uppercase tracking-wider ${
+                className={`text-label ${
                   isDark ? 'text-gray-400' : 'text-gray-500'
                 }`}
               >

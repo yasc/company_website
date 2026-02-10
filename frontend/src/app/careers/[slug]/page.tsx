@@ -175,7 +175,7 @@ export default async function JobDetailPage({ params }: JobPageProps) {
             </div>
 
             <h1 className="text-display text-white mb-4">{job.title}</h1>
-            <p className="text-body-large text-gray-300">📍 {job.location}</p>
+            <p className="text-body-lg text-gray-300">📍 {job.location}</p>
 
             {/* Apply button */}
             <div className="mt-8">
@@ -216,7 +216,7 @@ export default async function JobDetailPage({ params }: JobPageProps) {
                   const [title, ...content] = section.split('\n');
                   return (
                     <div key={i} className="mb-6">
-                      <h3 className="text-h4 text-navy-800 mb-3">
+                      <h3 className="text-h3 text-navy-800 mb-3">
                         {title.replace(/\*\*/g, '').replace(':', '')}
                       </h3>
                       <ul className="list-disc pl-6 space-y-2">

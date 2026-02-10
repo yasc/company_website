@@ -23,7 +23,7 @@ export const TrustBar = () => {
           {clients.map((client) => (
             <div 
               key={client.name}
-              className="text-[#94A3B8] font-semibold text-base uppercase tracking-widest hover:text-[#111827] transition-colors duration-200 cursor-default"
+              className="text-[#94A3B8] font-semibold text-sm uppercase tracking-widest hover:text-[#111827] transition-colors duration-200 cursor-default"
             >
               {client.name}
             </div>

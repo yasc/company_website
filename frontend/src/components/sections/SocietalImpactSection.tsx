@@ -84,7 +84,7 @@ export const SocietalImpactSection: React.FC = () => {
                 <span className="text-metadata">Research Commitment</span>
                 <span className="status-dot status-dot--active"></span>
               </div>
-              <h3 className="text-h2 mb-3">
+              <h3 className="text-h3 mb-3">
                 Academic Roots, Real-World Impact
               </h3>
               <p className="text-body leading-relaxed max-w-xl">

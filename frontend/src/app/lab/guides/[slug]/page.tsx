@@ -256,14 +256,14 @@ export default async function GuideDetailPage({ params }: GuidePageProps) {
       {/* Hero */}
       <section className="bg-navy-900 dark-bg py-16 lg:py-24">
         <Container size="narrow">
-          <div className="text-small text-teal-400 uppercase tracking-wider mb-4">
+          <div className="text-sm text-teal-400 uppercase tracking-wider mb-4">
             Lab Guide
           </div>
           <h1 className="text-display text-white mb-6">{guide.title}</h1>
-          <p className="text-body-large text-gray-300">{guide.summary}</p>
+          <p className="text-body-lg text-gray-300">{guide.summary}</p>
 
           {guide.authors && guide.authors.length > 0 && (
-            <p className="text-small text-gray-400 mt-6">
+            <p className="text-sm text-gray-400 mt-6">
               By {guide.authors.join(', ')}
             </p>
           )}

@@ -12,7 +12,7 @@ export const Footer = () => {
               <img
                 src="/assets/logo-black.svg"
                 alt="Applied Economics"
-                className="h-8"
+                className="h-7"
               />
             </Link>
             <p className="text-slate-500 text-base leading-relaxed">

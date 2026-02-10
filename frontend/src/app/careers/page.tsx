@@ -133,7 +133,7 @@ export default async function CareersPage() {
                           {typeLabels[job.type]}
                         </span>
                         {job.department && (
-                          <span className="text-small text-gray-500">
+                          <span className="text-sm text-gray-500">
                             {job.department}
                           </span>
                         )}
@@ -143,7 +143,7 @@ export default async function CareersPage() {
                         📍 {job.location}
                       </CardDescription>
                     </div>
-                    <div className="text-teal-600 font-medium text-small">
+                    <div className="text-teal-600 font-medium text-sm">
                       View position →
                     </div>
                   </div>

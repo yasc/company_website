@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { services, clientSegments, engagementModel } from '@/lib/services-data';
 
 export default function ServicesPage() {
@@ -8,16 +7,9 @@ export default function ServicesPage() {
       {/* Section 1: Services Hero */}
       <section className="bg-white pt-24 pb-20 lg:pt-24 lg:pb-20">
         <div className="container-wide">
-          <Breadcrumb
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Services' },
-            ]}
-          />
-
           <div className="max-w-[720px]">
-            <span className="text-label mt-8 block">OUR SERVICES</span>
-            <h1 className="text-display mt-3">
+            <span className="font-mono text-[16px] uppercase tracking-widest text-teal block">OUR SERVICES</span>
+            <h1 className="text-h1 mt-3">
               Precision Economics for a Complex World
             </h1>
             <p className="text-body-lg mt-6 max-w-[640px]" style={{ lineHeight: 1.6 }}>
@@ -172,7 +164,7 @@ export default function ServicesPage() {
                 Explore Our Data
               </Link>
             </div>
-            <p className="font-mono text-[14px] text-[#64748B] mt-6">
+            <p className="font-mono text-[13px] text-[#64748B] mt-6">
               Typical response time: 24 hours
             </p>
           </div>

@@ -48,7 +48,7 @@ body {
   background: var(--bg-primary);
   color: var(--text-secondary);
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6; /* Increased line-height for readability */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -78,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-display {
   font-family: var(--font-display);
-  font-size: clamp(48px, 5.5vw, 72px);
+  font-size: clamp(40px, 5vw, 60px);
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.025em;
@@ -87,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-h1 {
   font-family: var(--font-display);
-  font-size: clamp(38px, 4.5vw, 56px);
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -96,7 +96,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-h2 {
   font-family: var(--font-display);
-  font-size: clamp(28px, 3.5vw, 40px);
+  font-size: clamp(24px, 3vw, 34px);
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.015em;
@@ -105,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-h3 {
   font-family: var(--font-display);
-  font-size: clamp(22px, 2.5vw, 30px);
+  font-size: clamp(20px, 2.5vw, 26px);
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -114,21 +114,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-body-lg {
   font-family: var(--font-sans);
-  font-size: clamp(20px, 1.8vw, 24px);
+  font-size: clamp(18px, 1.5vw, 21px);
   line-height: 1.6;
   color: var(--text-secondary);
 }
 
 .text-body {
   font-family: var(--font-sans);
-  font-size: 19px;
+  font-size: 17px;
   line-height: 1.6;
   color: var(--text-secondary);
 }
 
 .text-label {
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -137,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-mono {
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-muted);
 }
 
@@ -153,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px; /* Slightly rounded */
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   transition: background-color 200ms ease;
   border: 1px solid transparent;
   display: inline-flex;
@@ -174,7 +174,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px; /* Sharp corners for "Enterprise" feel */
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   transition: all 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
   display: inline-flex;
   align-items: center;
@@ -243,7 +243,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Section Header - Enterprise Style */
 .section-header-enterprise {
   font-family: var(--font-display);
-  font-size: clamp(28px, 3.5vw, 40px);
+  font-size: clamp(24px, 3vw, 34px);
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.015em;
@@ -253,7 +253,7 @@ h1, h2, h3, h4, h5, h6 {
 /* View All Specs Link Style */
 .link-specs {
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -271,7 +271,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Explore Arrow Link Style */
 .link-explore {
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   color: #111827;
   display: inline-flex;
@@ -286,7 +286,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Metadata / Version Style */
 .text-metadata {
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.05em;
   color: #64748B; /* Slate-500 - WCAG AA compliant */
 }
@@ -331,9 +331,21 @@ h1, h2, h3, h4, h5, h6 {
    ======================================== */
 
 .container-wide {
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 24px;
+}
+
+@media (min-width: 640px) {
+  .container-wide {
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-wide {
+    padding: 0 64px;
+  }
 }
 
 .section-spacing {
@@ -361,7 +373,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .article-prose h2 {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
   letter-spacing: -0.015em;
   color: #111827;
@@ -372,7 +384,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .article-prose h3 {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: #111827;
@@ -382,7 +394,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .article-prose p {
-  font-size: 19px;
+  font-size: 17px;
   line-height: 1.75;
   color: #475569;
   margin-bottom: 24px;
@@ -409,7 +421,7 @@ h1, h2, h3, h4, h5, h6 {
   border-left: 3px solid #006D77;
   padding-left: 24px;
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 21px;
   font-weight: 600;
   line-height: 1.5;
   color: #111827;
@@ -438,7 +450,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .article-prose figcaption {
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
   color: #64748B;
   margin-top: 8px;
 }
@@ -465,7 +477,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .article-prose code {
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: 15px;
   background-color: #F8FAFC;
   padding: 2px 6px;
   border: 1px solid #CBD5E1;

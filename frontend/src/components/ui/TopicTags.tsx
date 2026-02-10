@@ -14,7 +14,7 @@ export function TopicTags({ topics }: TopicTagsProps) {
           )}
           <Link
             href={`/insights?topic=${topic.slug}`}
-            className="font-mono text-[14px] font-medium uppercase tracking-[0.08em] text-[#006D77] transition-colors duration-150 hover:text-[#005A63]"
+            className="font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-[#006D77] transition-colors duration-150 hover:text-[#005A63]"
           >
             {topic.name}
           </Link>

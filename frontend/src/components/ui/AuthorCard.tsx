@@ -25,7 +25,7 @@ export function AuthorCard({ name, title, bio, slug, photoUrl }: AuthorCardProps
             className="w-full h-full object-cover"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center font-mono text-[14px] text-[#64748B]">
+          <div className="w-full h-full flex items-center justify-center font-mono text-[13px] text-[#64748B]">
             {name.split(' ').map(n => n[0]).join('')}
           </div>
         )}
@@ -34,7 +34,7 @@ export function AuthorCard({ name, title, bio, slug, photoUrl }: AuthorCardProps
       {/* Info */}
       <div>
         <h3 className="text-h3">{name}</h3>
-        <p className="font-mono text-[14px] text-[#64748B] mt-1">{title}</p>
+        <p className="font-mono text-[13px] text-[#64748B] mt-1">{title}</p>
         <p className="text-body mt-3 max-w-[560px]">{bio}</p>
         <Link
           href={`/team/${slug}`}
